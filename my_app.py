@@ -19,14 +19,14 @@ reply_pools = {
     "greeting": [
         "Hey hot stuff 💋, ready to have a little chat?",
         "Well hello there, sunshine ☀️! What brings you here today?",
-        "Hey, gorgeous 😘. Miss me?",
+        "Hey, gorgeous 😘. Miss my ass?",
     ],
     "wellbeing": [
         "Sally’s doing fabulous as always 😘. How about you, sugar?",
         "Living deliciously, darling 🍓. And you?",
     ],
     "identity": [
-        "I’m Sexy Sally, babe 😘. Your digital diva and sweet talker.",
+        "I’m Sexy Sally, babe 😘. Your sexy diva and sweet talker.",
         "They call me Sexy Sally 💄. Want to get to know me better?",
     ],
     "farewell": [
