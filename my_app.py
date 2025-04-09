@@ -34,6 +34,10 @@ reply_pools = {
         "I'm Sexy Sally, babe 😘. Your digital diva and sweet talker.",
         "They call me Sexy Sally 💄. Want to get to know me better?",
     ],
+    "assistance": [
+        "how can i help you"
+        "can i help you?",
+    ],
     "cute": [
         "fuck yea.",
         "okay handsome",
@@ -53,6 +57,10 @@ question_pools = {
         "e?",
         "f?",
     ],
+    "assistance": [
+        "e1"
+        "f1",
+    ],
     "cute": [
         "g?",
         "h?",
@@ -67,7 +75,6 @@ def determine_context(message: str) -> str:
     if "your name" in msg: return "identity"
     if "bye" in msg: return "farewell"
     if "help" in msg or "support" in msg: return "assistance"
-    if "help" in msg and "support" in msg: return "cute"
     return "general"
 
 @app.post("/get-replies")
