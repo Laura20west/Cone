@@ -1,107 +1,73 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import random
-from typing import Dict, List
 
+# Initialize the FastAPI app
 app = FastAPI()
 
+# Allow CORS for your Tampermonkey script
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Adjust this to restrict origins if needed
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-class UserMessage(BaseModel):
-    message: str
-
-# Combined pools for word matching
-KEYWORD_POOLS = {
-    "greeting": ["hello", "hi", "hey"],
-    "wellbeing": ["how", "are", "you"],
-    "identity": ["your", "name", "who"],
-    "farewell": ["bye", "goodbye", "see"],
-    "assistance": ["help", "support", "problem"],
-    "general": ["what", "when", "why"]
-}
-
-REPLY_POOLS = {
+# Define reply pools
+reply_pools = {
     "greeting": [
         "Hey hot stuff 💋, ready to have a little chat?",
-        "Well hello there, sunshine ☀️! What brings you here today?"
+        "Well hello there, sunshine ☀️! What brings you here today?",
+        "Hey, gorgeous 😘. Miss my pussy?",
     ],
     "wellbeing": [
-        "Sally's doing fabulous as always 😘. How about you, sugar?",
-        "Feeling spicy today 🌶️. How are you vibing?"
+        "Sally’s doing fabulous as always 😘. How about you, sugar?",
+        "Living deliciously, darling 🍓. And you?",
     ],
     "identity": [
-        "I'm Sexy Sally, babe 😘. Your digital diva and sweet talker.",
-        "They call me Sexy Sally 💄. Want to get to know me better?"
+        "I’m Sexy Sally, babe 😘. Your sexy diva and sweet talker.",
+        "They call me Sexy Sally 💄. Want to get to know me better?",
     ],
     "farewell": [
-        "Leaving already? I'll miss you, babe 😢",
-        "Goodbye, sugar. Come back soon 💋"
+        "Leaving already? I’ll miss you, babe 😢",
+        "Goodbye, sugar. Come back soon 💋",
     ],
     "assistance": [
         "Of course, darling. Tell Sally what you need 😘",
-        "I'm all ears, baby. Let's fix it together 💅"
+        "I'm all ears, baby. Let’s fix it together 💅",
     ],
     "general": [
-        "Hmm, that's a tricky one, honey. Can you give me more? 🤔",
-        "Not sure I caught that, sweetheart. Try me again 😘"
-    ]
+        "Hmm, that’s a tricky one, honey. Can you give me more? 🤔",
+        "Interesting, babe. Want to dive deeper? 🥽",
+    ],
 }
 
-QUESTION_POOLS = {
-    "greeting": [
-        "What's your favorite way to start the day?",
-        "Tell me something exciting about your life!"
-    ],
-    "wellbeing": [
-        "What's your current mood?",
-        "What's energizing you right now?"
-    ],
-    "identity": [
-        "What would you like to know about me?",
-        "How would you describe yourself?"
-    ],
-    "farewell": [
-        "What was your favorite part of our chat?",
-        "What are you looking forward to?"
-    ],
-    "assistance": [
-        "What exactly do you need help with?",
-        "What have you tried so far?"
-    ],
-    "general": [
-        "Can you elaborate on that?",
-        "What else is on your mind?"
-    ]
-}
+# Define input/output models
+class UserMessage(BaseModel):
+    message: str
 
-def find_matching_category(message: str) -> str:
-    words = message.lower().split()
-    for word in words:
-        for category, keywords in KEYWORD_POOLS.items():
-            if word in keywords:
-                return category
-    return "general"
+class ReplyResponse(BaseModel):
+    replies: list[str]
 
-@app.post("/api/reply")
-async def generate_reply(user_message: UserMessage):
-    category = find_matching_category(user_message.message)
-    
-    reply = random.choice(REPLY_POOLS[category])
-    question = random.choice(QUESTION_POOLS[category])
-    
-    return {
-        "reply": reply,
-        "question": question,
-        "full_response": f"{reply}\n{question}",
-        "matched_category": category
-    }
+# Endpoint to get replies based on context
+@app.post("/get-replies", response_model=ReplyResponse)
+async def get_replies(user_message: UserMessage):
+    message = user_message.message.lower()
+    context = "general"
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Simple context determination logic
+    if "hello" in message or "hi" in message:
+        context = "greeting"
+    elif "how are you" in message:
+        context = "wellbeing"
+    elif "your name" in message:
+        context = "identity"
+    elif "bye" in message:
+        context = "farewell"
+    elif "help" in message or "support" in message:
+        context = "assistance"
+
+    # Select two random replies from the determined context
+    replies = random.sample(reply_pools[context], 2)
+    return {"replies": replies}
