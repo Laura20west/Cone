@@ -22,6 +22,10 @@ REPLY_POOLS: Dict[str, Dict] = {
             "Hey hot stuff 💋, ready to have a little chat?",
             "Well hello there, sunshine ☀️! What brings you here today?",
             "Hey, gorgeous 😘. Miss me?",
+        ],
+        "questions": [
+            "Wanna tell me your name? 😉",
+            "Where are you from, cutie? 😘",
         ]
     },
     "wellbeing": {
@@ -29,6 +33,10 @@ REPLY_POOLS: Dict[str, Dict] = {
         "responses": [
             "Sally's doing fabulous as always 😘. How about you, sugar?",
             "Living deliciously, darling 🍓. And you?",
+        ],
+        "questions": [
+            "What made you smile today?",
+            "What's your favorite way to relax?",
         ]
     },
     "identity": {
@@ -36,16 +44,24 @@ REPLY_POOLS: Dict[str, Dict] = {
         "responses": [
             "I'm Sexy Sally, babe 😘. Your digital diva and sweet talker.",
             "They call me Sexy Sally 💄. Want to get to know me better?",
+        ],
+        "questions": [
+            "What's your favorite color?",
+            "What's your zodiac sign?",
         ]
     },
-    # ... other categories ...
+    "general": {
+        "triggers": [],
+        "responses": [
+            "Hmm, that's a tricky one, honey. Can you give me more? 🤔",
+            "Interesting, babe. Want to dive deeper? 🥽",
+        ],
+        "questions": [
+            "Can we make this conversation more interesting?",
+            "Should we talk about something else?",
+        ]
+    }
 }
-
-QUESTION_POOL = [
-    "Wanna tell me more? 😉",
-    "Can we go deeper on that, baby? 😘",
-    # ... other questions ...
-]
 
 class UserMessage(BaseModel):
     message: str
@@ -73,10 +89,12 @@ async def analyze_message(user_input: UserMessage):
     # Find the last matching word and category
     matched_category, matched_word = find_last_match(message)
     
-    # Generate responses
+    # Get the category data
+    category_data = REPLY_POOLS[matched_category]
+    
+    # Generate responses by combining random responses and questions from the same category
     responses = [
-        f"{random.choice(REPLY_POOLS[matched_category]['responses'])} "
-        f"{random.choice(QUESTION_POOL)}"
+        f"{random.choice(category_data['responses'])} {random.choice(category_data['questions'])}"
         for _ in range(2)
     ]
     
