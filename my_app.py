@@ -1,5 +1,5 @@
 # main.py
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import random
@@ -19,12 +19,11 @@ app.add_middleware(
 class RequestData(BaseModel):
     message: str
 
-# Response pools
+# Enhanced response pools
 reply_pools = {
     "greeting": [
         "Hey hot stuff 💋, ready to have a little chat?",
         "Well hello there, sunshine ☀️! What brings you here today?",
-        "Hey, gorgeous 😘. Miss me?",
     ],
     "wellbeing": [
         "Sally's doing fabulous as always 😘. How about you, sugar?",
@@ -37,70 +36,75 @@ reply_pools = {
     "cute": [
         "fuck yea.",
         "okay handsome",
+        "you're adorable 💖",
+        "my sweet angel 😇"
     ],
     "assistance": [
         "How can I help?",
-        "What support do you need?"
+        "What support do you need?",
+        "Tell me more about your problem 💭",
+        "Let's fix this together ✨"
     ]
 }
 
 question_pools = {
     "greeting": [
-        "a?",
-        "b?",
+        "What's your name?",
+        "How's your day going?",
     ],
     "wellbeing": [
-        "c?",
-        "d?",
+        "What made you smile today?",
+        "Need some positive vibes?",
     ],
     "identity": [
-        "e?",
-        "f?",
+        "What's your favorite color?",
+        "What's your zodiac sign?",
     ],
     "cute": [
-        "g?",
-        "h?",
+        "You need a hug?",
+        "Want some candy? 🍬",
     ],
     "assistance": [
         "Need more help?",
-        "Anything else?"
+        "Should I explain differently?",
     ]
 }
 
 def determine_context(message: str) -> str:
     msg = message.lower()
-    # Check for "help AND support" first
-    if "help" in msg and "support" in msg: 
-        return "cute"
-    if "hello" in msg or "hi" in msg: 
-        return "greeting"
-    if "how are you" in msg: 
-        return "wellbeing"
-    if "your name" in msg: 
-        return "identity"
-    if "bye" in msg: 
-        return "farewell"
-    if "help" in msg or "support" in msg: 
-        return "assistance"
+    if "help" in msg and "support" in msg: return "cute"
+    if "hello" in msg or "hi" in msg: return "greeting"
+    if "how are you" in msg: return "wellbeing"
+    if "your name" in msg: return "identity"
+    if "bye" in msg: return "farewell"
+    if "help" in msg or "support" in msg: return "assistance"
     return "general"
+
+def generate_random_response(context: str) -> str:
+    """Generate one random response by mixing reply and question"""
+    reply = random.choice(reply_pools.get(context, ["Hmm..."]))
+    question = random.choice(question_pools.get(context, [""]))
+    return f"{reply} {question}".strip() if random.random() > 0.5 else f"{question} {reply}".strip()
 
 @app.post("/get-replies")
 async def get_replies(data: RequestData):
     context = determine_context(data.message)
     
-    # Get random reply and question
-    reply = random.choice(reply_pools.get(context, ["Hmm, interesting..."]))
-    question = random.choice(question_pools.get(context, [""]))
+    # Generate two completely independent random responses
+    response1 = generate_random_response(context)
+    response2 = generate_random_response(context)
     
-    # Mix them randomly
-    if random.random() > 0.5:
-        response = f"{reply} {question}"
-    else:
-        response = f"{question} {reply}"
+    # Ensure we don't return identical responses
+    while response2 == response1:
+        response2 = generate_random_response(context)
     
     return {
         "replies": [
-            response,
-            response
+            response1,
+            response2
         ]
     }
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "version": "2.1.0"}
