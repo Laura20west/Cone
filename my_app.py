@@ -6,7 +6,6 @@ from typing import Dict, List
 
 app = FastAPI()
 
-# Allow CORS for Tampermonkey
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -17,109 +16,92 @@ app.add_middleware(
 class UserMessage(BaseModel):
     message: str
 
-reply_pools: Dict[str, List[str]] = {
+# Combined pools for word matching
+KEYWORD_POOLS = {
+    "greeting": ["hello", "hi", "hey"],
+    "wellbeing": ["how", "are", "you"],
+    "identity": ["your", "name", "who"],
+    "farewell": ["bye", "goodbye", "see"],
+    "assistance": ["help", "support", "problem"],
+    "general": ["what", "when", "why"]
+}
+
+REPLY_POOLS = {
     "greeting": [
         "Hey hot stuff 💋, ready to have a little chat?",
-        "Well hello there, sunshine ☀️! What brings you here today?",
-        "Hey, gorgeous 😘. Miss me?",
-        "Hey cutie! What can Sexy Sally do for you today?",
-        "Hi, beautiful soul! Sally's got you 💕"
+        "Well hello there, sunshine ☀️! What brings you here today?"
     ],
     "wellbeing": [
         "Sally's doing fabulous as always 😘. How about you, sugar?",
-        "Living deliciously, darling 🍓. And you?",
-        "Peachy keen, baby 😍. What's up on your end?",
         "Feeling spicy today 🌶️. How are you vibing?"
     ],
     "identity": [
         "I'm Sexy Sally, babe 😘. Your digital diva and sweet talker.",
-        "They call me Sexy Sally 💄. Want to get to know me better?",
-        "It's me, your sweet sensation – Sexy Sally 💕",
-        "I'm your girl, Sexy Sally 😘. Let's make this moment sweet."
+        "They call me Sexy Sally 💄. Want to get to know me better?"
     ],
     "farewell": [
         "Leaving already? I'll miss you, babe 😢",
-        "Goodbye, sugar. Come back soon 💋",
-        "Sally's gonna be dreaming of you 💭",
-        "Take care, my sweet flame 🔥"
+        "Goodbye, sugar. Come back soon 💋"
     ],
     "assistance": [
         "Of course, darling. Tell Sally what you need 😘",
-        "I'm all ears, baby. Let's fix it together 💅",
-        "Let Sally work her magic 🪄. What's the issue?",
-        "I've got you, boo 💖. Lay it on me."
+        "I'm all ears, baby. Let's fix it together 💅"
     ],
     "general": [
         "Hmm, that's a tricky one, honey. Can you give me more? 🤔",
-        "Interesting, babe. Want to dive deeper? 🥽",
-        "Not sure I caught that, sweetheart. Try me again 😘",
-        "Spill the tea, sugar ☕. I'm listening."
+        "Not sure I caught that, sweetheart. Try me again 😘"
     ]
 }
 
-question_pools: Dict[str, List[str]] = {
+QUESTION_POOLS = {
     "greeting": [
         "What's your favorite way to start the day?",
-        "Tell me something exciting about your life!",
-        "What made you smile today?",
-        "What's your secret passion?"
+        "Tell me something exciting about your life!"
     ],
     "wellbeing": [
         "What's your current mood?",
-        "What's energizing you right now?",
-        "What self-care did you do today?",
-        "What's your guilty pleasure?"
+        "What's energizing you right now?"
     ],
     "identity": [
         "What would you like to know about me?",
-        "What's your favorite quality in others?",
-        "How would you describe yourself?",
-        "What makes you unique?"
+        "How would you describe yourself?"
     ],
     "farewell": [
         "What was your favorite part of our chat?",
-        "What are you looking forward to?",
-        "What will you dream about tonight?",
-        "What's your next adventure?"
+        "What are you looking forward to?"
     ],
     "assistance": [
         "What exactly do you need help with?",
-        "What have you tried so far?",
-        "What would make this easier for you?",
-        "How urgent is this?"
+        "What have you tried so far?"
     ],
     "general": [
         "Can you elaborate on that?",
-        "What else is on your mind?",
-        "How does that make you feel?",
-        "What's the backstory here?"
+        "What else is on your mind?"
     ]
 }
 
-def determine_context(message: str) -> str:
-    msg = message.lower()
-    if "hello" in msg or "hi" in msg or "hey" in msg:
-        return "greeting"
-    if "how are you" in msg or "how's it going" in msg:
-        return "wellbeing"
-    if "your name" in msg or "who are you" in msg:
-        return "identity"
-    if "bye" in msg or "goodbye" in msg or "see ya" in msg:
-        return "farewell"
-    if "help" in msg or "support" in msg or "problem" in msg:
-        return "assistance"
+def find_matching_category(message: str) -> str:
+    words = message.lower().split()
+    for word in words:
+        for category, keywords in KEYWORD_POOLS.items():
+            if word in keywords:
+                return category
     return "general"
 
 @app.post("/api/reply")
 async def generate_reply(user_message: UserMessage):
-    context = determine_context(user_message.message)
+    category = find_matching_category(user_message.message)
     
-    # Get random reply and question
-    reply = random.choice(reply_pools[context])
-    question = random.choice(question_pools[context])
+    reply = random.choice(REPLY_POOLS[category])
+    question = random.choice(QUESTION_POOLS[category])
     
-    # Combine them with some variety
-    combined = f"{reply}\n{question}"
-    
-    return {"reply": combined}
+    return {
+        "reply": reply,
+        "question": question,
+        "full_response": f"{reply}\n{question}",
+        "matched_category": category
+    }
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
