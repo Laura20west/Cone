@@ -61,6 +61,7 @@ question_pools = {
 
 def determine_context(message: str) -> str:
     msg = message.lower()
+    if "help" in msg and "support" in msg: return "cute"
     if "hello" in msg or "hi" in msg: return "greeting"
     if "how are you" in msg: return "wellbeing"
     if "your name" in msg: return "identity"
