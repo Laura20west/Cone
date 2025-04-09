@@ -1,39 +1,43 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import random
-from typing import List, Dict
+from typing import Dict, List
 
 app = FastAPI()
 
-# CORS setup (allow Tampermonkey to call this API)
+# CORS setup
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_methods=["POST"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Data models
-class AnalyzeRequest(BaseModel):
-    message: str
-    session_id: str
-
-class AnalyzeResponse(BaseModel):
-    success: bool
-    responses: List[str]
-    session_id: str
-
-# Response pools (same as before)
-RESPONSE_POOLS = {
-    "greeting": [
-        "Hey hot stuff 💋, ready to have a little chat?",
-        "Well hello there, sunshine ☀️! What brings you here today?",
-    ],
-    "wellbeing": [
-        "Sally's doing fabulous as always 😘. How about you, sugar?",
-        "Living deliciously, darling 🍓. And you?",
-    ],
+# Enhanced reply pools with word triggers
+REPLY_POOLS: Dict[str, Dict] = {
+    "greeting": {
+        "triggers": ["hello", "hi", "hey", "hola", "greetings"],
+        "responses": [
+            "Hey hot stuff 💋, ready to have a little chat?",
+            "Well hello there, sunshine ☀️! What brings you here today?",
+            "Hey, gorgeous 😘. Miss me?",
+        ]
+    },
+    "wellbeing": {
+        "triggers": ["how", "are", "you", "feeling", "doing"],
+        "responses": [
+            "Sally's doing fabulous as always 😘. How about you, sugar?",
+            "Living deliciously, darling 🍓. And you?",
+        ]
+    },
+    "identity": {
+        "triggers": ["your", "name", "who", "are", "you"],
+        "responses": [
+            "I'm Sexy Sally, babe 😘. Your digital diva and sweet talker.",
+            "They call me Sexy Sally 💄. Want to get to know me better?",
+        ]
+    },
     # ... other categories ...
 }
 
@@ -43,50 +47,41 @@ QUESTION_POOL = [
     # ... other questions ...
 ]
 
-# Store sessions (in-memory, replace with Redis/DB in production)
-sessions: Dict[str, List[dict]] = {}
+class UserMessage(BaseModel):
+    message: str
 
-# API Endpoint
-@app.post("/api/analyze", response_model=AnalyzeResponse)
-async def analyze_message(request: AnalyzeRequest):
-    category = _analyze_message(request.message)
-    responses = _generate_responses(category, count=2)
-    
-    # Store session (example)
-    if request.session_id not in sessions:
-        sessions[request.session_id] = []
-    
-    sessions[request.session_id].append({
-        "message": request.message,
-        "category": category,
-    })
+class SallyResponse(BaseModel):
+    matched_word: str
+    matched_category: str
+    replies: List[str]
 
-    return {
-        "success": True,
-        "responses": responses,
-        "session_id": request.session_id,
-    }
-
-# Helper functions
-def _analyze_message(message: str) -> str:
-    KEYWORD_MAP = {
-        "greeting": ["hello", "hi", "hey"],
-        "wellbeing": ["how", "are", "you"],
-        # ... other categories ...
-    }
+def find_last_match(message: str) -> tuple:
+    """Find the last matching word and its category"""
     words = message.lower().split()
-    last_match = "general"
+    last_match = ("general", None)  # (category, matched_word)
     
     for word in words:
-        for category, triggers in KEYWORD_MAP.items():
-            if word in triggers:
-                last_match = category
+        for category, data in REPLY_POOLS.items():
+            if word in data["triggers"]:
+                last_match = (category, word)
     return last_match
 
-def _generate_responses(category: str, count: int = 1) -> List[str]:
-    responses = []
-    for _ in range(count):
-        reply = random.choice(RESPONSE_POOLS[category])
-        question = random.choice(QUESTION_POOL)
-        responses.append(f"{reply} {question}")
-    return responses
+@app.post("/analyze", response_model=SallyResponse)
+async def analyze_message(user_input: UserMessage):
+    message = user_input.message.strip()
+    
+    # Find the last matching word and category
+    matched_category, matched_word = find_last_match(message)
+    
+    # Generate responses
+    responses = [
+        f"{random.choice(REPLY_POOLS[matched_category]['responses'])} "
+        f"{random.choice(QUESTION_POOL)}"
+        for _ in range(2)
+    ]
+    
+    return {
+        "matched_word": matched_word or "general",
+        "matched_category": matched_category,
+        "replies": responses
+    }
