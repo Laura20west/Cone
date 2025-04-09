@@ -101,6 +101,6 @@ async def get_replies(data: RequestData):
     return {
         "replies": [
             response,
-            "Alternative reply: " + random.choice(reply_pools.get(context, ["Let's talk more 😘"]))
+            random.choice(response)
         ]
     }
