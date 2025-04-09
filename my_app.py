@@ -101,6 +101,6 @@ async def get_replies(data: RequestData):
     return {
         "replies": [
             response,
-            random.choice(response)
+            response
         ]
     }
