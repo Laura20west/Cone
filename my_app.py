@@ -17,9 +17,13 @@ app.add_middleware(
 # Enhanced reply pools with word triggers
 REPLY_POOLS: Dict[str, Dict] = {
     "greeting": {
-        "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip"],
+        "triggers": ["fuck", "sex", "sexy", "hi", "hey", "dripping", "horny", "hola", "drip"],
         "responses": [
         "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
+        "Yes I’m into you having sex with you. Thinking about the  way you are going to handle me send shivers to my spine.",
+        " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
+        "The last time I had sex wasn’t as good as I thought it would be, he didn’t fuck me real good as I expected.",
+        "For a while now, I haven’t been with someone that thinks I’m sexy enough to fuck me.",
         "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
         "I would love to feel your tongue licking and rubbing my clitoral area until I orgasm all over your face.",
         "I like a man who gets straight to the point. I want you to suck my breast real good and after you’re done, I want you to slide your cock in me and fuck me till I scream your name.",
@@ -841,7 +845,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
 
     "pussy": {
         "triggers": ["pussy", "wet", "pussy?", "pussy!", "wet?"],
