@@ -962,7 +962,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
 
     "kitchen": {
         "triggers": ["kitchen", "kitchen?", "kitchen!"],
@@ -1075,7 +1075,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
 
     "restroom": {
         "triggers": ["restroom", "restaurant", "restroom?", "restaurant?"],
@@ -1188,7 +1188,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
 
     "husband": {
         "triggers": ["husband", "spouse", "husband?"],
@@ -1302,7 +1302,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
 
     "position": {
         "triggers": ["position", "position?", "position!"],
@@ -1420,7 +1420,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
 
     "bj": {
         "triggers": ["blowjob", "blow", "cum", 'blowjob?', "cum?"],
@@ -1539,7 +1539,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
 
     "ass": {
         "triggers": ["ass", "anal", "butt", "cheeks", "rim"],
@@ -1657,7 +1657,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
     "threesome": {
         "triggers": ["threesome", "triple", "mmf", "fmf","ffm"],
         "responses": [
@@ -1773,7 +1773,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
     "dream": {
         "triggers": ["fantasy", "dream"],
         "responses": [
@@ -1886,7 +1886,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
     "toy": {
         "triggers": ["toy", "toy?"],
         "responses": [
@@ -1998,7 +1998,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
     "scam": {
         "triggers": ["scam", "site", "games", "game"],
         "responses": [
@@ -2111,7 +2111,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
     "outdoor": {
         "triggers": ["outdoor", "outdoor?"],
         "responses": [
@@ -2223,7 +2223,7 @@ REPLY_POOLS: Dict[str, Dict] = {
         "",
 
         ]
-    }
+    },
 
     "general": {
         "triggers": [],
