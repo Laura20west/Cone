@@ -7,6 +7,11 @@ import random
 from typing import Dict, List, Tuple, Optional
 from collections import defaultdict
 import os
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Initialize FastAPI
 app = FastAPI()
@@ -19,22 +24,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load NLP model
+# Load NLP model with error handling
 try:
     nlp = spacy.load("en_core_web_md")
+    logger.info("Successfully loaded spaCy model")
 except OSError:
+    logger.info("Downloading spaCy model...")
     os.system("python -m spacy download en_core_web_md")
     nlp = spacy.load("en_core_web_md")
 
-# Helper function to clean and normalize words
+# Enhanced text normalization
 def normalize_text(text: str) -> List[str]:
     """Convert text to lowercase and remove punctuation"""
-    text = text.lower()
-    # Remove punctuation except apostrophes (for words like "don't")
+    text = text.lower().strip()
+    # Remove all punctuation except apostrophes and basic word characters
     text = re.sub(r"[^\w\s']", "", text)
     return text.split()
 
-# Define your reply pools (ensure this is before any functions that use it)
+# Define comprehensive reply pools
 REPLY_POOLS: Dict[str, Dict] = {
     "greeting": {
         "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip"],
@@ -2359,51 +2366,77 @@ REPLY_POOLS: Dict[str, Dict] = {
     }
 }
 
-# Prepare triggers with improved exact matching
-def prepare_triggers():
+# Prepare matching systems
+def prepare_matching_systems():
+    """Create both exact and NLP matching systems"""
     exact_triggers = defaultdict(list)
     nlp_triggers = defaultdict(list)
     
     for category, data in REPLY_POOLS.items():
         for trigger in data["triggers"]:
             # Store normalized version for exact matching
-            exact_triggers[category].append(trigger.lower())
+            normalized = trigger.lower()
+            exact_triggers[category].append(normalized)
+            
             # Process for NLP similarity
-            nlp_triggers[category].append(nlp(trigger.lower()))
+            doc = nlp(normalized)
+            nlp_triggers[category].append((doc.text, doc))
     
     return exact_triggers, nlp_triggers
 
-EXACT_TRIGGERS, NLP_TRIGGERS = prepare_triggers()
+exact_triggers, nlp_triggers = prepare_matching_systems()
+logger.info("Matching systems initialized")
 
 def find_best_match(message: str) -> Tuple[str, str, float]:
-    """Improved matching with proper exact word detection"""
+    """Find the best matching category with fallbacks"""
+    # Normalize input
     words = normalize_text(message)
+    logger.debug(f"Normalized words: {words}")
     
     # 1. Priority: Exact word matching
     for word in words:
-        for category, triggers in EXACT_TRIGGERS.items():
+        for category, triggers in exact_triggers.items():
             if word in triggers:
-                return (category, word, 1.0)  # Max confidence for exact matches
+                logger.debug(f"Exact match found: {word} in {category}")
+                return (category, word, 1.0)
     
     # 2. Fallback: NLP similarity
     doc = nlp(message.lower())
     best_match = ("general", None, 0.0)
     
-    for category, triggers in NLP_TRIGGERS.items():
-        for trigger_doc in triggers:
+    for category, triggers in nlp_triggers.items():
+        for trigger_text, trigger_doc in triggers:
             similarity = doc.similarity(trigger_doc)
             if similarity > best_match[2]:
-                best_match = (category, trigger_doc.text, similarity)
+                best_match = (category, trigger_text, similarity)
+                logger.debug(f"New best NLP match: {trigger_text} with similarity {similarity}")
     
-    return best_match if best_match[2] > 0.7 else ("general", None, 0.0)
+    # Only use NLP match if reasonably confident
+    if best_match[2] > 0.7:
+        logger.debug(f"Using NLP match: {best_match}")
+        return best_match
+    
+    # 3. Final fallback: Check for any word inclusion
+    for category, data in REPLY_POOLS.items():
+        for trigger in data["triggers"]:
+            if trigger in message.lower():
+                logger.debug(f"Found loose match: {trigger} in {category}")
+                return (category, trigger, 0.8)
+    
+    # Default fallback
+    logger.debug("No matches found, using general")
+    return ("general", None, 0.0)
 
-# API Endpoint with error handling
+# Robust API endpoint
+class MessageRequest(BaseModel):
+    message: str
+
 @app.post("/analyze")
-async def analyze_message(user_input: dict):
+async def analyze_message(request: MessageRequest):
     try:
-        message = user_input.get("message", "").strip()
+        message = request.message.strip()
         if not message:
-            raise HTTPException(status_code=400, detail="Message is required")
+            raise HTTPException(status_code=400, detail="Message cannot be empty")
         
         matched_category, matched_word, confidence = find_best_match(message)
         category_data = REPLY_POOLS.get(matched_category, REPLY_POOLS["general"])
@@ -2416,14 +2449,18 @@ async def analyze_message(user_input: dict):
             "question": random.choice(category_data["questions"])
         }
         
+        logger.info(f"Processed message: '{message}' -> {matched_category}")
         return response
     
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"Error processing message: {str(e)}")
+        raise HTTPException(status_code=500, detail="Internal server error")
 
-# Health check endpoint
-@app.get("/")
+@app.get("/health")
 async def health_check():
-    return {"status": "healthy", "service": "NLP Chatbot"}
-
+    return {
+        "status": "healthy",
+        "nlp_model": "en_core_web_md",
+        "categories": list(REPLY_POOLS.keys())
+    }
 
