@@ -21,7 +21,7 @@ app.add_middleware(
 # Enhanced reply pools with semantic triggers
 REPLY_POOLS: Dict[str, Dict] = {
     "greeting": {
-        "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip"],
+        "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip", "babe"],
         "responses": [
         "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
         "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
@@ -304,7 +304,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     ],
     },
     "wellbeing": {
-        "triggers": ["morning", "morning sex", "morning?", "wake up"],
+        "triggers": ["morning", "morning!", "morning?", "wake"],
         "responses": [
             "I am very much into early morning love. Nothing feels better than to wake up by a tongue licking my clitoral area and a morning wood fucking me afterwards in a doggy position.",
             "What do you think about fucking first thing in the morning? ",
@@ -619,7 +619,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     ],
     },
     "cock": {
-        "triggers": ["cock", "dick", "big cock", "long cock"],
+        "triggers": ["cock", "dick", "penis", "weiner"],
         "responses": [
         "I like a big cock in my tight pussy, maybe my other holes too.",
         "That’s a big cock you have there, the sight of it has got my pussy dripping wet.",
@@ -866,7 +866,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     
     },
     "boobs": {
-        "triggers": ["nipple", "boobs", "breast", "breasts"],
+        "triggers": ["nipple", "boobs", "breast", "breasts", "cleavage", "boobies", "tits"],
         "responses": [
             "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
             " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
@@ -1188,7 +1188,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "pussy": {
-        "triggers": ["pussy", "wet", "pussy?", "pussy!", "wet?", "cunt"],
+        "triggers": ["pussy", "wet", "pussy?", "pussy!", "wet?", "cunt", "vagina"],
         "responses": [
             "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
             " You indeed know how to make my pussy wet. ",
