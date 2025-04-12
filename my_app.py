@@ -21,7 +21,7 @@ app.add_middleware(
 # Enhanced reply pools with semantic triggers
 REPLY_POOLS: Dict[str, Dict] = {
     "greeting": {
-        "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip", "babe"],
+        "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip", "babe", "how", "are" "you"],
         "responses": [
         "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
         "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
