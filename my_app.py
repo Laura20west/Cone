@@ -3293,7 +3293,9 @@ REPLY_POOLS: Dict[str, Dict] = {
      "tonight": {
         "triggers": ["can", "i", "keep", "you", "company", "tonight"],
         "responses": [
-            "Babe, I would love to fuck you anywhere and anytime all you have to do is say the word and I am yours",
+           "I’m not sure I’m ready to rush into anything just yet, are you looking for a quick fuck or do you want to savor the moment?",
+            "I’m up for a good fuck, but my schedule is not favourable at the moment, I’ll fill you in once everything settles",
+            "I got a prior commitment with family today, how about we reschedule, tell me how you plan on fucking me?",
             ],
         "questions": [
         "Wanna tell me your name?",
@@ -3451,6 +3453,26 @@ REPLY_POOLS: Dict[str, Dict] = {
         "triggers": [],
         "responses": [
             "Babe, I would love to fuck you anywhere and anytime all you have to do is say the word and I am yours",
+            "What size is your cock when fully erected?",
+            "Would it be awesome to have your girl swallow all of your cum?",
+            "What do you say to me sitting on your face while you suck my clit?",
+            "Would you like me to suck your cock at the same time?",
+            "Do you like morning sex?",
+            "How long can you go fucking my ass?",
+            "Would you ever consider fucking my ass?",
+            "Do you wanna have me to fuck for just a one night stand, or FWB, or something more?",
+            "Can you do that for me?",
+            "What’s your take on bdsm?",
+            "Do you like MMF threesomes, by the way?",
+            "Are you up for this challenge?",
+            "What sort of sex toys do you have at your place?",
+            "Do you enjoy fucking raw or playing it safe?",
+            "Would you eat my pussy and finger fuck me at the same time?",
+            "Are you that type of man?",
+            "What do you think about giving me a creampie?",
+            "Can you hard face fuck me till I gag and my eyes are teary?",
+            "Can you use my pussy as a cum dumpster?",
+            "Are you thinking about starting this off in the shower before moving onto the bed?",
             ],
         "questions": [
         "Wanna tell me your name?",
@@ -3650,3 +3672,6 @@ async def analyze_message(user_input: UserMessage):
         "replies": responses
     }
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
