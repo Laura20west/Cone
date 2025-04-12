@@ -1,12 +1,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import spacy
+from spacy.tokens import Span
 import random
-from typing import Dict, List
+from typing import Dict, List, Tuple
+from collections import defaultdict
+import os
 
+# Initialize FastAPI
 app = FastAPI()
 
-# CORS setup
+# CORS Setup
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -14,7 +19,124 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Enhanced reply pools with word triggers
+# Load NLP model with all components
+nlp = spacy.load("en_core_web_md")
+
+# Add name recognition pattern
+def add_name_patterns():
+    ruler = nlp.add_pipe("entity_ruler")
+    patterns = [
+        {"label": "PERSON", "pattern": [{"POS": "PROPN"}, {"POS": "PROPN"}]},  # First Last names
+        {"label": "PERSON", "pattern": [{"POS": "PROPN"}]}  # Single names
+    ]
+    ruler.add_patterns(patterns)
+
+add_name_patterns()
+
+# Sentiment lexicon (simplified example - consider VADER for production)
+SENTIMENT_LEXICON = {
+    "love": 0.9, "like": 0.7, "want": 0.6, "need": 0.5,
+    "hate": -0.9, "dislike": -0.7, "annoying": -0.6, "bad": -0.5
+}
+
+# Prepare triggers with priorities
+def prepare_triggers():
+    exact_triggers = defaultdict(list)
+    nlp_triggers = defaultdict(list)
+    
+    for category, data in REPLY_POOLS.items():
+        for trigger in data["triggers"]:
+            # Store lowercase versions for exact matching
+            exact_triggers[category].append(trigger.lower())
+            # Process for NLP similarity
+            doc = nlp(trigger.lower())
+            nlp_triggers[category].append(doc)
+    
+    return exact_triggers, nlp_triggers
+
+# Process all triggers at startup
+EXACT_TRIGGERS, NLP_TRIGGERS = prepare_triggers()
+
+# Data Models
+class UserMessage(BaseModel):
+    message: str
+
+class SallyResponse(BaseModel):
+    matched_word: str
+    matched_category: str
+    confidence: float
+    replies: List[str]
+    sentiment: float
+    detected_name: str = None
+
+# Analysis functions
+def analyze_sentiment(text: str) -> float:
+    doc = nlp(text.lower())
+    sentiment = 0.0
+    for token in doc:
+        if token.text in SENTIMENT_LEXICON:
+            sentiment += SENTIMENT_LEXICON[token.text]
+    return round(sentiment / max(1, len(doc)), 2)
+
+def extract_name(text: str) -> str:
+    doc = nlp(text)
+    for ent in doc.ents:
+        if ent.label_ == "PERSON":
+            return ent.text
+    return None
+
+def find_best_match(message: str) -> Tuple[str, str, float]:
+    message_lower = message.lower()
+    doc = nlp(message_lower)
+    
+    # 1. Priority: Exact word matching
+    for category, triggers in EXACT_TRIGGERS.items():
+        for trigger in triggers:
+            if trigger in message_lower.split():
+                return (category, trigger, 1.0)  # Max confidence for exact matches
+    
+    # 2. Fallback: NLP similarity
+    best_match = ("general", None, 0.0)
+    for category, triggers in NLP_TRIGGERS.items():
+        for trigger_doc in triggers:
+            similarity = doc.similarity(trigger_doc)
+            if similarity > best_match[2]:
+                best_match = (category, trigger_doc.text, similarity)
+    
+    # Only use NLP match if above threshold
+    return best_match if best_match[2] > 0.7 else ("general", None, 0.0)
+
+# API Endpoint
+@app.post("/analyze", response_model=SallyResponse)
+async def analyze_message(user_input: UserMessage):
+    message = user_input.message.strip()
+    
+    # Run all analyses
+    matched_category, matched_word, confidence = find_best_match(message)
+    sentiment = analyze_sentiment(message)
+    detected_name = extract_name(message)
+    
+    # Get responses
+    category_data = REPLY_POOLS[matched_category]
+    responses = [
+        f"{random.choice(category_data['responses'])} {random.choice(category_data['questions'])}"
+        for _ in range(2)
+    ]
+    
+    # Personalize response if name detected
+    if detected_name:
+        responses = [r.replace("you", detected_name) for r in responses]
+    
+    return {
+        "matched_word": matched_word or "general",
+        "matched_category": matched_category,
+        "confidence": round(confidence, 2),
+        "replies": responses,
+        "sentiment": sentiment,
+        "detected_name": detected_name
+    }
+
+# Your complete REPLY_POOLS dictionary goes here
 REPLY_POOLS: Dict[str, Dict] = {
     "greeting": {
         "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip"],
@@ -2339,45 +2461,11 @@ REPLY_POOLS: Dict[str, Dict] = {
     }
 }
 
-class UserMessage(BaseModel):
-    message: str
-
-class SallyResponse(BaseModel):
-    matched_word: str
-    matched_category: str
-    replies: List[str]
-
-def find_last_match(message: str) -> tuple:
-    """Find the last matching word and its category"""
-    words = message.lower().split()
-    last_match = ("general", None)  # (category, matched_word)
-    
-    for word in words:
-        for category, data in REPLY_POOLS.items():
-            if word in data["triggers"]:
-                last_match = (category, word)
-    return last_match
-
-@app.post("/analyze", response_model=SallyResponse)
-async def analyze_message(user_input: UserMessage):
-    message = user_input.message.strip()
-    
-    # Find the last matching word and category
-    matched_category, matched_word = find_last_match(message)
-    
-    # Get the category data
-    category_data = REPLY_POOLS[matched_category]
-    
-    # Generate responses by combining random responses and questions from the same category
-    responses = [
-        f"{random.choice(category_data['responses'])} {random.choice(category_data['questions'])}"
-        for _ in range(2)
-    ]
-    
+# Health check endpoint
+@app.get("/health")
+async def health_check():
     return {
-        "matched_word": matched_word or "general",
-        "matched_category": matched_category,
-        "replies": responses
+        "status": "healthy",
+        "features": ["exact_matching", "nlp_similarity", "sentiment", "name_recognition"]
     }
-
 
