@@ -8,7 +8,7 @@ import spacy
 app = FastAPI()
 
 # Load spaCy model
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("en_core_web_lg")
 
 # CORS setup
 app.add_middleware(
