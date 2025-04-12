@@ -1,22 +1,16 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import spacy
-import re
 import random
-from typing import Dict, List, Tuple, Optional
-from collections import defaultdict
-import os
-import logging
+from typing import Dict, List
+import spacy
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-# Initialize FastAPI
 app = FastAPI()
 
-# CORS Setup
+# Load spaCy model
+nlp = spacy.load("en_core_web_md")
+
+# CORS setup
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -24,24 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load NLP model with error handling
-try:
-    nlp = spacy.load("en_core_web_md")
-    logger.info("Successfully loaded spaCy model")
-except OSError:
-    logger.info("Downloading spaCy model...")
-    os.system("python -m spacy download en_core_web_md")
-    nlp = spacy.load("en_core_web_md")
-
-# Enhanced text normalization
-def normalize_text(text: str) -> List[str]:
-    """Convert text to lowercase and remove punctuation"""
-    text = text.lower().strip()
-    # Remove all punctuation except apostrophes and basic word characters
-    text = re.sub(r"[^\w\s']", "", text)
-    return text.split()
-
-# Define comprehensive reply pools
+# Enhanced reply pools with semantic triggers
 REPLY_POOLS: Dict[str, Dict] = {
     "greeting": {
         "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip"],
@@ -2366,101 +2343,47 @@ REPLY_POOLS: Dict[str, Dict] = {
     }
 }
 
-# Prepare matching systems
-def prepare_matching_systems():
-    """Create both exact and NLP matching systems"""
-    exact_triggers = defaultdict(list)
-    nlp_triggers = defaultdict(list)
-    
-    for category, data in REPLY_POOLS.items():
-        for trigger in data["triggers"]:
-            # Store normalized version for exact matching
-            normalized = trigger.lower()
-            exact_triggers[category].append(normalized)
-            
-            # Process for NLP similarity
-            doc = nlp(normalized)
-            nlp_triggers[category].append((doc.text, doc))
-    
-    return exact_triggers, nlp_triggers
-
-exact_triggers, nlp_triggers = prepare_matching_systems()
-logger.info("Matching systems initialized")
-
-def find_best_match(message: str) -> Tuple[str, str, float]:
-    """Find the best matching category with fallbacks"""
-    # Normalize input
-    words = normalize_text(message)
-    logger.debug(f"Normalized words: {words}")
-    
-    # 1. Priority: Exact word matching
-    for word in words:
-        for category, triggers in exact_triggers.items():
-            if word in triggers:
-                logger.debug(f"Exact match found: {word} in {category}")
-                return (category, word, 1.0)
-    
-    # 2. Fallback: NLP similarity
-    doc = nlp(message.lower())
-    best_match = ("general", None, 0.0)
-    
-    for category, triggers in nlp_triggers.items():
-        for trigger_text, trigger_doc in triggers:
-            similarity = doc.similarity(trigger_doc)
-            if similarity > best_match[2]:
-                best_match = (category, trigger_text, similarity)
-                logger.debug(f"New best NLP match: {trigger_text} with similarity {similarity}")
-    
-    # Only use NLP match if reasonably confident
-    if best_match[2] > 0.7:
-        logger.debug(f"Using NLP match: {best_match}")
-        return best_match
-    
-    # 3. Final fallback: Check for any word inclusion
-    for category, data in REPLY_POOLS.items():
-        for trigger in data["triggers"]:
-            if trigger in message.lower():
-                logger.debug(f"Found loose match: {trigger} in {category}")
-                return (category, trigger, 0.8)
-    
-    # Default fallback
-    logger.debug("No matches found, using general")
-    return ("general", None, 0.0)
-
-# Robust API endpoint
-class MessageRequest(BaseModel):
+class UserMessage(BaseModel):
     message: str
 
-@app.post("/analyze")
-async def analyze_message(request: MessageRequest):
-    try:
-        message = request.message.strip()
-        if not message:
-            raise HTTPException(status_code=400, detail="Message cannot be empty")
-        
-        matched_category, matched_word, confidence = find_best_match(message)
-        category_data = REPLY_POOLS.get(matched_category, REPLY_POOLS["general"])
-        
-        response = {
-            "matched_word": matched_word,
-            "matched_category": matched_category,
-            "confidence": confidence,
-            "reply": random.choice(category_data["responses"]),
-            "question": random.choice(category_data["questions"])
-        }
-        
-        logger.info(f"Processed message: '{message}' -> {matched_category}")
-        return response
-    
-    except Exception as e:
-        logger.error(f"Error processing message: {str(e)}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+class SallyResponse(BaseModel):
+    matched_word: str
+    matched_category: str
+    replies: List[str]
 
-@app.get("/health")
-async def health_check():
+def find_best_match(message: str) -> tuple:
+    doc = nlp(message.lower())
+    best_match = ("general", None, 0.0)  # (category, matched_word, similarity_score)
+    
+    for token in doc:
+        for category, data in REPLY_POOLS.items():
+            for trigger in data["triggers"]:
+                trigger_doc = nlp(trigger)
+                similarity = token.similarity(trigger_doc)
+                if similarity > best_match[2] and similarity > 0.7:  # Threshold
+                    best_match = (category, token.text, similarity)
+    
+    return best_match[:2]  # Return just category and matched_word
+
+@app.post("/analyze", response_model=SallyResponse)
+async def analyze_message(user_input: UserMessage):
+    message = user_input.message.strip()
+    
+    # Find the best semantic match
+    matched_category, matched_word = find_best_match(message)
+    
+    # Get the category data
+    category_data = REPLY_POOLS[matched_category]
+    
+    # Generate intelligent responses
+    responses = [
+        f"{random.choice(category_data['responses'])} {random.choice(category_data['questions'])}"
+        for _ in range(2)
+    ]
+    
     return {
-        "status": "healthy",
-        "nlp_model": "en_core_web_md",
-        "categories": list(REPLY_POOLS.keys())
+        "matched_word": matched_word or "general",
+        "matched_category": matched_category,
+        "replies": responses
     }
 
