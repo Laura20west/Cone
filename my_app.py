@@ -1,10 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import spacy
-from spacy.tokens import Span
+import re
 import random
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Optional
 from collections import defaultdict
 import os
 
@@ -19,7 +19,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Load NLP model
+try:
+    nlp = spacy.load("en_core_web_md")
+except OSError:
+    os.system("python -m spacy download en_core_web_md")
+    nlp = spacy.load("en_core_web_md")
 
+# Helper function to clean and normalize words
+def normalize_text(text: str) -> List[str]:
+    """Convert text to lowercase and remove punctuation"""
+    text = text.lower()
+    # Remove punctuation except apostrophes (for words like "don't")
+    text = re.sub(r"[^\w\s']", "", text)
+    return text.split()
+
+# Define your reply pools (ensure this is before any functions that use it)
 REPLY_POOLS: Dict[str, Dict] = {
     "greeting": {
         "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip"],
@@ -2343,133 +2358,73 @@ REPLY_POOLS: Dict[str, Dict] = {
         ]
     }
 }
-# Load NLP model with all components
-nlp = spacy.load("en_core_web_md")
 
-# Add name recognition pattern
-def add_name_patterns():
-    ruler = nlp.add_pipe("entity_ruler")
-    patterns = [
-        {"label": "PERSON", "pattern": [{"POS": "PROPN"}, {"POS": "PROPN"}]},  # First Last names
-        {"label": "PERSON", "pattern": [{"POS": "PROPN"}]}  # Single names
-    ]
-    ruler.add_patterns(patterns)
-
-add_name_patterns()
-
-# Sentiment lexicon (simplified example - consider VADER for production)
-SENTIMENT_LEXICON = {
-    "love": 0.9, "like": 0.7, "want": 0.6, "need": 0.5,
-    "hate": -0.9, "dislike": -0.7, "annoying": -0.6, "bad": -0.5
-}
-
-# Prepare triggers with priorities
+# Prepare triggers with improved exact matching
 def prepare_triggers():
     exact_triggers = defaultdict(list)
     nlp_triggers = defaultdict(list)
     
     for category, data in REPLY_POOLS.items():
         for trigger in data["triggers"]:
-            # Store lowercase versions for exact matching
+            # Store normalized version for exact matching
             exact_triggers[category].append(trigger.lower())
             # Process for NLP similarity
-            doc = nlp(trigger.lower())
-            nlp_triggers[category].append(doc)
+            nlp_triggers[category].append(nlp(trigger.lower()))
     
     return exact_triggers, nlp_triggers
 
-# Process all triggers at startup
 EXACT_TRIGGERS, NLP_TRIGGERS = prepare_triggers()
 
-# Data Models
-class UserMessage(BaseModel):
-    message: str
-
-class SallyResponse(BaseModel):
-    matched_word: str
-    matched_category: str
-    confidence: float
-    replies: List[str]
-    sentiment: float
-    detected_name: str = None
-
-# Analysis functions
-def analyze_sentiment(text: str) -> float:
-    doc = nlp(text.lower())
-    sentiment = 0.0
-    for token in doc:
-        if token.text in SENTIMENT_LEXICON:
-            sentiment += SENTIMENT_LEXICON[token.text]
-    return round(sentiment / max(1, len(doc)), 2)
-
-def extract_name(text: str) -> str:
-    doc = nlp(text)
-    for ent in doc.ents:
-        if ent.label_ == "PERSON":
-            return ent.text
-    return None
-
 def find_best_match(message: str) -> Tuple[str, str, float]:
-    message_lower = message.lower()
-    doc = nlp(message_lower)
+    """Improved matching with proper exact word detection"""
+    words = normalize_text(message)
     
     # 1. Priority: Exact word matching
-    for category, triggers in EXACT_TRIGGERS.items():
-        for trigger in triggers:
-            if trigger in message_lower.split():
-                return (category, trigger, 1.0)  # Max confidence for exact matches
+    for word in words:
+        for category, triggers in EXACT_TRIGGERS.items():
+            if word in triggers:
+                return (category, word, 1.0)  # Max confidence for exact matches
     
     # 2. Fallback: NLP similarity
+    doc = nlp(message.lower())
     best_match = ("general", None, 0.0)
+    
     for category, triggers in NLP_TRIGGERS.items():
         for trigger_doc in triggers:
             similarity = doc.similarity(trigger_doc)
             if similarity > best_match[2]:
                 best_match = (category, trigger_doc.text, similarity)
     
-    # Only use NLP match if above threshold
     return best_match if best_match[2] > 0.7 else ("general", None, 0.0)
 
-# API Endpoint
-@app.post("/analyze", response_model=SallyResponse)
-async def analyze_message(user_input: UserMessage):
-    message = user_input.message.strip()
+# API Endpoint with error handling
+@app.post("/analyze")
+async def analyze_message(user_input: dict):
+    try:
+        message = user_input.get("message", "").strip()
+        if not message:
+            raise HTTPException(status_code=400, detail="Message is required")
+        
+        matched_category, matched_word, confidence = find_best_match(message)
+        category_data = REPLY_POOLS.get(matched_category, REPLY_POOLS["general"])
+        
+        response = {
+            "matched_word": matched_word,
+            "matched_category": matched_category,
+            "confidence": confidence,
+            "reply": random.choice(category_data["responses"]),
+            "question": random.choice(category_data["questions"])
+        }
+        
+        return response
     
-    # Run all analyses
-    matched_category, matched_word, confidence = find_best_match(message)
-    sentiment = analyze_sentiment(message)
-    detected_name = extract_name(message)
-    
-    # Get responses
-    category_data = REPLY_POOLS[matched_category]
-    responses = [
-        f"{random.choice(category_data['responses'])} {random.choice(category_data['questions'])}"
-        for _ in range(2)
-    ]
-    
-    # Personalize response if name detected
-    if detected_name:
-        responses = [r.replace("you", detected_name) for r in responses]
-    
-    return {
-        "matched_word": matched_word or "general",
-        "matched_category": matched_category,
-        "confidence": round(confidence, 2),
-        "replies": responses,
-        "sentiment": sentiment,
-        "detected_name": detected_name
-    }
-
-# Your complete REPLY_POOLS dictionary goes here
-
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 # Health check endpoint
-@app.get("/health")
+@app.get("/")
 async def health_check():
-    return {
-        "status": "healthy",
-        "features": ["exact_matching", "nlp_similarity", "sentiment", "name_recognition"]
-    }
+    return {"status": "healthy", "service": "NLP Chatbot"}
 
 if __name__ == "__main__":
     import uvicorn
