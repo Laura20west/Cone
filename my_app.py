@@ -3628,39 +3628,57 @@ REPLY_POOLS: Dict[str, Dict] = {
     
 }
 
+
+# Pre-process triggers for NLP matching
+def prepare_triggers():
+    processed = defaultdict(list)
+    for category, data in REPLY_POOLS.items():
+        for trigger in data["triggers"]:
+            doc = nlp(trigger.lower())
+            processed[category].append(doc)
+    return processed
+
+# Process all triggers at startup
+TRIGGERS_NLP = prepare_triggers()
+
 class UserMessage(BaseModel):
     message: str
 
 class SallyResponse(BaseModel):
     matched_word: str
     matched_category: str
+    confidence: float
     replies: List[str]
 
-def find_best_match(message: str) -> tuple:
+def nlp_match(message: str) -> tuple:
+    """Use NLP to find the best matching category"""
     doc = nlp(message.lower())
-    best_match = ("general", None, 0.0)  # (category, matched_word, similarity_score)
+    best_match = ("general", None, 0.0)  # (category, matched_word, confidence)
     
-    for token in doc:
+    for category, triggers in TRIGGERS_NLP.items():
+        for trigger_doc in triggers:
+            similarity = doc.similarity(trigger_doc)
+            if similarity > best_match[2]:
+                best_match = (category, trigger_doc.text, similarity)
+    
+    # Also check for exact matches as fallback
+    words = message.lower().split()
+    for word in words:
         for category, data in REPLY_POOLS.items():
-            for trigger in data["triggers"]:
-                trigger_doc = nlp(trigger)
-                similarity = token.similarity(trigger_doc)
-                if similarity > best_match[2] and similarity > 0.7:  # Threshold
-                    best_match = (category, token.text, similarity)
+            if word in data["triggers"] and best_match[2] < 0.7:  # Only if NLP wasn't confident
+                best_match = (category, word, 0.8)  # Slightly higher than threshold
     
-    return best_match[:2]  # Return just category and matched_word
+    return best_match
 
 @app.post("/analyze", response_model=SallyResponse)
 async def analyze_message(user_input: UserMessage):
     message = user_input.message.strip()
     
-    # Find the best semantic match
-    matched_category, matched_word = find_best_match(message)
-    
-    # Get the category data
+    # Get best match using NLP
+    matched_category, matched_word, confidence = nlp_match(message)
     category_data = REPLY_POOLS[matched_category]
     
-    # Generate intelligent responses
+    # Generate responses
     responses = [
         f"{random.choice(category_data['responses'])} {random.choice(category_data['questions'])}"
         for _ in range(2)
@@ -3669,9 +3687,7 @@ async def analyze_message(user_input: UserMessage):
     return {
         "matched_word": matched_word or "general",
         "matched_category": matched_category,
+        "confidence": round(confidence, 2),
         "replies": responses
     }
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
