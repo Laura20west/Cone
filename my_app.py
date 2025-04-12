@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import random
 from typing import Dict, List
 import spacy
+from collections import defaultdict
 
 app = FastAPI()
 
