@@ -21,7 +21,7 @@ app.add_middleware(
 # Enhanced reply pools with semantic triggers
 REPLY_POOLS: Dict[str, Dict] = {
     "greeting": {
-        "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip"],
+        "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip", "can i fuck you", "i want to fuck you", "i want us to fuck"],
         "responses": [
         "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
         "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
@@ -304,7 +304,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     ],
     },
     "wellbeing": {
-        "triggers": ["morning", "morning sex", "morning?", "wake up"],
+        "triggers": ["morning", "morning sex", "morning?", "wake up", "do you like morning sex"],
         "responses": [
             "I am very much into early morning love. Nothing feels better than to wake up by a tongue licking my clitoral area and a morning wood fucking me afterwards in a doggy position.",
             "What do you think about fucking first thing in the morning? ",
@@ -462,7 +462,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     ],
     },
     "identity": {
-        "triggers": ["bondage", "foreplay", "rough"],
+        "triggers": ["bondage", "foreplay", "rough", "do you like it rough"],
         "responses": [
             "You’re not a fan of bondage? Well, that’s no problem.",
             
@@ -619,7 +619,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     ],
     },
     "cock": {
-        "triggers": ["cock", "dick", "big cock", "long cock"],
+        "triggers": ["cock", "dick", "big cock", "long cock", "do you like my cock", "can you handle my cock"],
         "responses": [
         "I like a big cock in my tight pussy, maybe my other holes too.",
         "That’s a big cock you have there, the sight of it has got my pussy dripping wet.",
@@ -866,7 +866,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     
     },
     "boobs": {
-        "triggers": ["nipple", "boobs", "breast", "breasts"],
+        "triggers": ["nipple", "boobs", "breast", "breasts", "can i suck your pussy", "can i finger your pussy"],
         "responses": [
             "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
             " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
@@ -1025,7 +1025,7 @@ REPLY_POOLS: Dict[str, Dict] = {
 
     },
     "sex": {
-        "triggers": ["sex", "sexy", "night", "sex?", "sex!"],
+        "triggers": ["sex", "sexy", "night", "sex?", "sex!", "can we have sex"],
         "responses": [
             "Yes I’m into you having sex with you. Thinking about the  way you are going to handle me send shivers to my spine.",
             " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
@@ -1188,7 +1188,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "pussy": {
-        "triggers": ["pussy", "wet", "pussy?", "pussy!", "wet?", "cunt"],
+        "triggers": ["pussy", "wet", "pussy?", "pussy!", "wet?", "cunt", "I want to suck your wet pussy"],
         "responses": [
             "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
             " You indeed know how to make my pussy wet. ",
@@ -1663,7 +1663,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "husband": {
-        "triggers": ["husband", "spouse", "husband?"],
+        "triggers": ["husband", "spouse", "husband?", "what about your husband"],
         "responses": [
             "My husband wouldn’t fuck me the way I want to be fucked. That is why I came here.",
         "So, I enjoyed the moment with him. He was good at what he does, trust me. But that was the good old days anyways. Do you think you can match him when it comes to eating my pussy?",
@@ -1823,7 +1823,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "position": {
-        "triggers": ["position", "position?", "position!"],
+        "triggers": ["position", "position?", "position!", "what is your favorite position"],
         "responses": [
             "You love to fuck me doggy style? How would you want to fuck me with a mirror watching my tits bounce up and down?",
         "I like to be fucked cowgirl style, do you mind letting me dominate baby?",
@@ -1986,7 +1986,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "bj": {
-        "triggers": ["blowjob", "blow", "cum", 'blowjob?', "cum?", "orgasm", "squirt", "juices"],
+        "triggers": ["blowjob", "blow", "cum", 'blowjob?', "cum?", "orgasm", "squirt", "juices", "can i you make me cum"],
         "responses": [
             "I’m very good with blowjobs, how far I can go? I will deep throat that huge cock until you’re begging me to stop. How do you like that?",
         "I’d love to have a taste of that cock. Maybe deep throat it till you cum and I’ll swallow it. What do you think?",
@@ -2159,7 +2159,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "ass": {
-        "triggers": ["ass", "anal", "butt", "cheeks", "rim"],
+        "triggers": ["ass", "anal", "butt", "cheeks", "rim", "can i fuck your ass"],
         "responses": [
             "I’ve never fucked anal but I wouldn’t mind exploring it with you, how do you plan on fucking my ass silly?",
             "Fuck that’s so hot, you look so thick down there, do you mind me twerking this fat ass on that huge dick?",
@@ -2321,7 +2321,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "threesome": {
-        "triggers": ["threesome", "triple", "mmf", "fmf","ffm"],
+        "triggers": ["threesome", "triple", "mmf", "fmf","ffm", "do you like threesome"],
         "responses": [
            " I really wish we could have this threesome like we agreed on. I just can wait to experience it, fucking my hole and sucking her pussy same time.",
         "A threesome sounds like a triple fun for me, how about we fuck while you watch?",
@@ -2483,7 +2483,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     ],
     },
     "dream": {
-        "triggers": ["fantasy", "dream"],
+        "triggers": ["fantasy", "dream", "do you like fantasy"],
         "responses": [
             "Fucking out door is one of my wildest dreams, can you make it a reality for me?",
             "Waking up to your throbbing cock is my wildest fantasy, how would you react to me rubbing your cock on my clit while you record?",
@@ -2640,7 +2640,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     ],
     },
     "toy": {
-        "triggers": ["toy", "toy?", "spank", "bdsm", "blindfold", "tie"],
+        "triggers": ["toy", "toy?", "spank", "bdsm", "blindfold", "tie", "do you like toy", "do you like bdsm"],
         "responses": [
             "You want to tie me up and fuck me submissive? Using some toys too? Which toys do you have in mind here?",
             "I want you to spank my pussy and make me beg for more, and then lick my juices all over your face. How hard do you like to spank a girl?",
@@ -2798,7 +2798,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "scam": {
-        "triggers": ["scam", "site", "games", "game", "leave"],
+        "triggers": ["scam", "site", "games", "game", "leave", "I do not play games"],
         "responses": [
             "What’s wrong boo? You’re not in the mood and I sense a little disappointment in your tone. Did I do something to make you decide not to let me have a taste of that cock?",    
             "Sweetie, I’m dead serious about us fucking. What makes you think that I’m here to play games?",
@@ -2957,7 +2957,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     ],
     },
     "outdoor": {
-        "triggers": ["outdoor", "outdoor?"],
+        "triggers": ["outdoor", "outdoor?", "have you had sex outdoor"],
         "responses": [
             "Outdoor sex sounds like music to my ears, I will throw caution to the wind and fuck that cock anywhere anytime.",
             ],
@@ -3114,7 +3114,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "tongue": {
-        "triggers": ["tongue", "head", "lick", "can", "you", "give", "head"],
+        "triggers": ["tongue", "head", "lick", "can you give head" "can i lick your pussy"],
         "responses": [
             "Damn, you got me all hot just thinking about that. How long are you planning to tease me with that tongue before you slide that cock of yours in deep?",
         "I’d love to let your hands and tongue explore every bit of me with your cock finishing the job. Where do you start first to get me all worked up?",
@@ -3671,5 +3671,4 @@ async def analyze_message(user_input: UserMessage):
         "matched_category": matched_category,
         "replies": responses
     }
-
 
