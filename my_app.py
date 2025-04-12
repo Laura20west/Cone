@@ -7,7 +7,7 @@ import spacy
 
 app = FastAPI()
 
-# Load medium English model for better word vectors
+# Load spaCy model
 nlp = spacy.load("en_core_web_md")
 
 # CORS setup
@@ -18,10 +18,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Define semantic categories with example phrases
-SEMANTIC_CATEGORIES = {
+# Enhanced reply pools with semantic triggers
+REPLY_POOLS: Dict[str, Dict] = {
     "greeting": {
-        "examples": ["I want to make you wet", "can i fuck you", "i want to fuck you", "i want us to fuck", "you are fucking hot"],
+        "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip", "can i fuck you", "i want to fuck you", "i want us to fuck"],
         "responses": [
         "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
         "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
@@ -866,7 +866,7 @@ SEMANTIC_CATEGORIES = {
     
     },
     "boobs": {
-        "examples": ["can I suck your breasts", "can i suck your boobs", "can i touch your breasts"],
+        "triggers": ["nipple", "boobs", "breast", "breasts", "can i suck your pussy", "can i finger your pussy"],
         "responses": [
             "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
             " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
@@ -1025,7 +1025,7 @@ SEMANTIC_CATEGORIES = {
 
     },
     "sex": {
-        "examples": ["I want to have sex with you", "I want a sexy time with you", "can we have sex"],
+        "triggers": ["sex", "sexy", "night", "sex?", "sex!", "can we have sex"],
         "responses": [
             "Yes I’m into you having sex with you. Thinking about the  way you are going to handle me send shivers to my spine.",
             " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
@@ -1188,7 +1188,7 @@ SEMANTIC_CATEGORIES = {
     },
 
     "pussy": {
-        "examples": ["You wet cunt", "I love your pussy", "I want to suck your nipples", "I want to suck your wet pussy"],
+        "triggers": ["pussy", "wet", "pussy?", "pussy!", "wet?", "cunt", "I want to suck your wet pussy"],
         "responses": [
             "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
             " You indeed know how to make my pussy wet. ",
@@ -1349,7 +1349,7 @@ SEMANTIC_CATEGORIES = {
     },
 
     "kitchen": {
-        "examples": ["Have you had sex in the kitchen", "I have had sex in the kitchen"],
+        "triggers": ["kitchen", "kitchen?", "kitchen!"],
         "responses": [
             "Really? You’ve fucked in the kitchen before? How was it?",
             ],
@@ -1506,7 +1506,7 @@ SEMANTIC_CATEGORIES = {
     },
 
     "restroom": {
-        "examples": ["I have had sex in the restaurant rest room"],
+        "triggers": ["restroom", "restaurant", "restroom?", "restaurant?"],
         "responses": [
             "You really had sex in a restaurant rest room? Hope someone wasn’t watching you guys fuck?",
             ],
@@ -1663,7 +1663,7 @@ SEMANTIC_CATEGORIES = {
     },
 
     "husband": {
-        "examples": ["won't your husband be mad", "what about your husband", "can your husband join us"],
+        "triggers": ["husband", "spouse", "husband?", "what about your husband"],
         "responses": [
             "My husband wouldn’t fuck me the way I want to be fucked. That is why I came here.",
         "So, I enjoyed the moment with him. He was good at what he does, trust me. But that was the good old days anyways. Do you think you can match him when it comes to eating my pussy?",
@@ -1823,7 +1823,7 @@ SEMANTIC_CATEGORIES = {
     },
 
     "position": {
-        "examples": ["I love this position", "what position do you like", "what is your favorite position"],
+        "triggers": ["position", "position?", "position!", "what is your favorite position"],
         "responses": [
             "You love to fuck me doggy style? How would you want to fuck me with a mirror watching my tits bounce up and down?",
         "I like to be fucked cowgirl style, do you mind letting me dominate baby?",
@@ -1986,7 +1986,7 @@ SEMANTIC_CATEGORIES = {
     },
 
     "bj": {
-        "examples": ["can i make you cum", "can you give me a blowjob", "can you swallow my cum", "can i you make me cum", "can you give me head", "i want to give you head"],
+        "triggers": ["blowjob", "blow", "cum", 'blowjob?', "cum?", "orgasm", "squirt", "juices", "can i you make me cum"],
         "responses": [
             "I’m very good with blowjobs, how far I can go? I will deep throat that huge cock until you’re begging me to stop. How do you like that?",
         "I’d love to have a taste of that cock. Maybe deep throat it till you cum and I’ll swallow it. What do you think?",
@@ -2159,7 +2159,7 @@ SEMANTIC_CATEGORIES = {
     },
 
     "ass": {
-        "examples": ["can i touch your ass", "I want to touch your ass", "can i rim you", "can i fuck your ass"],
+        "triggers": ["ass", "anal", "butt", "cheeks", "rim", "can i fuck your ass"],
         "responses": [
             "I’ve never fucked anal but I wouldn’t mind exploring it with you, how do you plan on fucking my ass silly?",
             "Fuck that’s so hot, you look so thick down there, do you mind me twerking this fat ass on that huge dick?",
@@ -2321,7 +2321,7 @@ SEMANTIC_CATEGORIES = {
     },
 
     "threesome": {
-        "examples": ["i want threesome", "have you done fmf", "have you done mmf", "do you like threesome"],
+        "triggers": ["threesome", "triple", "mmf", "fmf","ffm", "do you like threesome"],
         "responses": [
            " I really wish we could have this threesome like we agreed on. I just can wait to experience it, fucking my hole and sucking her pussy same time.",
         "A threesome sounds like a triple fun for me, how about we fuck while you watch?",
@@ -2483,7 +2483,7 @@ SEMANTIC_CATEGORIES = {
     ],
     },
     "dream": {
-        "examples": ["what is your fantasy", "what do you dream about", "do you like fantasy"],
+        "triggers": ["fantasy", "dream", "do you like fantasy"],
         "responses": [
             "Fucking out door is one of my wildest dreams, can you make it a reality for me?",
             "Waking up to your throbbing cock is my wildest fantasy, how would you react to me rubbing your cock on my clit while you record?",
@@ -2640,7 +2640,7 @@ SEMANTIC_CATEGORIES = {
     ],
     },
     "toy": {
-        "examples": ["do you like spanking", "can i spank you", "do you like toys", "do you like bdsm"],
+        "triggers": ["toy", "toy?", "spank", "bdsm", "blindfold", "tie", "do you like toy", "do you like bdsm"],
         "responses": [
             "You want to tie me up and fuck me submissive? Using some toys too? Which toys do you have in mind here?",
             "I want you to spank my pussy and make me beg for more, and then lick my juices all over your face. How hard do you like to spank a girl?",
@@ -2798,7 +2798,7 @@ SEMANTIC_CATEGORIES = {
     },
 
     "scam": {
-        "examples": ["I hate games", "this is a scam", "I do not play games"],
+        "triggers": ["scam", "site", "games", "game", "leave", "I do not play games"],
         "responses": [
             "What’s wrong boo? You’re not in the mood and I sense a little disappointment in your tone. Did I do something to make you decide not to let me have a taste of that cock?",    
             "Sweetie, I’m dead serious about us fucking. What makes you think that I’m here to play games?",
@@ -2957,7 +2957,7 @@ SEMANTIC_CATEGORIES = {
     ],
     },
     "outdoor": {
-        "examples": ["have you had sex outdoor"],
+        "triggers": ["outdoor", "outdoor?", "have you had sex outdoor"],
         "responses": [
             "Outdoor sex sounds like music to my ears, I will throw caution to the wind and fuck that cock anywhere anytime.",
             ],
@@ -3114,7 +3114,7 @@ SEMANTIC_CATEGORIES = {
     },
 
     "tongue": {
-        "examples": ["can you give head", "can i lick your pussy with my tongue"],
+        "triggers": ["tongue", "head", "lick", "can you give head" "can i lick your pussy"],
         "responses": [
             "Damn, you got me all hot just thinking about that. How long are you planning to tease me with that tongue before you slide that cock of yours in deep?",
         "I’d love to let your hands and tongue explore every bit of me with your cock finishing the job. Where do you start first to get me all worked up?",
@@ -3291,7 +3291,7 @@ SEMANTIC_CATEGORIES = {
     },
 
      "tonight": {
-        "examples": ["can i keep you company tonight"],
+        "triggers": ["can", "i", "keep", "you", "company", "tonight"],
         "responses": [
            "I’m not sure I’m ready to rush into anything just yet, are you looking for a quick fuck or do you want to savor the moment?",
             "I’m up for a good fuck, but my schedule is not favourable at the moment, I’ll fill you in once everything settles",
@@ -3450,163 +3450,29 @@ SEMANTIC_CATEGORIES = {
     },
 
     "general": {
-        "examples": [],
+        "triggers": [],
         "responses": [
             "Babe, I would love to fuck you anywhere and anytime all you have to do is say the word and I am yours",
-        "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
-        "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
-        "I would love to feel your tongue licking and rubbing my clitoral area until I orgasm all over your face.",
-        "I like a man who gets straight to the point. I want you to suck my breast real good and after you’re done, I want you to slide your cock in me and fuck me till I scream your name.",
-        "My goodness, that’s exactly what my body wants right now. Just thinking about sitting on top of you and riding you makes me wet.",
-        "  I can feel my lips curling into the best smirk, imagining your hands gripping onto mine firmly while you steady me, legs stretched wide open for maximum penetration and giving me a good fuck.",
-        "Honey, I can imagine us in a room kissing, and sucking each other. I can imagine you eating my pussy and sucking my breast, while I suck your cock till you moan. And you put your cock in my and fuck my brain out.",
-        "You’re certainly a straight shooter, aren’t you? I like that about you.",
-        "Yes, my tongue would eagerly suck the sweet spot of your cock before you fuck me.",
-        " I will suck a cock until you cum in any mouth.",
-        "That sounds so hot! I’m already wet thinking about it. But what if we did something even naughtier first?",
-        "Did it get hotter in here or is that just us?",
-        "That sounds so fucking hot, l am already dripping wet just thinking about it.",
-        " I hope you fuck me hard from behind I will suck your cock until you cum in my mouth. Squirt your hot load into my mouth until I finish swallowing every single drop of your sweet nectar.",
-        " Yes, honey. I would love that. I would like you to fuck me in the missionary position while you suck my breast.",
-        "Fuck! That was intense. Imagining it already gets my pussy so wet.",
-        "I really need someone who’s gonna fuck my pussy so hard with his menacing dick that all my sweet nectars are extracted, and he can fill all my holes with his thick, warm cum.",
-        "One thing I wouldn’t like is for you to come off as rusty. I’ve had me problems with some of the men I’ve met here where they claim to know how to fuck well, but then in the end all they are is a flop.",
-        "Well, I definitely wish for you to fuck me so bad, but then, it wouldn’t be able to happen just today. I think we should really plan the meet, so it happens to be an unforgettable experience. ",
-        "That’s fucking thrilling.",
-        " Shaved pussies are definitely the best to fuck. I love that easy greasing sound it makes, that’s when you know good sex.",
-        "I want you to fuck me in the cowgirl position.",
-        " I’m so a fan of fucking in public, in the pantry, on the kitchen table, out in the beach, wherever.",
-        "The fuck I give is sweeter than you’ll ever receive. My A game would surely beat yours hands down.",
-        "You seem eager and prepared to fuck me. Not bad.",
-        "I like the way that came out of your mouth.",
-        "You’ve definitely caught my attention.",
-        "Hearing this just made me excited.",
-        "You’re making me blush so hard right now. Well, I’m so in for fucking you too.",
-        "Darling, that sounds like music to my ears.",
-        "That sounds so erotic and insane! Honestly, I’m here because I need a man who would fuck me till my toes curl.",
-        "You must be the straightforward type, right? I like such men",
-        "Sweetie, I’m dead serious about us fucking.",
-        "Yup! I’m open to having a threesome with you.",
-        "Yes baby! Fuck me please! I’ve been feeling weird down there since I read your text.",
-        "Baby, you sound so naughty right now. I really like that.",
-        "Of course honey, I’m all yours. You can do anything you want without holding back.",
-        "Yes I hope you won’t get tired easily,",
-        "You can spend the night licking my clitoris and drinking gallons of cum. I love you to fuck me each  style listed.",
-        "Yes please do everything you want, suck my clit until I squirt everywhere and then climb on top of me. Fuck me long enough straight  till sleep.",
-        "That sounds really exciting. It has been a long time since I experienced something like that.",
-        "Darling, your words make my heart race, let indulge in the passion between us.",
-        "Thinking about how you are going to fuck my mind out, make my pussy wet.",
-        "You must have a lot of strength for you to fuck me many rounds a day. ",
-        " What’s your favorite position?",
-        "Babe in as much as I want you to fuck me right now,",
-        " Damn that’s so hot babe, I really want your cock throbbing inside my wet pussy and fuck me till I squirt all over the place and massage my clit simultaneously.",
-        "How about we try fucking in the garden? There’s something thrilling about giving nature a show.",
-        "The last time I had sex wasn’t as good as I thought it would be, he didn’t fuck me real good as I expected.",
-        "You know, I’ve had lots of men come here and tell me how hard they want to fuck my both holes, and how they’d make me beg for more.",
-        " I really wish we could have this threesome like we agreed on. I just can wait to experience it, fucking my hole and sucking her pussy same time.",
-        " Do you think we can fuck halfway the trip? We can pull over and have the best fuck of our lives.",
-        " Missionary style sounds perfect honey. There’s something beautiful about staring into each others’ eyes and having the best fuck of our lives.",
-        "How was your experience with the last woman you fucked?",
-        " I am also looking for a fuck buddy too.",
-        "You’ve got excellent taste, dear. Tell me more. What part of my body excites you? Are we talking gentle teasing or rough handling?",
-        "Getting right to the point? I like that. But tell me, darling, what kind of fucking and sucking do you have in mind?",
-        "Trust me I’m looking forward to us fucking each other. I can’t help but imagine how pleasurable your cock would feel inside me.",
-        " So I guess. You can fuck me for about 30 minutes, right?",
-        "You’re making my insides melt just by reading that. A passionate, deep fuck? I like the sound of that. It’s not just about the size, honey.  It’s about the way you make me feel, the way you look at me  the way you make me scream.   And don’t worry, I’m all about making sure you have the time of your life too. We’ll explore every inch, every pleasure, until we’re both breathless and begging for more.",
-        "This is straight fucking. What kind of fucking are you in the mood for? Tell me everything. Let’s get down and dirty.",
-        "And you think you’re going to be in control?  Let’s just say I’ve got a few leaks of my own that need fixing and you, my dear, are just the tool for the job.",
-        "I’d love to have you fuck my friend while I  watch. Are you sure you can handle two women at the same time?",
-        " Do you like what you see? I want you to fuck me doggy style while you pull my hair. What do you think?",
-        "Well, that depends, doesn’t it, darling? How would you like to fuck me with a toy?  I’m certainly feeling freaky. And the thought of you fucking my pussy Is making me wet.",
-        "I got the cock picture you sent, and I can’t wait to have you fuck my pussy with your big cock.",
-        "How would you like to fuck this pussy? You seem so eager to have a taste.",
-        "You make me wet with the way you describe your fantasies.",
-        "And so do l. But before we proceed any further, would you mind showing me a picture of you so know who is begging to fuck my pussy?",
-        "It seems like you miss sex that badly already.",
-        "I was thinking of a little escapade in the bathroom, where you bend me over against the bathroom wall and fuck me from behind.",
-        "Does this mean you are going to fuck me in all the rooms at your place? Damn, I can’t wait to have you in between my legs already.",
-        "You can’t stop amazing me! I’m so flattered by your words and they sound sweet to my ear⁠.",
-        "Babe, do you think this will work? I noticed you have been busy with work, but why don’t you make time for us to fuck each other and have a good time?",
-        "Honestly, you are getting me horny right now from reading your messages.",
-        "I’m sad right now, it’s been a long time since someone fuck my pussy and make me cum multiple times.",
-        "Fuck, that’s sounds amazing! Involving your wife in our plan seems like a good idea. Do you think she will be cool with all of this? I don’t want to be the reason you have problems with her, though.",
-        "I have a friend who is willing to join us. But that’s if you are cool with the idea.",
-        "Trying to get me all wet and horny, huh? Well, it’s working! You just know the things to tell a lady to make her dripping wet.",
-        "I’m just here thinking of how we will please each other in your kitchen. I have been wanting to try making out in the kitchen for a long time now, is it something you are looking forward to doing, I mean to get fucked on the kitchen floor?",
-        "Sometimes you don’t know how good people are till you try their ability in the other room.",
-        "Work my body with your tongue, pin me down, fuck me so hard, and make me beg for more. That’s the kind of experience I want to have right now.",
-        "I will make you scream my name while I ride your cock and fuck you in a cowgirl position.",
-        "Yes baby you can fuck my pussy sore, fuck me so hard till I can’t take it anymore.",
-        "I don’t mind being fucked in all three holes, but tell me which hole would you be fucking first?",
-        "Fuck buddies sounds perfect, have you experienced outdoor sex before?",
-        "A fucking game? You really know how to have fun. How does it work?",
-        "I’ve never been double fucked, I won’t mind trying that with you.",
-        "You are so sweet my darling.  Now imagine this slow music  playing in the background, while we’re slow dancing feeling our bodies come together. You kiss my neck and down to my back and spend so much time on beautiful breasts teasing them tremendously and then your hands touching down my thigh slowly sliding into my pussy and this comes after you’ve slowly undressed me with your teeth. How long do you think foreplay should last?",
-        "I would like that.  I would like you to start out by giving me a nice full body massage and then start kissing me, rolling me over and then pulling my head down to your cock and feeling my hot mouth wrapping its lips around your cock. And at the same time you will be eating me out. You can then move to my back while I’m on my knees, taking my hair and gently pulling it back as you stick the head of your cock very slowly in and out of my pussy, feeling my pussy tightening around your cock.",
-        "Hey darlin, loyalty and love sound perfect. I’d still fuck you silly tho.",
-        "Oh babe, a fuck buddy who’s real and loyal is gold. I’d keep it nasty and true. What you looking for most in a friend like that?",
-        "Hey cutie, I promise to ride and fuck you hard and kiss you sweet. What you promising me in return, huh?",
-        " I’m down for a full house fuckfest, sweetie. Bed’s cozy, but what room you wanna start in to fuck me and get me screaming?",
-        "Okay, baby,  slow and deep sounds perfect, you know how to get me going. Hurry back from your stuff so you can fuck me hard, what’s got you tied up out there?",
-        "I love the enthusiasm, sweetheart. What’s the first thing that comes to mind when you think about fucking me?",
-        "I can tell you’re craving some intense fuck. What’s it about a woman’s touch that you miss so much?",      
-        "I love the sound of that. What’s the most adventurous thing you’d want to do with me when you fuck me in that naked state?",
-        "I’m always down for a good fuck session, sweetheart. What’s the wildest thing you’d want to do to me in bed?",
-        "I’m more than ready for you to come over and fuck me hard, sweetheart. What’s the most naughty thing you’d like to do to me as soon as possible?",
-        "I’m so ready for you to fuck me too sweetheart. What’s the first thing you want to do to me when we’re together?",
-        "I’m thinking about it too, cause you better be ready to fuck me hard.",
-        "You think you can keep up with me? Fuck, I doubt it. I’m a force to be reckoned with, sweetheart.",
-        "Who needs romance when you can just fuck all night? I mean, flowers and chocolates are nice, but they’re not going to get me off, honey. What gets me off is a good, hard fuck.",
-        "Want to know what I’m craving? A good, hard fuck. I’m not talking about a little snack, honey.",
-        "I’m not just a sweet girl, I’m a fuck-you-hard kind of girl.  I’m not just talking about a little romance, sweetheart. I’m talking about a full-on, no-holds-barred, can’t-get-enough kind of fucking.",
-        "I’m not just a one-night stand, I’m a fuck-me-all-night kind of girl.  I’m not talking about a little fling, sweetheart.",
-        "Do you want to know what I’m addicted to? Fucking, of course. I mean, what’s better than that, honey? A good, hard fuck is the ultimate high, and I’m addicted to it.",
-        "You’re looking for a fuck buddy? Well, you’re in luck, darling. I’m always up for a good time.",
-        "I’ll show you what a real fuck looks like, and you’ll be begging for more.",
-        "What do I want from you? I want to fuck, and I want to fuck hard. Don’t disappoint me, sweetheart.",
-        "I need you to fuck me like you mean it, like you can’t get enough of me, like you want to devour me.",
-        "Do you know how to fuck a girl senseless? I hope so, cause I think that’s what I need.",
-        "I want to get fucked like a slut, like a dirty little whore, like a girl who can’t get enough of your hard cock.",
-        "All I can think about is getting fucked by you to the extent that I won’t be able to take it anymore.",
-        "I like how confident you are, how about you spread my legs over your shoulders and fuck me till I cum?",
-        "I’d love that too, but let not get ahead of ourselves, the idea of you fucking my throat is something I look forward to, what are you doing right now?",
-        "I’m all about fun sweetheart, give me details on how you want to fuck me and leave me begging for more?",
-        "I’m willing to help you in return for a good fuck session, deal?",
-        "That sounds interesting, fucking me till I can’t walk, how do you plan on doing that?",
-        "Your willingness is something I find interesting, can’t wait to have this pussy fucked by your hard cock.",
-        "You’re diving right into the fun part, naughty boy, I like the idea of fucking me on the balcony.",
-        "I like a big cock in my tight pussy, maybe my other holes too.",
-        "That’s a big cock you have there, the sight of it has got my pussy dripping wet.",
-        "Yes baby, give that cock a gentle stroke and a light squeeze on the tip baby, how do you feel wanking with my picture?",
-        "Thank you for that picture, you cock is getting me messy, I want to grab it and give you the best tit-fuck you will ever have.",
-        "It’s been a while I had a cock in this tight pussy, how about you?",
-        "That’s nice, but I would rather have your cock for lunch, maybe dinner too.",
-        "I like a cock with just a little hair around. How would you like me to pull those hairs while teasing your cock until you’re begging to fuck me?",
-        "Never had a cock that big, honey. How big are we talking?",
-        "Damn, you got me all hot just thinking about that. How long are you planning to tease me with that tongue before you slide that cock of yours in deep?",
-        "I’ll hit you up when I’m free, sweetheart. What are you planning to do with me when I do, fuck me with that big cock of yours?",
-        "I want you to fuck me with your cock and make you feel so damn good, baby.",
-        "I can imagine  your cock throbbing right now, how hard is it pushing at your pants, do you mind sending me a pic of that rock hard cock?",
-        "Damn, you’re already making me wet just talking like that. Can you handle me squirming and moaning under you with your cock after I cum that many times?",
-        "You’re going all out, huh? Sounds like you’d worship every inch of me and fuck me hard with your cock. Where are you starting first?",
-        "I’m always ready for a hard cock like yours, baby. When are you gonna give it to me?",
-        "I’d love letting your hands and tongue explore every bit of me with your cock finishing the job.",
-        "No worries, I get it, work can be a bitch. Respect’s hot, and I’d love those hands and that cock inside me.",
-        "I love the way you talk, sweetheart. What do you think it would take with your cock to get me to the point where I’d scream your name?",
-        "Picture yourself enjoying my body, stimulating my nipples touching my  sexy, hot ass and you slowly make me explode with massive orgasm and right after you’re done, you’ll insert your cock in my pussy, throbbing and hitting the right spot and then you will explode right in my Gspot. How does that sound to you?",
-        "How about I make you climax while sucking your cock?  You like being rode and I also like to ride a cock.",
-        "You know just how to set the mood, sweetheart. I see you want to fuck all my holes.",
-        "What do you think of this hot pussy? Don’t you want to put your thick cock inside and fuck it till you explode?",
-        "I’m horny and want to lick your clean shaved cock until you cum in my mouth. Then I’ll swallow all your sweet cum.  After that you will fuck me until you cum again.",
-        "I want you to lick, suck and nibble on my pussy and clit while I’m sucking your cock and we both cum in each other’s mouths.",
-        "Here’s a picture of my pussy. Now imagine your cock going in and out of it, making me scream your name.",
-        "I love the sound of that, dear. It makes me want to suck your cock till you explode all over my face.",
-        "I just received the picture you sent, honey. You look so good and you have a nice cock.",
-        "That length sounds like a good size to me. I’m sure that it would feel amazing inside of me.",
-        "Honestly, you have a juicy looking cock down there. How long has it been seen you last used this beast?",
-        "Honey, this is so huge and thick. Truly, I like it. What do you think about me using your cock as a dildo? I promise not to break it.",
-        "Baby, I’m so horny I can barely type! I have this fantasy of you finger fucking and eating me out until I cum 3 times before sliding your thick and yummy cock in my slippery pussy. What do you think?",
-        "I’ll be real honest with you, that’s the best looking dick I’ve seen in a long time.",
+            "What size is your cock when fully erected?",
+            "Would it be awesome to have your girl swallow all of your cum?",
+            "What do you say to me sitting on your face while you suck my clit?",
+            "Would you like me to suck your cock at the same time?",
+            "Do you like morning sex?",
+            "How long can you go fucking my ass?",
+            "Would you ever consider fucking my ass?",
+            "Do you wanna have me to fuck for just a one night stand, or FWB, or something more?",
+            "Can you do that for me?",
+            "What’s your take on bdsm?",
+            "Do you like MMF threesomes, by the way?",
+            "Are you up for this challenge?",
+            "What sort of sex toys do you have at your place?",
+            "Do you enjoy fucking raw or playing it safe?",
+            "Would you eat my pussy and finger fuck me at the same time?",
+            "Are you that type of man?",
+            "What do you think about giving me a creampie?",
+            "Can you hard face fuck me till I gag and my eyes are teary?",
+            "Can you use my pussy as a cum dumpster?",
+            "Are you thinking about starting this off in the shower before moving onto the bed?",
             ],
         "questions": [
         "Wanna tell me your name?",
@@ -3766,49 +3632,46 @@ class UserMessage(BaseModel):
     message: str
 
 class SallyResponse(BaseModel):
+    matched_word: str
     matched_category: str
     replies: List[str]
 
-def get_semantic_category(message: str) -> str:
-    """Determine the best matching category using semantic similarity"""
+def find_best_match(message: str) -> tuple:
     doc = nlp(message.lower())
-    best_category = "general"
-    highest_similarity = 0
+    best_match = ("general", None, 0.0)  # (category, matched_word, similarity_score)
     
-    # Compare against each category's example phrases
-    for category, data in SEMANTIC_CATEGORIES.items():
-        if not data["examples"]:  # Skip if no examples
-            continue
-            
-        # Create a doc for the category by joining all examples
-        category_doc = nlp(" ".join(data["examples"]))
-        
-        # Compare semantic similarity between message and category examples
-        similarity = doc.similarity(category_doc)
-        
-        if similarity > highest_similarity:
-            highest_similarity = similarity
-            best_category = category
+    for token in doc:
+        for category, data in REPLY_POOLS.items():
+            for trigger in data["triggers"]:
+                trigger_doc = nlp(trigger)
+                similarity = token.similarity(trigger_doc)
+                if similarity > best_match[2] and similarity > 0.7:  # Threshold
+                    best_match = (category, token.text, similarity)
     
-    # Only return if similarity is above threshold, otherwise use "general"
-    return best_category if highest_similarity > 0.6 else "general"
+    return best_match[:2]  # Return just category and matched_word
 
 @app.post("/analyze", response_model=SallyResponse)
 async def analyze_message(user_input: UserMessage):
     message = user_input.message.strip()
     
-    # Get the most semantically relevant category
-    matched_category = get_semantic_category(message)
-    category_data = SEMANTIC_CATEGORIES[matched_category]
+    # Find the best semantic match
+    matched_category, matched_word = find_best_match(message)
     
-    # Generate responses by combining random replies and questions
+    # Get the category data
+    category_data = REPLY_POOLS[matched_category]
+    
+    # Generate intelligent responses
     responses = [
         f"{random.choice(category_data['responses'])} {random.choice(category_data['questions'])}"
         for _ in range(2)
     ]
     
     return {
+        "matched_word": matched_word or "general",
         "matched_category": matched_category,
         "replies": responses
     }
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
