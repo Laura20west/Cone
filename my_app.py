@@ -3650,6 +3650,3 @@ async def analyze_message(user_input: UserMessage):
         "replies": responses
     }
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
