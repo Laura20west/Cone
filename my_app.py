@@ -21,8 +21,8 @@ app.add_middleware(
 
 # Enhanced reply pools with semantic triggers
 REPLY_POOLS: Dict[str, Dict] = {
-    "greeting": {
-        "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck soon"],
+    "fuck": {
+        "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck soon", "I am ready to fuck you, what about you, are you ready to fuck me"],
         "responses": [
         "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
         "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
