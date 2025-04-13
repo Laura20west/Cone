@@ -22,7 +22,7 @@ app.add_middleware(
 # Enhanced reply pools with semantic triggers
 REPLY_POOLS: Dict[str, Dict] = {
     "greeting": {
-        "triggers": ["fuck", "hi", "hey", "dripping", "horny", "hola", "drip", "can i fuck you", "i want to fuck you", "i want us to fuck"],
+        "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck soon"],
         "responses": [
         "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
         "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
@@ -305,7 +305,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     ],
     },
     "wellbeing": {
-        "triggers": ["morning", "morning sex", "morning?", "wake up", "do you like morning sex"],
+        "triggers": ["Can we have morning sex", "do you like morning sex"],
         "responses": [
             "I am very much into early morning love. Nothing feels better than to wake up by a tongue licking my clitoral area and a morning wood fucking me afterwards in a doggy position.",
             "What do you think about fucking first thing in the morning? ",
@@ -463,7 +463,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     ],
     },
     "identity": {
-        "triggers": ["bondage", "foreplay", "rough", "do you like it rough"],
+        "triggers": ["bondage", "foreplay", "Are you into foreplay", "do you like it rough"],
         "responses": [
             "You’re not a fan of bondage? Well, that’s no problem.",
             
@@ -867,7 +867,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     
     },
     "boobs": {
-        "triggers": ["nipple", "boobs", "breast", "breasts", "can i suck your pussy", "can i finger your pussy"],
+        "triggers": ["nipple", "boobs", "breast", "breasts", "can i suck your boobs", "can i touch your soft breasts"],
         "responses": [
             "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
             " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
@@ -1026,7 +1026,7 @@ REPLY_POOLS: Dict[str, Dict] = {
 
     },
     "sex": {
-        "triggers": ["sex", "sexy", "night", "sex?", "sex!", "can we have sex"],
+        "triggers": ["sex", "sexy", "night", "sex?", "sex!", "I am ready to have sex with you, what about you, are you ready to have sex with me", "can we have sex"],
         "responses": [
             "Yes I’m into you having sex with you. Thinking about the  way you are going to handle me send shivers to my spine.",
             " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
@@ -1189,7 +1189,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "pussy": {
-        "triggers": ["pussy", "wet", "pussy?", "pussy!", "wet?", "cunt", "I want to suck your wet pussy"],
+        "triggers": ["pussy", "wet", "pussy?", "pussy!", "wet?", "cunt", "I want to finger your wet pussy","I want to suck your wet pussy"],
         "responses": [
             "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
             " You indeed know how to make my pussy wet. ",
