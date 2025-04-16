@@ -22,7 +22,7 @@ app.add_middleware(
 # Enhanced reply pools with semantic triggers
 REPLY_POOLS: Dict[str, Dict] = {
     "fuck": {
-        "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck soon", "I am ready to fuck you, what about you, are you ready to fuck me"],
+        "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck soon", "I am ready to fuck you, what about you, are you ready to fuck me", "let us fuck hard"],
         "responses": [
         "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
         "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
@@ -964,7 +964,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     
     },
     "boobs": {
-        "triggers": ["nipple", "boobs", "breast", "breasts", "can i suck your boobs", "can i touch your soft breasts, can i suck your big boobs"],
+        "triggers": ["nipple", "boobs", "breast", "breasts", "can i suck your boobs", "can i touch your soft breasts, can i suck your big boobs and suck your nipples, can i bite your nipples"],
         "responses": [
             "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
             " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
@@ -3804,31 +3804,31 @@ REPLY_POOLS: Dict[str, Dict] = {
 
             "What if I woke you up by straddling you, grinding slow until you were deep inside me?",
 
-            "I want to suck your cock in the woods while you keep watch. Sounds exciting, doesn't it?"
+            "I want to suck your cock in the woods while you keep watch. Sounds exciting, doesn't it?",
 
-            "Imagine me sitting on your lap, teasing you under the moonlight. Would you fuck me right there?"
+            "Imagine me sitting on your lap, teasing you under the moonlight. Would you fuck me right there?",
 
-            "Let’s make a sex tape of me riding your cock by the lake. The sound of water and moans together—hot, right?"
+            "Let’s make a sex tape of me riding your cock by the lake. The sound of water and moans together—hot, right?",
 
-            "How would you feel if I surprised you during a hike with no panties and begged you to take me?"
+            "How would you feel if I surprised you during a hike with no panties and begged you to take me?",
 
-            "I want to ride your cock in a field full of wildflowers, moaning louder than the wind."
+            "I want to ride your cock in a field full of wildflowers, moaning louder than the wind.",
 
-            "How would you react if I sat on your face under a blanket in the park?"
+            "How would you react if I sat on your face under a blanket in the park?",
 
-            "Would you like to fuck me in the car while people walk by, completely unaware?"
+            "Would you like to fuck me in the car while people walk by, completely unaware?",
 
-            "What if I bent over a picnic table and begged for your cock, right under the open sky?"
+            "What if I bent over a picnic table and begged for your cock, right under the open sky?",
 
-            "Wanna fuck me in a tent, lights off, but the sound of skin slapping echoing in the silence?"
+            "Wanna fuck me in a tent, lights off, but the sound of skin slapping echoing in the silence?",
 
-            "Imagine me naked in the rain, soaked and dripping, waiting for you to take me hard."
+            "Imagine me naked in the rain, soaked and dripping, waiting for you to take me hard.",
 
-            "Let’s do it in the woods, my legs around your waist, your back pressed to a tree."
+            "Let’s do it in the woods, my legs around your waist, your back pressed to a tree.",
 
-            "Wanna wake up to me stroking your cock and whispering how badly I want to ride you?"
+            "Wanna wake up to me stroking your cock and whispering how badly I want to ride you?",
 
-            "I want you to bend me over your car hood while we’re parked on a dark road."
+            "I want you to bend me over your car hood while we’re parked on a dark road.",
 
             "How about I ride your cock with the window open, letting the breeze cool my sweaty skin?",
 
@@ -3896,7 +3896,7 @@ REPLY_POOLS: Dict[str, Dict] = {
 
             "What if I slipped into your shower and dropped to my knees, taking your cock in deep?",
 
-            "I want to fuck you on the balcony at sunset, my moans echoing into the open air."
+            "I want to fuck you on the balcony at sunset, my moans echoing into the open air.",
             ],
         "questions": [
             "Wanna tell me your name?",
