@@ -13,7 +13,7 @@ app = FastAPI()
 
 # ===== AUTHORIZED OPERATORS =====
 AUTHORIZED_OPERATORS = {
-    "cone180",
+    "cone100",
     "operator2@company.com",
     "admin@company.com"
     # Add all valid operator emails here
