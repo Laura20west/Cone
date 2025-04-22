@@ -17,7 +17,7 @@ ALLOWED_IPS = {
 }
 
 # Block unauthorized IPs
-@app.middleware("http")
+@app.middleware("https")
 async def ip_whitelist_middleware(request: Request, call_next):
     client_ip = request.client.host
     if client_ip not in ALLOWED_IPS:
@@ -6782,7 +6782,7 @@ def nlp_match(message: str) -> tuple:
     return best_match
 
 @app.post("/analyze", response_model=SallyResponse)
-async def analyze_message(user_input: UserMessage):
+async def analyze_message(user_input: UserMessage, request: Request):
     message = user_input.message.strip()
     
     # Get best match using NLP
