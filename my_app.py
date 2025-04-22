@@ -1,39 +1,39 @@
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, Depends, Header
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import random
-from typing import Dict, List
 import spacy
+import random
+from typing import Dict, List, Optional
 from collections import defaultdict
+
+# Initialize NLP model
+nlp = spacy.load("en_core_web_md")
 
 app = FastAPI()
 
-# ===== IP WHITELIST =====
-ALLOWED_IPS = {
-    "127.0.0.1",       # Localhost
-    "193.186.4.90",
-    "102.90.99.187", #Ben's mifi
-    "102.90.98.164"
-    "102.90.81.104", #Laura's mtn
-    "102.90.82.208", # Example: Your home IP
-    # Add more IPs as needed
+# ===== AUTHORIZED OPERATORS =====
+AUTHORIZED_OPERATORS = {
+    "cone180",
+    "operator2@company.com",
+    "admin@company.com"
+    # Add all valid operator emails here
 }
 
-# Block unauthorized IPs
-@app.middleware("http")
-async def ip_whitelist_middleware(request: Request, call_next):
-    client_ip = request.client.host
-    if client_ip not in ALLOWED_IPS:
+# ===== SECURITY MIDDLEWARE =====
+async def verify_operator(
+    x_operator_email: Optional[str] = Header(None),
+):
+    """Middleware to validate operator credentials"""
+    if not x_operator_email or x_operator_email not in AUTHORIZED_OPERATORS:
         raise HTTPException(
             status_code=403,
-            detail=f"Access denied. Your IP ({client_ip}) is not allowed."
+            detail="Unauthorized operator email"
         )
-    return await call_next(request)
+    
+    # Optional: Add device fingerprint verification
+    # await verify_device_fingerprint(x_operator_email, x_device_fingerprint)
 
-# Load spaCy model
-nlp = spacy.load("en_core_web_md")
-
-# CORS setup
+# ===== CORS =====
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -41,7 +41,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Enhanced reply pools with semantic triggers
 REPLY_POOLS: Dict[str, Dict] = {
     "fuck": {
         "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck soon", "I am ready to fuck you, what about you, are you ready to fuck me", "fuck", "fuckbuddies"],
@@ -6742,21 +6741,19 @@ REPLY_POOLS: Dict[str, Dict] = {
     
 }
 
+# ===== CORE FUNCTIONALITY =====
+TRIGGERS_NLP = defaultdict(list)
 
-# Pre-process triggers for NLP matching
 def prepare_triggers():
-    processed = defaultdict(list)
     for category, data in REPLY_POOLS.items():
         for trigger in data["triggers"]:
-            doc = nlp(trigger.lower())
-            processed[category].append(doc)
-    return processed
+            TRIGGERS_NLP[category].append(nlp(trigger.lower()))
 
-# Process all triggers at startup
-TRIGGERS_NLP = prepare_triggers()
+prepare_triggers()
 
 class UserMessage(BaseModel):
     message: str
+    operator_email: Optional[str] = None  # For direct API testing
 
 class SallyResponse(BaseModel):
     matched_word: str
@@ -6765,9 +6762,8 @@ class SallyResponse(BaseModel):
     replies: List[str]
 
 def nlp_match(message: str) -> tuple:
-    """Use NLP to find the best matching category"""
     doc = nlp(message.lower())
-    best_match = ("general", None, 0.0)  # (category, matched_word, confidence)
+    best_match = ("general", None, 0.0)
     
     for category, triggers in TRIGGERS_NLP.items():
         for trigger_doc in triggers:
@@ -6775,31 +6771,35 @@ def nlp_match(message: str) -> tuple:
             if similarity > best_match[2]:
                 best_match = (category, trigger_doc.text, similarity)
     
-    # Also check for exact matches as fallback
-    words = message.lower().split()
-    for word in words:
-        for category, data in REPLY_POOLS.items():
-            if word in data["triggers"] and best_match[2] < 0.7:  # Only if NLP wasn't confident
-                best_match = (category, word, 0.8)  # Slightly higher than threshold
-    
     return best_match
 
 @app.post("/analyze", response_model=SallyResponse)
-async def analyze_message(user_input: UserMessage, request: Request):
-    message = user_input.message.strip()
+async def analyze_message(
+    user_input: UserMessage,
+    request: Request,
+    x_operator_email: Optional[str] = Header(None)
+):
+    """Main endpoint with dual authorization"""
+    # Method 1: Header-based auth (for TamperMonkey)
+    if x_operator_email and x_operator_email not in AUTHORIZED_OPERATORS:
+        raise HTTPException(403, "Unauthorized email via headers")
     
-    # Get best match using NLP
+    # Method 2: Body-based auth (for direct API testing)
+    if user_input.operator_email and user_input.operator_email not in AUTHORIZED_OPERATORS:
+        raise HTTPException(403, "Unauthorized email in request body")
+    
+    # Process message
+    message = user_input.message.strip()
     matched_category, matched_word, confidence = nlp_match(message)
     category_data = REPLY_POOLS[matched_category]
     
-    # Generate responses
     responses = [
         f"{random.choice(category_data['responses'])} {random.choice(category_data['questions'])}"
         for _ in range(2)
     ]
     
     return {
-        "matched_word": matched_word or "general",
+        "matched_word": matched_word,
         "matched_category": matched_category,
         "confidence": round(confidence, 2),
         "replies": responses
