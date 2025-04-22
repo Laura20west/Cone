@@ -17,7 +17,7 @@ ALLOWED_IPS = {
 }
 
 # Block unauthorized IPs
-@app.middleware("https")
+@app.middleware("http")
 async def ip_whitelist_middleware(request: Request, call_next):
     client_ip = request.client.host
     if client_ip not in ALLOWED_IPS:
