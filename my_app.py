@@ -8,6 +8,25 @@ from collections import defaultdict
 
 app = FastAPI()
 
+# ===== IP WHITELIST =====
+ALLOWED_IPS = {
+    "127.0.0.1",       # Localhost
+    "193.186.4.90",
+    "192.168.110.159",   # Example: Your home IP
+    # Add more IPs as needed
+}
+
+# Block unauthorized IPs
+@app.middleware("http")
+async def ip_whitelist_middleware(request: Request, call_next):
+    client_ip = request.client.host
+    if client_ip not in ALLOWED_IPS:
+        raise HTTPException(
+            status_code=403,
+            detail=f"Access denied. Your IP ({client_ip}) is not allowed."
+        )
+    return await call_next(request)
+
 # Load spaCy model
 nlp = spacy.load("en_core_web_md")
 
@@ -22,7 +41,7 @@ app.add_middleware(
 # Enhanced reply pools with semantic triggers
 REPLY_POOLS: Dict[str, Dict] = {
     "fuck": {
-        "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck soon", "I am ready to fuck you, what about you, are you ready to fuck me", "fuck"],
+        "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck soon", "I am ready to fuck you, what about you, are you ready to fuck me", "fuck", "fuckbuddies"],
         "responses": [
         "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
         "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
