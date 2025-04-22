@@ -13,7 +13,9 @@ ALLOWED_IPS = {
     "127.0.0.1",       # Localhost
     "193.186.4.90",
     "102.90.99.187", #Ben's mifi
-    "102.90.81.104", #Laura's mtn    # Example: Your home IP
+    "102.90.98.164"
+    "102.90.81.104", #Laura's mtn
+    "102.90.82.208", # Example: Your home IP
     # Add more IPs as needed
 }
 
