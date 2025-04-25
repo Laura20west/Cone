@@ -248,7 +248,8 @@ async def analyze_message(user_input: UserMessage):
         # Generate responses
         response, resp_meta = response_generator.generate_unique_response(matched_category)
         question, ques_meta = response_generator.generate_unique_response(matched_category)
-        for _ in range(2)
+        response, resp_meta = response_generator.generate_unique_response(matched_category)
+        question, ques_meta = response_generator.generate_unique_response(matched_category)       
 
         
         return SallyResponse(
