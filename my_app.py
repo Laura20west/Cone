@@ -246,13 +246,10 @@ async def analyze_message(user_input: UserMessage):
         ) else "greeting"
         
         # Generate responses
-        #response, resp_meta = response_generator.generate_unique_response(matched_category)
-        #question, ques_meta = response_generator.generate_unique_response(matched_category)
-
-        responses = [
-        f"{random.choice(response_generator.generate_unique_response(matched_category))} {random.choice(response_generator.generate_unique_response(matched_category))}"
+        response, resp_meta = response_generator.generate_unique_response(matched_category)
+        question, ques_meta = response_generator.generate_unique_response(matched_category)
         for _ in range(2)
-    ]
+
         
         return SallyResponse(
             response=response,
