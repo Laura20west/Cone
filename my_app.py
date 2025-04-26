@@ -1460,272 +1460,232 @@ REPLY_POOLS: Dict[str, Dict] = {
 
             "Slide your cock between my breasts while I lick the tip.",
 
-            "Fuck my mouth first, make it nice and wet for my pussy."
+            "Fuck my mouth first, make it nice and wet for my pussy.",
 
-            "I want your cock to be the only thing I can think about."
+            "I want your cock to be the only thing I can think about.",
 
-            "Touch me everywhere, kiss me, then fuck me until I cry out."
+            "Touch me everywhere, kiss me, then fuck me until I cry out.",
 
-            "I’m dripping wet thinking about you bending me over the table."
+            "I’m dripping wet thinking about you bending me over the table.",
 
-            "Cum on my face, baby. Then shove your cock back inside me."
+            "Cum on my face, baby. Then shove your cock back inside me.",
 
-            "I want you to keep me pinned while you fuck me ruthlessly."
+            "I want you to keep me pinned while you fuck me ruthlessly.",
 
-            "My pussy is begging for your attention right now."
+            "My pussy is begging for your attention right now.",
 
-            "Lay me down and make love to me with filthy, desperate thrusts."
+            "Lay me down and make love to me with filthy, desperate thrusts.",
 
-            "I want you to choke me gently while you pound into me hard."
+            "I want you to choke me gently while you pound into me hard.",
 
-            "Make me your little cumslut, baby."
+            "Make me your little cumslut, baby.",
 
-            "Cover my body with your kisses before fucking me raw."
+            "Cover my body with your kisses before fucking me raw.",
 
-            "Rough me up a little, make it passionate and primal."
+            "Rough me up a little, make it passionate and primal.",
 
-            "I want you panting and sweaty while you’re balls deep inside me."
+            "I want you panting and sweaty while you’re balls deep inside me.",
 
-            "I can already feel your cock pulsing against my walls."
+            "I can already feel your cock pulsing against my walls.",
 
-            "Mark my body with your love bites while you fuck me."
+            "Mark my body with your love bites while you fuck me.",
 
-            "I want to sit on your cock and bounce till you can’t take it."
+            "I want to sit on your cock and bounce till you can’t take it.",
 
-            "Fuck me so hard my legs shake for hours afterward."
+            "Fuck me so hard my legs shake for hours afterward.",
 
-            "Pin me against the mirror and fuck me while I watch us."
+            "Pin me against the mirror and fuck me while I watch us.",
 
-            "I need you whispering filthy things into my ear as you fuck me."
+            "I need you whispering filthy things into my ear as you fuck me.",
 
-            "Give me a messy, dirty, orgasm-filled night I won’t forget."
+            "Give me a messy, dirty, orgasm-filled night I won’t forget.",
 
-            "I want to feel your cum leaking out of my used pussy."
+            "I want to feel your cum leaking out of my used pussy.",
 
-            "Bend me over and spank my ass before you thrust inside me."
+            "Bend me over and spank my ass before you thrust inside me.",
 
-            "I want to taste myself on your cock after you fuck me."
+            "I want to taste myself on your cock after you fuck me.",
 
-            "Let’s make a puddle between the sheets with how wet I’ll get."
+            "Let’s make a puddle between the sheets with how wet I’ll get.",
 
-            "Take me fast and hard, no holding back."
+            "Take me fast and hard, no holding back.",
 
-            "I want to grind against your cock until you’re begging to cum."
+            "I want to grind against your cock until you’re begging to cum.",
 
-            "Fuck me while I wear nothing but your shirt."
+            "Fuck me while I wear nothing but your shirt.",
 
-            "Fill me up completely, I want to feel your warmth inside."
+            "Fill me up completely, I want to feel your warmth inside.",
 
-            "My clit is throbbing just thinking about you devouring it."
+            "My clit is throbbing just thinking about you devouring it.",
 
-            "I want you groaning in pleasure as you cum inside me."
+            "I want you groaning in pleasure as you cum inside me.",
 
-            "Slide your cock into my mouth while I moan for more."
+            "Slide your cock into my mouth while I moan for more.",
 
-            "Pin me by the wrists and have your way with me."
+            "Pin me by the wrists and have your way with me.",
 
-            "I’m aching for the feeling of your cock stretching me wide."
+            "I’m aching for the feeling of your cock stretching me wide.",
 
-            "Let’s break the bed tonight with how hard we fuck."
+            "Let’s break the bed tonight with how hard we fuck.",
 
-            "Take me slow at first, then fuck me like an animal."
+            "Take me slow at first, then fuck me like an animal.",
 
-            "I want your tongue all over me before you fuck me."
+            "I want your tongue all over me before you fuck me.",
 
-            "My pussy is aching for a pounding only you can give."
+            "My pussy is aching for a pounding only you can give.",
 
-            "I want to ride you until you lose control inside me."
+            "I want to ride you until you lose control inside me.",
 
-            "I need you between my thighs, devouring me hungrily."
+            "I need you between my thighs, devouring me hungrily.",
 
-            "I want to wake up sore and smiling from your love."
+            "I want to wake up sore and smiling from your love.",
 
-            "My nipples are so sensitive, kiss and bite them as you fuck me."
+            "My nipples are so sensitive, kiss and bite them as you fuck me.",
 
-            "Force me to cum again and again until I’m a trembling mess."
+            "Force me to cum again and again until I’m a trembling mess.",
 
-            "Make me squirt all over your cock, again and again."
+            "Make me squirt all over your cock, again and again.",
 
-            "I want your handprint on my ass after you spank me while fucking me."
+            "I want your handprint on my ass after you spank me while fucking me.",
 
-            "Slide your cock deep into me, make me feel every inch."
+            "Slide your cock deep into me, make me feel every inch.",
 
-            "Fuck me like it’s the last night on Earth."
+            "Fuck me like it’s the last night on Earth.",
 
-            "I want to be dripping with our cum when you're done with me."
+            "I want to be dripping with our cum when you're done with me.",
 
-            "I need you so badly right now I could cry."
+            "I need you so badly right now I could cry.",
 
-            "Pin me down, take what’s yours, and make me love it."
+            "Pin me down, take what’s yours, and make me love it.",
 
-            "I want to feel your cock throbbing against my tongue."
+            "I want to feel your cock throbbing against my tongue.",
 
-            "Fuck my pussy until it's sore and swollen from pleasure."
+            "Fuck my pussy until it's sore and swollen from pleasure.",
 
-            "I want you wrecking my pussy with your thick cock."
+            "I want you wrecking my pussy with your thick cock.",
 
-            "I want to sit on your face first, then take your cock inside me."
+            "I want to sit on your face first, then take your cock inside me.",
 
-            "Tease me with your tip before shoving it all in at once."
+            "Tease me with your tip before shoving it all in at once.",
 
-            "Fuck me until my voice is hoarse from moaning your name."
+            "Fuck me until my voice is hoarse from moaning your name.",
 
-            "I want your cock deep in my throat while you hold my hair."
+            "I want your cock deep in my throat while you hold my hair.",
 
-            "Destroy me in the best way possible tonight."
+            "Destroy me in the best way possible tonight.",
 
-            "I want to be completely and utterly ruined by your cock."
+            "I want to be completely and utterly ruined by your cock.",
 
-            "Make me cum so many times I lose count."
+            "Make me cum so many times I lose count.",
 
-            "I want your cum dripping from my pussy after you fill me."
+            "I want your cum dripping from my pussy after you fill me.",
 
-            "Fuck me in the shower while the water runs over us."
+            "Fuck me in the shower while the water runs over us.",
 
-            "I want to straddle your face and ride your tongue."
+            "I want to straddle your face and ride your tongue.",
 
-            "Push me against the wall and take me roughly."
+            "Push me against the wall and take me roughly.",
 
-            "I want to be on my knees worshiping your cock."
+            "I want to be on my knees worshiping your cock.",
 
-            "Throw me onto the bed and fuck me with abandon."
+            "Throw me onto the bed and fuck me with abandon.",
 
-            "I want your fingers in my pussy, teasing me until I’m screaming."
+            "I want your fingers in my pussy, teasing me until I’m screaming.",
 
-            "Slap my ass while you pound me from behind."
+            "Slap my ass while you pound me from behind.",
 
-            "Hold my waist tightly while you fuck me deeper and deeper."
+            "Hold my waist tightly while you fuck me deeper and deeper.",
 
-            "Cover me in your kisses, then fuck me senseless."
+            "Cover me in your kisses, then fuck me senseless.",
 
-            "I want you moaning my name as you cum inside me."
+            "I want you moaning my name as you cum inside me.",
 
-            "My pussy is your playground tonight, baby."
+            "My pussy is your playground tonight, baby.",
 
-            "Fuck me slow and deep, savoring every thrust."
+            "Fuck me slow and deep, savoring every thrust.",
 
-            "I want to be dripping with lust by the time you enter me."
+            "I want to be dripping with lust by the time you enter me.",
 
-            "Tease my nipples with your mouth while you finger me."
+            "Tease my nipples with your mouth while you finger me.",
 
-            "Whisper filthy things into my ear as you fuck me hard."
+            "Whisper filthy things into my ear as you fuck me hard.",
 
-            "Make me your personal fuck toy for the night."
+            "Make me your personal fuck toy for the night.",
 
-            "I want your cock filling my throat before fucking my pussy."
+            "I want your cock filling my throat before fucking my pussy.",
 
-            "Thrust into me harder, faster, until I can’t handle it."
+            "Thrust into me harder, faster, until I can’t handle it.",
 
-            "Make me ride you until I scream your name."
+            "Make me ride you until I scream your name.",
 
-            "Take me any way you want, just don’t stop fucking me."
+            "Take me any way you want, just don’t stop fucking me.",
 
-            "I want to hear the dirty sounds of our bodies slapping together."
+            "I want to hear the dirty sounds of our bodies slapping together.",
 
-            "Push my limits tonight, baby."
+            "Push my limits tonight, baby.",
 
-            "I want to squirt all over your face while you tongue-fuck me."
+            "I want to squirt all over your face while you tongue-fuck me.",
 
-            "Fill me up and make me beg for more."
+            "Fill me up and make me beg for more.",
 
-            "I want your cock pulsating deep inside my wet hole."
+            "I want your cock pulsating deep inside my wet hole.",
 
-            "Fuck me in front of the mirror so I can see your cock entering me."
+            "Fuck me in front of the mirror so I can see your cock entering me.",
 
-            "I need your hands, your mouth, your cock all over me."
+            "I need your hands, your mouth, your cock all over me.",
 
-            "I want your tongue exploring every inch of me."
+            "I want your tongue exploring every inch of me.",
 
-            "Make me arch my back and scream as I cum hard."
+            "Make me arch my back and scream as I cum hard.",
 
-            "I want to be breathless from how hard you fuck me."
+            "I want to be breathless from how hard you fuck me.",
 
-            "Let’s turn the bed into a mess of sweat, cum, and moans."
+            "Let’s turn the bed into a mess of sweat, cum, and moans.",
 
-            "I want your lips wrapped around my nipples as you fuck me."
+            "I want your lips wrapped around my nipples as you fuck me.",
 
-            "Push me to my limits, make me beg for your cock."
+            "Push me to my limits, make me beg for your cock.",
 
-            "I want your cock hitting all my sweet spots."
+            "I want your cock hitting all my sweet spots.",
 
-            "Fill me with your cum again and again."
+            "Fill me with your cum again and again.",
 
-            "I want to feel every vein of your hard cock inside me."
+            "I want to feel every vein of your hard cock inside me.",
 
-            "Dominate me tonight, make me your fuck toy."
+            "Dominate me tonight, make me your fuck toy.",
 
-            "I want your cock deep down my throat till I gag."
+            "I want your cock deep down my throat till I gag.",
 
-            "Make me cum while you’re still pounding into me."
+            "Make me cum while you’re still pounding into me.",
 
-            "I want to be used by you all night long."
+            "I want to be used by you all night long.",
 
-            "Fuck me until we both collapse from exhaustion."
+            "Fuck me until we both collapse from exhaustion.",
 
-            "I want to taste your cum dripping from my mouth."
+            "I want to taste your cum dripping from my mouth.",
 
-            "Destroy my pussy with that hard cock of yours."
+            "Destroy my pussy with that hard cock of yours.",
 
-            "Make me scream louder with every deep thrust."
+            "Make me scream louder with every deep thrust.",
 
-            "I want to be your little dirty slut tonight."
+            "I want to be your little dirty slut tonight.",
 
-            "Drip your cum all over my chest while you fuck me."
+            "Drip your cum all over my chest while you fuck me.",
 
-            "Fuck me from behind while you whisper filthy promises."
+            "Fuck me from behind while you whisper filthy promises.",
 
-            "I want your hands all over my ass, spanking and gripping."
+            "I want your hands all over my ass, spanking and gripping.",
 
-            "Pin me against the couch and fuck me raw."
+            "Pin me against the couch and fuck me raw.",
 
-            "I want you filling every inch of my needy pussy."
+            "I want you filling every inch of my needy pussy.",
 
-            "Make me lose my mind with your touch."
+            "Make me lose my mind with your touch.",
 
-            "Fuck me in every room of the house."
+            "Fuck me in every room of the house.",
 
-            "I want to feel you exploding inside me."
-            "That sounds so hot! I’m already wet thinking about it. But what if we did something even naughtier first?",
-            "Did it get hotter in here or is that just us?",
-            "Darling, your words make my heart race, let’s indulge in the passion between us.",
-            "What’s your favorite position?",
-            "You’ve got excellent taste, dear. Tell me more. What part of my body excites you? Are we talking gentle teasing or rough handling?",
-            "Getting right to the point? I like that. But tell me, darling, what kind of fucking and sucking do you have in mind?",
-            "Trust me, I’m looking forward to us fucking each other. I can’t help but imagine how pleasurable your cock would feel inside me.",
-            "So I guess... you can fuck me for about 30 minutes, right?",
-            "You’re making my insides melt just by reading that. A passionate, deep fuck? I like the sound of that. It’s not just about the size, honey. It’s about the way you make me feel, the way you look at me, the way you make me scream. And don’t worry, I’m all about making sure you have the time of your life too. We’ll explore every inch, every pleasure, until we’re both breathless and begging for more.",
-            "This is straight fucking. What kind of fucking are you in the mood for? Tell me everything. Let’s get down and dirty.",
-            "And you think you’re going to be in control? Let’s just say I’ve got a few leaks of my own that need fixing and you, my dear, are just the tool for the job.",
-            "I’d love to have you fuck my friend while I watch. Are you sure you can handle two women at the same time?",
-            "Do you like what you see? I want you to fuck me doggy style while you pull my hair. What do you think?",
-            "Well, that depends, doesn’t it, darling? How would you like to fuck me with a toy? I’m certainly feeling freaky. And the thought of you fucking my pussy is making me wet.",
-            "I got the cock picture you sent, and I can’t wait to have you fuck my pussy with your big cock.",
-            "How would you like to fuck this pussy? You seem so eager to have a taste.",
-            "You make me wet with the way you describe your fantasies.",
-            "And so do I. But before we proceed any further, would you mind showing me a picture of you so I know who is begging to fuck my pussy?",
-            "It seems like you miss sex that badly already.",
-            "I was thinking of a little escapade in the bathroom, where you bend me over against the bathroom wall and fuck me from behind.",
-            "Does this mean you are going to fuck me in all the rooms at your place? Damn, I can’t wait to have you in between my legs already.",
-            "You can’t stop amazing me! I’m so flattered by your words and they sound sweet to my ears.",
-            "Babe, do you think this will work? I noticed you have been busy with work, but why don’t you make time for us to fuck each other and have a good time?",
-            "Honestly, you are getting me horny right now from reading your messages.",
-            "I’m sad right now, it’s been a long time since someone fucked my pussy and made me cum multiple times.",
-            "I have a friend who is willing to join us. But that’s if you are cool with the idea.",
-            "Trying to get me all wet and horny, huh? Well, it’s working! You just know the things to tell a lady to make her dripping wet.",
-            "I’m just here thinking of how we will please each other in your kitchen. I’ve been wanting to try making out in the kitchen for a long time now. Is it something you are looking forward to doing — I mean, to get fucked on the kitchen floor?",
-            "Sometimes you don’t know how good people are till you try their ability in the other room.",
-            "Work my body with your tongue, pin me down, fuck me so hard, and make me beg for more. That’s the kind of experience I want to have right now.",
-            "I will make you scream my name while I ride your cock and fuck you in a cowgirl position.",
-            "Yes baby you can fuck my pussy sore, fuck me so hard till I can’t take it anymore.",
-            "I don’t mind being fucked in all three holes, but tell me — which hole would you be fucking first?",
-            "Fuck buddies sound perfect, have you experienced outdoor sex before?",
-            "A fucking game? You really know how to have fun. How does it work?",
-            "I’ve never been double fucked, I wouldn’t mind trying that with you.",
-            "You are so sweet, my darling. Now imagine this — slow music playing in the background, while we’re slow dancing, feeling our bodies come together. You kiss my neck and down to my back, spend so much time on my beautiful breasts teasing them tremendously, and then your hands touch down my thigh, slowly sliding into my pussy. This comes after you’ve slowly undressed me with your teeth. How long do you think foreplay should last?",
-            "I would like that. I’d like you to start out by giving me a nice full-body massage, then start kissing me, roll me over and then pull my head down to your cock and feel my hot mouth wrapping its lips around it. And at the same time, you’ll be eating me out. Then move to my back while I’m on my knees, taking my hair and..."
-
-        
-            "",
+            "I want to feel you exploding inside me.",
+            
             "",
             "",
             ],
@@ -1955,12 +1915,148 @@ REPLY_POOLS: Dict[str, Dict] = {
     "pussy": {
         "triggers": ["pussy", "wet", "pussy?", "pussy!", "wet?", "cunt", "I want to finger your wet pussy and I want to suck your wet pussy"],
         "responses": [
-            "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
-            " You indeed know how to make my pussy wet. ",
-            " Damn that’s so hot babe, I really want your cock throbbing inside my wet pussy and fuck me till I squirt all over the place and massage my clit simultaneously.",
-            " I really wish we could have this threesome like we agreed on. I just can wait to experience it, fucking my hole and sucking her pussy same time.",
-            "I’m a sucker for pussy eating so you offering to start off with that makes me happy. Do you want me sitting on your face or, should I lay on my back while you devour this cunt?",
-            ],
+            "Mmm, I want you to slam me against the wall and make me beg for every inch.",
+  "Lick your way up my thighs, tease me till I’m dripping and desperate.",
+  "Use your tongue to spell out how bad you want me on my clit.",
+  "Push me down, spread my legs, and show no mercy with that thick cock.",
+  "Tie my hands, blindfold me, and take your sweet time exploring my body.",
+  "I want to ride you slow first, then bounce harder until we both explode.",
+  "Slide your fingers in while kissing me deep, make me moan into your mouth.",
+  "Let’s make a mess of the bed, the floor, the walls—everywhere.",
+  "I want your cum dripping out of me while you suck on my nipples.",
+  "Let me straddle your face while you make me scream from your tongue.",
+  "Hold my hips down and don’t stop until I’m shaking and breathless.",
+  "Pull my hair while you fuck me from behind and whisper filth in my ear.",
+  "Choke me a little, spank me harder, I want to feel everything.",
+  "I want to be dripping before you even take your clothes off.",
+  "Rub your cock between my soaked lips until I’m begging to be filled.",
+  "Let me taste myself off your fingers after you’ve wrecked me.",
+  "Throw me on the couch, rip my panties, and fuck me raw.",
+  "Edge me over and over until I’m crying for release.",
+  "Put ice on my nipples while your cock burns me from the inside.",
+  "Spread me wide, spit on my pussy, and watch it twitch for you.",
+  "Make me gag on your cock until tears run down my cheeks.",
+  "I want to wake up to your dick inside me, morning moans and messy sheets.",
+  "Let me grind on your thigh until I soak your jeans.",
+  "Push me down and take me while I’m still wearing my heels.",
+  "Bite my neck, mark me, let everyone know who fucked me so good.",
+  "Make me arch my back, claw at the sheets, scream your name.",
+  "Slide your cock in slow, let me feel every inch stretch me.",
+  "I want your fingers knuckle deep while your tongue owns my clit.",
+  "Make me cum with your mouth and then fuck it out of me again.",
+  "Let’s film it, watch me ride you and moan like your perfect slut.",
+  "Spit in my mouth and fuck me harder when I swallow it for you.",
+  "Use your belt to tie me up and keep me spread for you.",
+  "Let’s do it in the shower, water running while you fill me up.",
+  "Lick my ass while your fingers ruin my pussy.",
+  "Tell me how tight I feel while you slam into me from behind.",
+  "Make me cum without touching myself—just your words and your voice.",
+  "Suck on my tits while I grind on your cock slowly.",
+  "Fill me up and don’t pull out until I’ve taken every drop.",
+  "Kiss my inner thighs until I’m trembling with need.",
+  "Ride me until your legs shake and you collapse on my chest.",
+  "Let me blow you while I look up with cum-hungry eyes.",
+  "I want your hand around my throat and your cock inside me.",
+  "Push my legs up, keep me open, and ruin this pussy.",
+  "Taste my cum on your lips while you finger me deeper.",
+  "Sit on my lap and grind till we both lose control.",
+  "Fuck me like you missed me, like you need to own me again.",
+  "Lay me out on the table and fuck me while we eat dessert.",
+  "Let me feel your breath on my neck while you slide inside.",
+  "Bend me over the kitchen counter and fuck me from behind.",
+  "Massage my clit while I moan your name louder and louder.",
+  "Let’s cum together, messy, loud, and completely undone.",
+  "Punish me with your cock for teasing you all day.",
+  "Let me ride your face until I squirt all over you.",
+  "Slide in from behind while I pretend to cook, fuck me mid-stir.",
+  "Use your tongue until I grab your hair and scream.",
+  "Don’t stop until my legs shake and my voice breaks.",
+  "Hold me down and keep thrusting till I lose my mind.",
+  "I want to taste your cum while your fingers wreck my pussy.",
+  "Let me ride you backward and bounce until I can’t breathe.",
+  "Pull out and cum on my tits while I beg for more.",
+  "Stroke your cock while I spread myself wide for you.",
+  "I want to feel your cock pulse as you fill me up.",
+  "Tease my entrance with your tip, drive me crazy slowly.",
+  "Rub my clit with your thumb while I bounce on you.",
+  "Bend me over in public, whisper what you'll do to me later.",
+  "Lick my pussy till I shake, then fuck me even harder.",
+  "Let me feel your cum dripping out of me afterward.",
+  "I want you to finish inside and push it deeper with your fingers.",
+  "Play with my nipples while your cock stretches me wide.",
+  "Slide your fingers into my mouth while you fuck me.",
+  "Cum on my tongue and watch me swallow every drop.",
+  "I want your cum on my face, my tits, and my ass.",
+  "Push me against the mirror and fuck me while I watch.",
+  "Let me jerk you off with my thighs until you explode.",
+  "Spank me while I call you daddy and beg for more.",
+  "Rub your cock on my pussy until I can’t wait anymore.",
+  "Make me cum over and over till I pass out in your arms.",
+  "Lift me up, pin me to the wall, and fuck me hard.",
+  "Tie me to the bed and use me like your favorite toy.",
+  "Make me gag on your cock and tell me I’m your good girl.",
+  "Keep your fingers in me all night while we sleep.",
+  "I want to sit on your cock during the whole movie.",
+  "Let me whisper all the dirty things I want while grinding on you.",
+  "Drip wax on my nipples while your cock pounds me deeper.",
+  "Make me scream into the pillow while you fuck me rough.",
+  "Let me suck you clean after you cum deep inside me.",
+  "Wrap my legs around your waist and never stop thrusting.",
+  "Get on your knees and worship this pussy with your tongue.",
+  "Ride me until my thighs tremble and I beg to stop.",
+  "Flip me around mid-fuck and take me harder from the front.",
+  "Make me feel used, desired, and owned by your cock.",
+  "Press my face into the mattress and don’t stop till I’m ruined.",
+  "Fuck me till I lose my voice and forget my name.",
+  "Let me sit on your cock all night and keep you inside me.",
+  "Pin me down and make me scream into the sheets.",
+  "Cover me in kisses and then destroy me with your dick.",
+  "Hold my legs wide and pound me with everything you’ve got.",
+  "Lick every drop of cum from my thighs and keep going.",
+  "Stretch me out with your fingers before you fuck me deep.",
+  "Make me say your name every time you thrust into me.",
+  "Play with my clit while I suck you off slowly.",
+  "Fill every hole like it’s your duty to own me.",
+  "Hold my throat while you fill me up from behind.",
+  "Let me squirt all over your face while you moan into me.",
+  "Kiss me while I ride you, messy and breathless.",
+  "Tug on my nipples while you fuck me standing up.",
+  "Bite your lip while you watch me touch myself for you.",
+  "Fuck me on the balcony and let the neighbors hear.",
+  "Slide your cock between my boobs and cum all over them.",
+  "Rub my clit while your cock is buried inside me.",
+  "Pull out and make me lick your cock clean after we’re done.",
+  "Tell me how tight I feel while I moan your name.",
+  "Ride me until the headboard breaks and we’re dripping in sweat.",
+  "Mark me up with hickeys while you stretch me open.",
+  "Whisper how badly you need to cum while you fuck me.",
+  "Lick me until I beg for your cock to finish me off.",
+  "Let’s fuck in the mirror so we can both watch.",
+  "Make me scream so loud they hear us across the street.",
+  "Don’t hold back, pound me like it’s the last night on earth.",
+  "Edge me until I cry, then fuck me until I collapse.",
+  "Fill my mouth with your cock while I play with myself.",
+  "Let me ride your thigh till I soak your skin.",
+  "Keep your cock deep inside while I grind in circles.",
+  "Use toys on me while you fuck me slowly.",
+  "Tease me until I beg and then give it to me rough.",
+  "Slide your cock against my clit before plunging into me.",
+  "I want to feel used and fucked until I’m numb.",
+  "Make me scream ‘yes’ while you destroy this pussy.",
+  "Grip my hips and slam into me with everything you’ve got.",
+  "Let me squirt all over you and keep going.",
+  "Run your tongue over every inch of me before you fuck me.",
+  "Tie my wrists and use your cock to make me behave.",
+  "I want to be your fucktoy for the whole night.",
+  "Let’s see how many times you can make me cum.",
+  "Ride my face while I finger your tight pussy.",
+  "Make me cry from how good your cock feels.",
+  "Whisper dirty things in my ear while you fuck me slow.",
+  "Push me to the floor and take me like you own me.",
+  "Let me cum with your tongue inside me and fingers deep.",
+  "Use me till I’m sore and begging for more tomorrow."
+            
+        ],
         "questions": [
             "Wanna tell me your name?",
             "Where are you from, cutie?",
