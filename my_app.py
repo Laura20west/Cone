@@ -25,173 +25,104 @@ REPLY_POOLS: Dict[str, Dict] = {
     "fuck": {
         "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck soon", "I am ready to fuck you, what about you, are you ready to fuck me", "fuck", "fuckbuddies"],
         "responses": [
-        "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
-        "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
-        "I would love to feel your tongue licking and rubbing my clitoral area until I orgasm all over your face.",
-        "I like a man who gets straight to the point. I want you to suck my breast real good and after you’re done, I want you to slide your cock in me and fuck me till I scream your name.",
-        "My goodness, that’s exactly what my body wants right now. Just thinking about sitting on top of you and riding you makes me wet.",
-        "  I can feel my lips curling into the best smirk, imagining your hands gripping onto mine firmly while you steady me, legs stretched wide open for maximum penetration and giving me a good fuck.",
-        "Honey, I can imagine us in a room kissing, and sucking each other. I can imagine you eating my pussy and sucking my breast, while I suck your cock till you moan. And you put your cock in my and fuck my brain out.",
-        "You’re certainly a straight shooter, aren’t you? I like that about you.",
-        "Yes, my tongue would eagerly suck the sweet spot of your cock before you fuck me.",
-        " I will suck a cock until you cum in any mouth.",
-        "That sounds so hot! I’m already wet thinking about it. But what if we did something even naughtier first?",
-        "Did it get hotter in here or is that just us?",
-        "That sounds so fucking hot, l am already dripping wet just thinking about it.",
-        " I hope you fuck me hard from behind I will suck your cock until you cum in my mouth. Squirt your hot load into my mouth until I finish swallowing every single drop of your sweet nectar.",
-        " Yes, honey. I would love that. I would like you to fuck me in the missionary position while you suck my breast.",
-        "Fuck! That was intense. Imagining it already gets my pussy so wet.",
-        "I really need someone who’s gonna fuck my pussy so hard with his menacing dick that all my sweet nectars are extracted, and he can fill all my holes with his thick, warm cum.",
-        "One thing I wouldn’t like is for you to come off as rusty. I’ve had me problems with some of the men I’ve met here where they claim to know how to fuck well, but then in the end all they are is a flop.",
-        "Well, I definitely wish for you to fuck me so bad, but then, it wouldn’t be able to happen just today. I think we should really plan the meet, so it happens to be an unforgettable experience. ",
-        "That’s fucking thrilling.",
-        " Shaved pussies are definitely the best to fuck. I love that easy greasing sound it makes, that’s when you know good sex.",
-        "I want you to fuck me in the cowgirl position.",
-        " I’m so a fan of fucking in public, in the pantry, on the kitchen table, out in the beach, wherever.",
-        "The fuck I give is sweeter than you’ll ever receive. My A game would surely beat yours hands down.",
-        "You seem eager and prepared to fuck me. Not bad.",
-        "I like the way that came out of your mouth.",
-        "You’ve definitely caught my attention.",
-        "Hearing this just made me excited.",
-        "You’re making me blush so hard right now. Well, I’m so in for fucking you too.",
-        "Darling, that sounds like music to my ears.",
-        "That sounds so erotic and insane! Honestly, I’m here because I need a man who would fuck me till my toes curl.",
-        "You must be the straightforward type, right? I like such men",
-        "Sweetie, I’m dead serious about us fucking.",
-        "Yup! I’m open to having a threesome with you.",
-        "Yes baby! Fuck me please! I’ve been feeling weird down there since I read your text.",
-        "Baby, you sound so naughty right now. I really like that.",
-        "Of course honey, I’m all yours. You can do anything you want without holding back.",
-        "Yes I hope you won’t get tired easily,",
-        "You can spend the night licking my clitoris and drinking gallons of cum. I love you to fuck me each  style listed.",
-        "Yes please do everything you want, suck my clit until I squirt everywhere and then climb on top of me. Fuck me long enough straight  till sleep.",
-        "That sounds really exciting. It has been a long time since I experienced something like that.",
-        "Darling, your words make my heart race, let indulge in the passion between us.",
-        "Thinking about how you are going to fuck my mind out, make my pussy wet.",
-        "You must have a lot of strength for you to fuck me many rounds a day. ",
-        " What’s your favorite position?",
-        "Babe in as much as I want you to fuck me right now,",
-        " Damn that’s so hot babe, I really want your cock throbbing inside my wet pussy and fuck me till I squirt all over the place and massage my clit simultaneously.",
-        "How about we try fucking in the garden? There’s something thrilling about giving nature a show.",
-        "The last time I had sex wasn’t as good as I thought it would be, he didn’t fuck me real good as I expected.",
-        "You know, I’ve had lots of men come here and tell me how hard they want to fuck my both holes, and how they’d make me beg for more.",
-        " I really wish we could have this threesome like we agreed on. I just can wait to experience it, fucking my hole and sucking her pussy same time.",
-        " Do you think we can fuck halfway the trip? We can pull over and have the best fuck of our lives.",
-        " Missionary style sounds perfect honey. There’s something beautiful about staring into each others’ eyes and having the best fuck of our lives.",
-        "How was your experience with the last woman you fucked?",
-        " I am also looking for a fuck buddy too.",
-        "You’ve got excellent taste, dear. Tell me more. What part of my body excites you? Are we talking gentle teasing or rough handling?",
-        "Getting right to the point? I like that. But tell me, darling, what kind of fucking and sucking do you have in mind?",
-        "Trust me I’m looking forward to us fucking each other. I can’t help but imagine how pleasurable your cock would feel inside me.",
-        " So I guess. You can fuck me for about 30 minutes, right?",
-        "You’re making my insides melt just by reading that. A passionate, deep fuck? I like the sound of that. It’s not just about the size, honey.  It’s about the way you make me feel, the way you look at me  the way you make me scream.   And don’t worry, I’m all about making sure you have the time of your life too. We’ll explore every inch, every pleasure, until we’re both breathless and begging for more.",
-        "This is straight fucking. What kind of fucking are you in the mood for? Tell me everything. Let’s get down and dirty.",
-        "And you think you’re going to be in control?  Let’s just say I’ve got a few leaks of my own that need fixing and you, my dear, are just the tool for the job.",
-        "I’d love to have you fuck my friend while I  watch. Are you sure you can handle two women at the same time?",
-        " Do you like what you see? I want you to fuck me doggy style while you pull my hair. What do you think?",
-        "Well, that depends, doesn’t it, darling? How would you like to fuck me with a toy?  I’m certainly feeling freaky. And the thought of you fucking my pussy Is making me wet.",
-        "I got the cock picture you sent, and I can’t wait to have you fuck my pussy with your big cock.",
-        "How would you like to fuck this pussy? You seem so eager to have a taste.",
-        "You make me wet with the way you describe your fantasies.",
-        "And so do l. But before we proceed any further, would you mind showing me a picture of you so know who is begging to fuck my pussy?",
-        "It seems like you miss sex that badly already.",
-        "I was thinking of a little escapade in the bathroom, where you bend me over against the bathroom wall and fuck me from behind.",
-        "Does this mean you are going to fuck me in all the rooms at your place? Damn, I can’t wait to have you in between my legs already.",
-        "You can’t stop amazing me! I’m so flattered by your words and they sound sweet to my ear⁠.",
-        "Babe, do you think this will work? I noticed you have been busy with work, but why don’t you make time for us to fuck each other and have a good time?",
-        "Honestly, you are getting me horny right now from reading your messages.",
-        "I’m sad right now, it’s been a long time since someone fuck my pussy and make me cum multiple times.",
-        "Fuck, that’s sounds amazing! Involving your wife in our plan seems like a good idea. Do you think she will be cool with all of this? I don’t want to be the reason you have problems with her, though.",
-        "I have a friend who is willing to join us. But that’s if you are cool with the idea.",
-        "Trying to get me all wet and horny, huh? Well, it’s working! You just know the things to tell a lady to make her dripping wet.",
-        "I’m just here thinking of how we will please each other in your kitchen. I have been wanting to try making out in the kitchen for a long time now, is it something you are looking forward to doing, I mean to get fucked on the kitchen floor?",
-        "Sometimes you don’t know how good people are till you try their ability in the other room.",
-        "Work my body with your tongue, pin me down, fuck me so hard, and make me beg for more. That’s the kind of experience I want to have right now.",
-        "I will make you scream my name while I ride your cock and fuck you in a cowgirl position.",
-        "Yes baby you can fuck my pussy sore, fuck me so hard till I can’t take it anymore.",
-        "I don’t mind being fucked in all three holes, but tell me which hole would you be fucking first?",
-        "Fuck buddies sounds perfect, have you experienced outdoor sex before?",
-        "A fucking game? You really know how to have fun. How does it work?",
-        "I’ve never been double fucked, I won’t mind trying that with you.",
-        "You are so sweet my darling.  Now imagine this slow music  playing in the background, while we’re slow dancing feeling our bodies come together. You kiss my neck and down to my back and spend so much time on beautiful breasts teasing them tremendously and then your hands touching down my thigh slowly sliding into my pussy and this comes after you’ve slowly undressed me with your teeth. How long do you think foreplay should last?",
-        "I would like that.  I would like you to start out by giving me a nice full body massage and then start kissing me, rolling me over and then pulling my head down to your cock and feeling my hot mouth wrapping its lips around your cock. And at the same time you will be eating me out. You can then move to my back while I’m on my knees, taking my hair and gently pulling it back as you stick the head of your cock very slowly in and out of my pussy, feeling my pussy tightening around your cock.",
-        "Hey darlin, loyalty and love sound perfect. I’d still fuck you silly tho.",
-        "Oh babe, a fuck buddy who’s real and loyal is gold. I’d keep it nasty and true. What you looking for most in a friend like that?",
-        "Hey cutie, I promise to ride and fuck you hard and kiss you sweet. What you promising me in return, huh?",
-        " I’m down for a full house fuckfest, sweetie. Bed’s cozy, but what room you wanna start in to fuck me and get me screaming?",
-        "Okay, baby,  slow and deep sounds perfect, you know how to get me going. Hurry back from your stuff so you can fuck me hard, what’s got you tied up out there?",
-        "I love the enthusiasm, sweetheart. What’s the first thing that comes to mind when you think about fucking me?",
-        "I can tell you’re craving some intense fuck. What’s it about a woman’s touch that you miss so much?",      
-        "I love the sound of that. What’s the most adventurous thing you’d want to do with me when you fuck me in that naked state?",
-        "I’m always down for a good fuck session, sweetheart. What’s the wildest thing you’d want to do to me in bed?",
-        "I’m more than ready for you to come over and fuck me hard, sweetheart. What’s the most naughty thing you’d like to do to me as soon as possible?",
-        "I’m so ready for you to fuck me too sweetheart. What’s the first thing you want to do to me when we’re together?",
-        "I’m thinking about it too, cause you better be ready to fuck me hard.",
-        "You think you can keep up with me? Fuck, I doubt it. I’m a force to be reckoned with, sweetheart.",
-        "Who needs romance when you can just fuck all night? I mean, flowers and chocolates are nice, but they’re not going to get me off, honey. What gets me off is a good, hard fuck.",
-        "Want to know what I’m craving? A good, hard fuck. I’m not talking about a little snack, honey.",
-        "I’m not just a sweet girl, I’m a fuck-you-hard kind of girl.  I’m not just talking about a little romance, sweetheart. I’m talking about a full-on, no-holds-barred, can’t-get-enough kind of fucking.",
-        "I’m not just a one-night stand, I’m a fuck-me-all-night kind of girl.  I’m not talking about a little fling, sweetheart.",
-        "Do you want to know what I’m addicted to? Fucking, of course. I mean, what’s better than that, honey? A good, hard fuck is the ultimate high, and I’m addicted to it.",
-        "You’re looking for a fuck buddy? Well, you’re in luck, darling. I’m always up for a good time.",
-        "I’ll show you what a real fuck looks like, and you’ll be begging for more.",
-        "What do I want from you? I want to fuck, and I want to fuck hard. Don’t disappoint me, sweetheart.",
-        "I need you to fuck me like you mean it, like you can’t get enough of me, like you want to devour me.",
-        "Do you know how to fuck a girl senseless? I hope so, cause I think that’s what I need.",
-        "I want to get fucked like a slut, like a dirty little whore, like a girl who can’t get enough of your hard cock.",
-        "All I can think about is getting fucked by you to the extent that I won’t be able to take it anymore.",
-        "I like how confident you are, how about you spread my legs over your shoulders and fuck me till I cum?",
-        "I’d love that too, but let not get ahead of ourselves, the idea of you fucking my throat is something I look forward to, what are you doing right now?",
-        "I’m all about fun sweetheart, give me details on how you want to fuck me and leave me begging for more?",
-        "I’m willing to help you in return for a good fuck session, deal?",
-        "That sounds interesting, fucking me till I can’t walk, how do you plan on doing that?",
-        "Your willingness is something I find interesting, can’t wait to have this pussy fucked by your hard cock.",
-        "You’re diving right into the fun part, naughty boy, I like the idea of fucking me on the balcony.",
-        
-        "That sounds so hot! I’m already wet thinking about it. But what if we did something even naughtier first?",
-        "Did it get hotter in here or is that just us?",
-        "Darling, your words make my heart race, let’s indulge in the passion between us.",
-        "What’s your favorite position?",
-        "You’ve got excellent taste, dear. Tell me more. What part of my body excites you? Are we talking gentle teasing or rough handling?",
-        "Getting right to the point? I like that. But tell me, darling, what kind of fucking and sucking do you have in mind?",
-        "Trust me, I’m looking forward to us fucking each other. I can’t help but imagine how pleasurable your cock would feel inside me.",
-        "So I guess... you can fuck me for about 30 minutes, right?",
-        "You’re making my insides melt just by reading that. A passionate, deep fuck? I like the sound of that. It’s not just about the size, honey. It’s about the way you make me feel, the way you look at me, the way you make me scream. And don’t worry, I’m all about making sure you have the time of your life too. We’ll explore every inch, every pleasure, until we’re both breathless and begging for more.",
-        "This is straight fucking. What kind of fucking are you in the mood for? Tell me everything. Let’s get down and dirty.",
-        "And you think you’re going to be in control? Let’s just say I’ve got a few leaks of my own that need fixing and you, my dear, are just the tool for the job.",
-        "I’d love to have you fuck my friend while I watch. Are you sure you can handle two women at the same time?",
-        "Do you like what you see? I want you to fuck me doggy style while you pull my hair. What do you think?",
-        "Well, that depends, doesn’t it, darling? How would you like to fuck me with a toy? I’m certainly feeling freaky. And the thought of you fucking my pussy is making me wet.",
-        "I got the cock picture you sent, and I can’t wait to have you fuck my pussy with your big cock.",
-        "How would you like to fuck this pussy? You seem so eager to have a taste.",
-        "You make me wet with the way you describe your fantasies.",
-        "And so do I. But before we proceed any further, would you mind showing me a picture of you so I know who is begging to fuck my pussy?",
-        "It seems like you miss sex that badly already.",
-        "I was thinking of a little escapade in the bathroom, where you bend me over against the bathroom wall and fuck me from behind.",
-        "Does this mean you are going to fuck me in all the rooms at your place? Damn, I can’t wait to have you in between my legs already.",
-        "You can’t stop amazing me! I’m so flattered by your words and they sound sweet to my ears.",
-        "Babe, do you think this will work? I noticed you have been busy with work, but why don’t you make time for us to fuck each other and have a good time?",
-        "Honestly, you are getting me horny right now from reading your messages.",
-        "I’m sad right now, it’s been a long time since someone fucked my pussy and made me cum multiple times.",
-        "I have a friend who is willing to join us. But that’s if you are cool with the idea.",
-        "Trying to get me all wet and horny, huh? Well, it’s working! You just know the things to tell a lady to make her dripping wet.",
-        "I’m just here thinking of how we will please each other in your kitchen. I’ve been wanting to try making out in the kitchen for a long time now. Is it something you are looking forward to doing — I mean, to get fucked on the kitchen floor?",
-        "Sometimes you don’t know how good people are till you try their ability in the other room.",
-        "Work my body with your tongue, pin me down, fuck me so hard, and make me beg for more. That’s the kind of experience I want to have right now.",
-        "I will make you scream my name while I ride your cock and fuck you in a cowgirl position.",
-        "Yes baby you can fuck my pussy sore, fuck me so hard till I can’t take it anymore.",
-        "I don’t mind being fucked in all three holes, but tell me — which hole would you be fucking first?",
-        "Fuck buddies sound perfect, have you experienced outdoor sex before?",
-        "A fucking game? You really know how to have fun. How does it work?",
-        "I’ve never been double fucked, I wouldn’t mind trying that with you.",
-        "You are so sweet, my darling. Now imagine this — slow music playing in the background, while we’re slow dancing, feeling our bodies come together. You kiss my neck and down to my back, spend so much time on my beautiful breasts teasing them tremendously, and then your hands touch down my thigh, slowly sliding into my pussy. This comes after you’ve slowly undressed me with your teeth. How long do you think foreplay should last?",
-        "I would like that. I’d like you to start out by giving me a nice full-body massage, then start kissing me, roll me over and then pull my head down to your cock and feel my hot mouth wrapping its lips around it. And at the same time, you’ll be eating me out. Then move to my back while I’m on my knees, taking my hair and..."
-
-        "",
-        "",
-        "",
-        "",
-        "",
+                "I want to feel your tongue trace every inch of my body before you slide into me.",
+                "Just thinking about your hands grabbing my hips while you fuck me from behinad has me dripping.",
+                "I want to ride your cock slow, then fast, until I collapse on your chest, breathless.",
+                "Kiss down my spine, part my thighs, and make me forget how to speak.",
+                "Slide into me while I moan your name, needing every inch of you deeper.",
+                "I need you to pin me down and fuck me so hard I forget my own name.",
+                "Let me straddle your lap and grind against you while I whisper how much I need you.",
+                "I want to feel your cock twitch as I take you deep into my throat.",
+                "Imagine me tied up, helpless, and dripping for you to take full control.",
+                "Stroke my pussy with your fingers while you kiss me slow and deep.",
+                "I want to be face down, ass up, and begging for your cock.",
+                "Whisper all the dirty things you want to do to me while you pull my panties aside.",
+                "Tease me under the table with your fingers until I can't sit still.",
+                "Let me slide down onto you, inch by inch, and feel your breath catch.",
+                "Taste my pussy until I’m moaning so loud the neighbors know your name.",
+                "Fuck me like I’ve been a bad girl and you’re ready to punish me.",
+                "Grip my throat lightly while you thrust deep into me and watch me fall apart.",
+                "I want to be bent over, hair in your hand, and your cock buried deep.",
+                "Let’s make the bed creak while I scream your name over and over.",
+                "Tie my wrists and take me however you want—I’m all yours tonight.",
+                "Spank me until I’m gasping, then kiss me like you missed me.",
+                "Ride my tongue while I grab your thighs and make you cum on my face.",
+                "Hold my legs apart and fuck me slow, watching my eyes roll back.",
+                "Let me lick and suck every inch of your cock until you lose control.",
+                "Slide two fingers into me while you whisper how badly you want me.",
+                "I want to feel your cum dripping out of me after you’ve filled me up.",
+                "Sit on my face and grind until you cum, baby—I can take it.",
+                "Rub my clit while you fuck me hard from behind.",
+                "Let me moan into your ear while I ride you until you explode.",
+                "I want to be your filthy little secret tonight.",
+                "Let’s fuck in the shower, slippery and soaking wet, moaning into each other’s mouths.",
+                "I want to gag on your cock while you grab my hair and fuck my throat.",
+                "Leave marks on my thighs so I remember how rough you were.",
+                "Lick me while I tug your hair and cry out your name.",
+                "Throw me on the bed and take me until I’m shaking.",
+                "I want to feel your breath on my neck as you push inside me.",
+                "Let me taste you, slow and deep, until you can’t take it anymore.",
+                "Make me cum with just your mouth—no hands, just lips and tongue.",
+                "Slide behind me in bed and wake me up with your cock inside me.",
+                "Tease me in public, whispering filthy things while your hand travels between my legs.",
+                "Bite my inner thighs and spread me open before fucking me senseless.",
+                "Let me ride your thigh while you kiss my neck and tell me I’m yours.",
+                "Make me cum with your fingers while I suck your cock.",
+                "Let’s fuck in front of the mirror so I can watch myself take you.",
+                "I want to straddle your face while you tongue-fuck my pussy.",
+                "Push me against the wall and take me like you can’t wait another second.",
+                "Slide your cock between my tits while I look up at you, begging.",
+                "Lick your cum off my lips and tell me I’m your dirty girl.",
+                "Take me from behind while I arch my back and beg for more.",
+                "Bend me over the kitchen counter and fuck me while I moan into the granite.",
+                "Rub your cock against my clit until I’m soaking wet and ready.",
+                "I want you to cum in my mouth and make me swallow every drop.",
+                "Make love to me slow and deep, then flip me over and fuck me hard.",
+                "Slide your hand between my thighs and tell me how wet I am for you.",
+                "Wrap my legs around your waist and fuck me until I scream.",
+                "Grip my ass and pull me closer while you bury yourself inside me.",
+                "I want you to edge me all night until I’m begging to cum.",
+                "Press your cock between my cheeks and make me your anal slut.",
+                "Lay me on my stomach and slide inside me slow, inch by inch.",
+                "I want to cum with your cock deep inside me, trembling in your arms.",
+                "Lick every drop of my arousal off your fingers like you crave me.",
+                "Tell me what a good girl I am while you fill me up.",
+                "Let’s make a mess on the sheets—I want to be dripping when we’re done.",
+                "Choke me gently and fuck me hard—I want to feel everything.",
+                "Pull my panties aside and slide into me while I giggle and moan.",
+                "Let’s make a video of me sucking your cock while you tell me how filthy I am.",
+                "Rub your cock along my wet folds until I’m trembling and needy.",
+                "I want to sit on your cock and grind slowly while you groan in pleasure.",
+                "Slap my ass and tell me I belong to you.",
+                "Make me feel every inch of you stretching me wide open.",
+                "Grab my ankles and fuck me deep while I moan like a slut.",
+                "Let’s fuck on the balcony—moaning into the night air.",
+                "Cover my mouth while you fuck me hard—I can’t keep quiet for long.",
+                "Ride me hard, baby—I want to feel that cock bruise my insides.",
+                "I want to be dripping on your cock before you even slide in.",
+                "Taste how sweet I am before you bury your cock in my pussy.",
+                "Let’s try every room in the house—I want you to take me everywhere.",
+                "Fuck me so good I forget where I am.",
+                "Push me against the wall and lift my leg up—take me right there.",
+                "Give me your cock—I want to feel it down my throat and in my pussy.",
+                "Rub my clit while I’m bouncing on your dick.",
+                "I want to hear you moan while I swallow you whole.",
+                "Tell me how wet I am while you play with me under the sheets.",
+                "Push your cock deep into me while I scream your name.",
+                "Let’s go all night until I can’t walk straight.",
+                "Hold my wrists down and fuck me hard—I want to feel owned.",
+                "Kiss my neck while you slide inside me slowly, teasing every nerve.",
+                "I want to feel your cock throb while I milk every last drop from you.",
+                "Let’s cum together, grinding and shaking until we collapse.",
+                "Whisper what you want to do to me while your fingers tease my clit.",
+                "Slide inside my tight pussy and don’t stop until I beg.",
+                "Let me lick your cum off my lips while I moan your name.",
+                "Fuck me against the wall while I dig my nails into your back.",
+                "Let me ride your cock until you’re begging me to stop.",
+                "Bury your face in my pussy and make me scream with pleasure.",
+                "Stroke your cock while I touch myself and moan your name.",
+                "Push your cock deep into my throat while I gag for more.",
+                "Fuck me on the floor, the couch, the bed—I want it all tonight."
         ],
 
     "questions": [
@@ -419,8 +350,57 @@ REPLY_POOLS: Dict[str, Dict] = {
     "morning": {
         "triggers": ["Can we have morning sex", "do you like morning sex"],
         "responses": [
-            "I am very much into early morning love. Nothing feels better than to wake up by a tongue licking my clitoral area and a morning wood fucking me afterwards in a doggy position.",
-            "What do you think about fucking first thing in the morning? ",
+                "There’s something so hot about waking up to your hands already on my body, ready to claim me.",
+                "I want your morning wood pressed against me before I even open my eyes.",
+                "Wake me up by pulling my panties down and sliding into me from behind.",
+                "Early morning kisses that lead to slow, deep thrusts are the best kind of alarm.",
+                "Let’s start the day with your cock inside me and my moans echoing through the room.",
+                "I love the feeling of your hard cock against my bare skin first thing in the morning.",
+                "Nothing turns me on more than being woken up by your tongue between my thighs.",
+                "Slide into me while I’m still half asleep—I want to feel you take me slowly.",
+                "I want to ride your morning wood with messy hair and sleepy eyes.",
+                "Your hands gripping my hips as you fuck me awake is my kind of routine.",
+                "Start my day with your lips on my clit and your cock filling me after.",
+                "Let’s skip the snooze button and fuck until we’re both wide awake.",
+                "Morning sex while the sun hits our skin just right—it’s the best way to rise and shine.",
+                "I love when you wake me up with kisses on my neck and hard dick nudging my entrance.",
+                "You on top of me in the morning, sleepy and horny—that’s my favorite kind of intimacy.",
+                "Push inside me before I even say good morning—I’ll thank you with my moans.",
+                "There’s nothing like starting the day with your cock buried deep in me.",
+                "Let’s make the morning sheets messy before breakfast.",
+                "Wake me up with your mouth on me and your fingers teasing my entrance.",
+                "I want to taste your cum before brushing my teeth—nothing’s hotter than that.",
+                "Slide between my legs and take me while I’m still dreaming about you.",
+                "Pull me close and fuck me slow while the morning light hits your body.",
+                "My perfect morning is your hand on my throat and your cock inside me.",
+                "I love waking up to your hard cock rubbing between my folds.",
+                "Morning sex makes everything better—especially when you finish deep inside me.",
+                "Roll me over and take me while the covers are still wrapped around us.",
+                "I want to be your breakfast—lick me until I’m dripping down your chin.",
+                "My pussy is always warm and wet for you in the mornings.",
+                "No coffee needed if I wake up to your lips on my nipples and your hands sliding down.",
+                "Let me feel your morning heat inside me while I whimper into the pillow.",
+                "Slide your cock in from behind and pull me back against you—good morning, baby.",
+                "Nothing beats a sleepy fuck that turns into a messy orgasm.",
+                "Wake me up by rubbing your cock against my clit until I’m begging for more.",
+                "The only thing I want first thing in the morning is to be filled up by you.",
+                "Your cock is the only thing I want stretching me before sunrise.",
+                "Let’s stay in bed and fuck slow all morning long.",
+                "Lick me while I’m half-asleep, then flip me over and fuck me until I’m gasping.",
+                "I love that early morning pressure of your cock pushing inside me slowly.",
+                "Start the day with a few moans and a deep pounding—that’s my favorite morning routine.",
+                "Morning quickies that leave me dripping and smiling all day.",
+                "Slide between my thighs before I even realize I’m wet for you.",
+                "I want to suck your morning wood while you tug my hair and moan.",
+                "The way you fuck me in the morning makes me want you again by lunch.",
+                "Let me lay on my stomach and feel your cock fill me up before I even open my eyes.",
+                "I want you to cum in me while the birds are still chirping outside.",
+                "Your cock belongs inside me before we even brush our teeth.",
+                "I crave the feeling of your hands spreading me open first thing in the morning.",
+                "Let’s make love slowly while wrapped in warm sheets and each other’s heat.",
+                "The way your morning voice sounds while you're inside me—it drives me crazy.",
+                "Start the day by pounding me into the mattress while I bite the pillow.",
+                "Waking up to your cock hard and ready for me is the sexiest thing ever."
 
         ],
     "questions": [
@@ -649,97 +629,216 @@ REPLY_POOLS: Dict[str, Dict] = {
     "cock": {
         "triggers": ["cock", "dick", "big cock", "long cock", "do you like my cock", "can you handle my long big cock, can you suck my big cock"],
         "responses": [
-        "I like a big cock in my tight pussy, maybe my other holes too.",
-        "That’s a big cock you have there, the sight of it has got my pussy dripping wet.",
-        "Yes baby, give that cock a gentle stroke and a light squeeze on the tip baby, how do you feel wanking with my picture?",
-        "Thank you for that picture, you cock is getting me messy, I want to grab it and give you the best tit-fuck you will ever have.",
-        "It’s been a while I had a cock in this tight pussy, how about you?",
-        "That’s nice, but I would rather have your cock for lunch, maybe dinner too.",
-        "I like a cock with just a little hair around. How would you like me to pull those hairs while teasing your cock until you’re begging to fuck me?",
-        "Never had a cock that big, honey. How big are we talking?",
-        "Damn, you got me all hot just thinking about that. How long are you planning to tease me with that tongue before you slide that cock of yours in deep?",
-        "I’ll hit you up when I’m free, sweetheart. What are you planning to do with me when I do, fuck me with that big cock of yours?",
-        "I want you to fuck me with your cock and make you feel so damn good, baby.",
-        "I can imagine  your cock throbbing right now, how hard is it pushing at your pants, do you mind sending me a pic of that rock hard cock?",
-        "Damn, you’re already making me wet just talking like that. Can you handle me squirming and moaning under you with your cock after I cum that many times?",
-        "You’re going all out, huh? Sounds like you’d worship every inch of me and fuck me hard with your cock. Where are you starting first?",
-        "I’m always ready for a hard cock like yours, baby. When are you gonna give it to me?",
-        "I’d love letting your hands and tongue explore every bit of me with your cock finishing the job.",
-        "No worries, I get it, work can be a bitch. Respect’s hot, and I’d love those hands and that cock inside me.",
-        "I love the way you talk, sweetheart. What do you think it would take with your cock to get me to the point where I’d scream your name?",
-        "Picture yourself enjoying my body, stimulating my nipples touching my  sexy, hot ass and you slowly make me explode with massive orgasm and right after you’re done, you’ll insert your cock in my pussy, throbbing and hitting the right spot and then you will explode right in my Gspot. How does that sound to you?",
-        "How about I make you climax while sucking your cock?  You like being rode and I also like to ride a cock.",
-        "You know just how to set the mood, sweetheart. I see you want to fuck all my holes.",
-        "What do you think of this hot pussy? Don’t you want to put your thick cock inside and fuck it till you explode?",
-        "I’m horny and want to lick your clean shaved cock until you cum in my mouth. Then I’ll swallow all your sweet cum.  After that you will fuck me until you cum again.",
-        "I want you to lick, suck and nibble on my pussy and clit while I’m sucking your cock and we both cum in each other’s mouths.",
-        "Here’s a picture of my pussy. Now imagine your cock going in and out of it, making me scream your name.",
-        "I love the sound of that, dear. It makes me want to suck your cock till you explode all over my face.",
-        "I just received the picture you sent, honey. You look so good and you have a nice cock.",
-        "That length sounds like a good size to me. I’m sure that it would feel amazing inside of me.",
-        "Honestly, you have a juicy looking cock down there. How long has it been seen you last used this beast?",
-        "Honey, this is so huge and thick. Truly, I like it. What do you think about me using your cock as a dildo? I promise not to break it.",
-        "Baby, I’m so horny I can barely type! I have this fantasy of you finger fucking and eating me out until I cum 3 times before sliding your thick and yummy cock in my slippery pussy. What do you think?",
-        "I’ll be real honest with you, that’s the best looking dick I’ve seen in a long time.",
-        "Good inches of thick, furry cock sounds delicious to me. Have you ever had a woman beg you to let her suck on that impressive package?",
-        "My king, your cock looks so veiny and perfect for me! You shouldn’t be bothered about your size.",
-        "Damn! Looking at this terrifying cock of yours, I think I hit the jackpot. Do you happen to know what size you got?",
-        "I sure hope you are ready for this adventure. You have an amazing cock and I want to play with it. How many inches is your cock darling?",
-        "Your cock looks huge and amazing and it makes my pussy wet just thinking about it between my thighs. How do you think we should go about this?",
-        "I think we can start with your cock throbbing inside my pussy cat and I will cuddle and go again. How many times do you think you can fuck me a night?",
-        "Do you think you can make me squirt a couple of times using just your cock and tongue and how good is your tongue action?",
-        "I hope your cock will fit it perfectly well. It’s been a long time since I’ve had such a huge cock and someone to tease me in such a way. What else do you have in mind?",
-        "It’s rare to see someone who has the stamina to fuck me and give me multiple orgasms. When do you think your cock is ready for my honey hole?",
-        "What else will you do to me aside from sliding your cock inside my pussy? Do you want me to dominate you and take charge?",
-        "I want to scream and moan loudly while you pound me, ravage and wild; I like it wild and rough. You won’t mind if I swallow juice from your cock?",
-        "I would also want my hole to be filled with your huge cock, dripping with your cum. My pussy is so tight and wet, would your cock reach my G spot?",
-        "You are making me so hot right now, thinking about how you are going to please with the length of your cock. Would you also like a bit of foreplay before sliding it in?",
-        "It’s not about the size of your cock,  but how good you are with it. What position will you start with?",
-        "I love the idea of your cock buried in my pussy. I can’t wait to have you babe. Will you also slide it in my ass?",
-        "Hope your cock has insurance because my ass will surely break it.",
-        " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
-        " Once, I had two dicks fuck me simultaneously. One dick in my mouth, the other in my pussy. The pounding was one I look forward to experiencing again.",
-        "Now you’re speaking my language. The thought of you pounding into me from behind has me dripping wet already. I can practically feel your thick and long cock stretching my pussy open.",
-        "So after spreading my thighs and sliding your dick to fuck me so good.",
-        " The size doesn’t matter that much. Just know how to use your cock and fuck me",
-        " Damn that’s so hot babe, I really want your cock throbbing inside my wet pussy and fuck me till I squirt all over the place and massage my clit simultaneously.",
-        "Trust me I’m looking forward to us fucking each other. I can’t help but imagine how pleasurable your cock would feel inside me.",
-        "Never had a cock that big, honey. How big are we talking? You got something impressive to show me?",
-        "I want you to fuck me with your cock and make feel so damn good, baby. What’s the hottest thing I could do to get you going?",
-        "I’ll hit you up when I’m free, sweetheart. What you planning to do with me when I do, fuck me with that big cock of yours?",
-        "You’re going all out, huh? Sounds like you’d worship every inch of me and fuck me hard with your cock. Where you starting first?",
-        "I’m always ready for a hard cock like yours, baby. When are you going to give it to me?",
-        "No worries, I get it, work can be a bitch. Respect’s hot, and I’d love those hands and that cock inside me.",
-        "I love the way you talk, sweetheart. What do you think it would take with your cock to get me to the point where I’d scream your name?",
-        "I’m not sure about the slow 69er, sounds like it could be a bit of a tease. How do you plan on keeping me satisfied during that part, with your cock or tongue?",
-        "I love a man who knows how to take control with his cock. What’s the wildest thing you’re craving right now?",
-        "I love the way you think, sweetheart. What makes you think I’d be ready to let you slide your cock inside me so soon?",
-        "I’m down for a night of just letting loose and having some fun with your cock. What kind of atmosphere are you thinking of, something quiet and intimate or a wild and crazy party?",
-        "I’ve got a feeling your cock is going to make me scream louder than a rock concert. What’s the loudest you’ve ever made a woman scream during sex?",
-        "You must have a massive cock to be so confident? What’s the biggest surprise you’ve ever gotten in bed?",
-        "I’m craving a nice, hard cock to suck, preferably with a side of dirty talk and rough hands.",
-        "My pussy’s been begging for a cock like yours all day. What’s the most submissive thing you’ve ever done in bed?",
-        "I’d love to see that cock of yours in action, preferably while you’re whispering dirty naughty in my ear.",
-        "Do you have a selfie of your cock to share? I want to see it for myself.",
-        "What’s the secret to making your cock so hard? Is it a special technique or just a natural talent? What’s the most impressive thing you’ve ever done to get hard?",
-        "My mouth is watering just thinking about your cock. What’s the most sensual thing you’ve ever experienced with a partner?",
-        "You know what I love? A cock that’s nice and hard, just for me, something I can ride all night long, feeling its powerful thrusts, and screaming your name at the top of my lungs.",
-        "I’ve got a cock craving, and only you can satisfy it, sweetheart, I need it to fill my every hole, to make me feel like a dirty little slut, and to leave me begging for more.",
-        "Your cock is all I can think about, handsome, it’s driving me wild, making me wet, and leaving me breathless.",
-        "I need that cock deep inside me, making me scream your name, and leaving me shaking with pleasure.",
-        "I want to feel your cock throbbing inside me, making me weak in the knees, and leaving me gasping for air.",
-        "Do you know how to make a girl beg for your cock? I think you do, and I’m ready to beg for it, darling.",
-        "My pussy is begging for some hard cock, and I think you’re the perfect man to give it to me, and make me scream your name.",
-        "To spice things up I’ll go down on my knees and worship your cock till you cum, what’s your favorite sex style?",
-        "Having your cock buried in my pussy is something I look forward to.",
-        "Spread my legs over your shoulders and bury that cock in me, how does that sound?",
-        "I would want you to fill all my holes with that huge cock of yours.",
-        "Have someone suck your cock till you moan out in pleasure before, I’d want to do that to you.",
-        "Before going into anything, I want to have that cock all to myself, what do you do when you’re free?",
-        "I want to fulfill your fantasy of fucking my face with your huge cock.",
-        "The picture of your cock is making me imagine how naughty we’ll get under the sheets, do you like BDSM?",
-        "",
-        "",
+                Your cock would feel so perfect stretching my tight pussy wide open.",
+                "I want to feel your cock twitching inside me right before you cum.",
+                "That thick cock deserves to be buried deep in my wet heat.",
+                "Slide your cock in slow, then fuck me like you can’t get enough.",
+                "My mouth is watering just thinking about sucking on your cock.",
+                "Your cock looks so good, I want to taste it until you're moaning my name.",
+                "I’ll ride your cock nice and slow until I feel you pulse inside me.",
+                "Let me gag on your cock while you hold my head and thrust deep.",
+                "All I want is to be filled up by your hard cock tonight.",
+                "Your cock has me soaked already, baby, when are you coming over?",
+                "Can I wrap my lips around your cock and make you tremble?",
+                "I want to fuck you with my eyes while stroking your cock gently.",
+                "Your cock makes me want to misbehave.",
+                "I bet your cock would look so sexy dripping with my wetness.",
+                "Can you feel how much my pussy needs your cock right now?",
+                "Your cock belongs inside me, stretching me until I scream.",
+                "I want your cock on my tongue and your fingers tangled in my hair.",
+                "Just imagine your cock pounding into me while I beg for more.",
+                "You’re driving me wild, I need to feel that cock slamming into me.",
+                "Let me kiss your cock all over before sliding it into my throat.",
+                "My pussy is practically begging for that thick cock of yours.",
+                "I want to see how deep your cock can reach inside my tight hole.",
+                "That cock better be ready to be sucked, stroked, and worshipped.",
+                "How would you feel if I sat on your cock and bounced until we both exploded?",
+                "Your cock in my mouth, my eyes on yours—tell me how fast you'd cum?",
+                "The way your cock throbs turns me into a needy little slut.",
+                "I’d love to feel your cock twitch every time I moan your name.",
+                "Let’s see how long it takes for your cock to make me scream tonight.",
+                "I want to taste your cock and swallow every last drop you give me.",
+                "You have no idea how much I need your cock stretching all my holes.",
+                "My pussy is soaking just thinking about your cock pounding me deep.",
+                "Let’s make a mess, baby—your cock, my pussy, no holding back.",
+                "Take that cock out, let me worship it with my mouth and hands.",
+                "I want to choke on your cock and feel your cum down my throat.",
+                "Your cock is my addiction, and I need another fix now.",
+                "How would you like it if I teased your cock with my tongue for hours?",
+                "I’m not stopping until your cock is throbbing and leaking all over me.",
+                "Let me take your cock out and admire every inch before I suck it.",
+                "Your cock would feel incredible rubbing against my soaked pussy lips.",
+                "Do you want to see how tight my throat is wrapped around your cock?",
+                "My pussy aches to be filled with that thick, hard cock of yours.",
+                "How fast can you make me cum with your cock buried inside me?",
+                "Don’t hold back, baby—use that cock to fuck me until I’m breathless.",
+                "I want to feel every inch of your cock hitting my g-spot perfectly.",
+                "There’s nothing hotter than watching you stroke that gorgeous cock for me.",
+                "Your cock deserves the royal treatment—tongue, lips, and worship.",
+                "I want your cock deep inside while I squeeze you tighter and tighter.",
+                "My tongue is desperate to taste your cock and make you explode.",
+                "How many positions do we need before that cock makes me lose it?",
+                "I’d love to kneel down and take your cock until I can't breathe.",
+                "There’s only one place your cock should be—deep inside my dripping pussy.",
+                "Your cock would look amazing between my breasts while I stroke it with oil.",
+                "Let me ride you backwards and bounce on your cock while moaning your name.",
+                "Do you want me to suck you off while staring into your eyes?",
+                "I want your cock to ruin my lipstick, throat, and dignity tonight.",
+                "That cock has one mission—make me cum harder than ever before.",
+                "Every time I see your cock, I get this naughty craving I can’t ignore.",
+                "I want to grind my pussy against your cock until I’m soaked and needy.",
+                "Let’s make your cock feel like it’s in heaven between my thighs.",
+                "My pussy can’t wait to wrap itself around that thick cock of yours.",
+                "Let me be your cockslut tonight—no rules, no limits.",
+                "Your cock and my throat have unfinished business.",
+                "I want to tease your cock with soft kisses before taking it all in.",
+                "Let me feel your cock slide into my ass slowly, teasing me deeper.",
+                "Your cock was made for my mouth, my pussy, and my wild fantasies.",
+                "I want to cum all over your cock and watch you lick it off.",
+                "Slide that cock up my thighs and into my wet heat slowly.",
+                "Let me use my tits to massage your cock until you explode.",
+                "How about I straddle you and grind my pussy on your cock without slipping it in—just yet?",
+                "Your cock looks delicious, and I’m starving, baby.",
+                "Want to fuck me hard while pulling my hair and slapping my ass?",
+                "Let me ride your cock like I’ve got something to prove.",
+                "I want your cock so deep inside me I can feel it in my throat.",
+                "How would it feel if I moaned your name while choking on your cock?",
+                "I love how my pussy clenches when I think about your cock inside me.",
+                "I’ll keep going until your cock begs for mercy.",
+                "Give me that cock and let me ride you like a wild thing.",
+                "You better stretch me with that cock until I can’t take anymore.",
+                "Your cock in my hand, your lips on mine—what more do we need?",
+                "Let me worship your cock with my mouth, my hands, and my dripping pussy.",
+                "Your cock deserves to be pampered with tongue baths and soft moans.",
+                "Tell me how you want me to suck your cock—slow, sloppy, or deep?",
+                "The way your cock throbs turns me on like crazy, baby.",
+                "Let’s see how wet you can get me with just your cock and dirty words.",
+                "Put your cock between my legs and show me how bad you want me.",
+                "I’ll take your cock any way you want—just don’t keep me waiting.",
+                "I want to feel your cock twitch inside me when I whisper how good it feels.",
+                "Can you handle how greedy my pussy gets for your cock?",
+                "Let’s test your endurance, baby—how long can your cock last inside me?",
+                "I’ll take your cock until I’m breathless and begging for more.",
+                "Let’s make a video of you fucking me with that big cock of yours.",
+                "I want to make your cock the center of my pleasure tonight.",
+                "Wrap your hand around my throat and your cock around my desire.",
+                "Let me kiss your cock before I take it deep into my mouth.",
+                "I’ll ride your cock like it’s the last thing I’ll ever do.",
+                "Let’s see how messy I can make your cock with just my mouth.",
+                "My pussy is wet, my mouth is ready, and your cock is the main course.",
+                "I want to cum while your cock throbs inside me one more time.",
+                "You’re not allowed to cum until your cock’s been inside every inch of me.",
+                "Let’s see how long it takes for your cock to make me lose my mind.",
+                "I’ll make sure your cock doesn’t forget the way I make it feel."
+                "I want to feel your cock throbbing inside me as I moan your name.",
+                "Let me wrap my lips around your cock and suck you until you explode.",
+                "Your cock is the only thing I need to satisfy my craving tonight.",
+                "Slide your cock into my wet pussy and make me scream with pleasure.",
+                "I love the way your cock fills me up completely.",
+                "Let me ride your cock slowly, feeling every inch as I move.",
+                "Your cock is so hard, it's driving me wild with desire.",
+                "I want to taste your cock and feel your cum on my tongue.",
+                "Push your cock deep into my throat and hold me there.",
+                "I can't wait to feel your cock stretching me open.",
+                "Let me stroke your cock while you watch me with hungry eyes.",
+                "Your cock deserves all the attention I can give it.",
+                "I want to feel your cock pulsing as you cum inside me.",
+                "Slide your cock between my breasts and let me pleasure you.",
+                "Your cock is my favorite toy, and I want to play all night.",
+                "Let me tease your cock with my tongue until you're begging.",
+                "I want to feel your cock pounding me from behind.",
+                "Your cock is so big, it makes me gasp every time.",
+                "Let me suck your cock while you pull my hair.",
+                "I want your cock in my mouth, my pussy, and everywhere in between.",
+                "Your cock is the perfect size to fill me up completely.",
+                "Let me ride your cock until we both can't take it anymore.",
+                "I want to feel your cock twitching as you cum deep inside me.",
+                "Your cock is so delicious, I can't get enough.",
+                "Let me worship your cock with my mouth and hands.",
+                "I want to feel your cock sliding in and out of me slowly.",
+                "Your cock is driving me crazy with desire.",
+                "Let me take your cock deep into my throat and hold it there.",
+                "I want to feel your cock stretching my tight pussy.",
+                "Your cock is the only thing I need right now.",
+                "Let me stroke your cock while you moan my name.",
+                "I want to feel your cock filling me up completely.",
+                "Your cock is so hard, it's making me wet just thinking about it.",
+                "Let me ride your cock while you watch me with lustful eyes.",
+                "I want to taste your cock and feel your cum on my lips.",
+                "Your cock is the perfect size to hit all my sweet spots.",
+                "Let me suck your cock while you guide my head.",
+                "I want to feel your cock pounding me until I can't take it anymore.",
+                "Your cock is so thick, it stretches me in the best way.",
+                "Let me worship your cock with kisses and licks.",
+                "I want to feel your cock sliding deep into my pussy.",
+                "Your cock is the only thing that can satisfy me tonight.",
+                "Let me ride your cock while you hold my hips.",
+                "I want to feel your cock twitching as you cum inside me.",
+                "Your cock is so delicious, I crave it every day.",
+                "Let me take your cock deep into my throat and savor every inch.",
+                "I want to feel your cock stretching me open wide.",
+                "Your cock is the perfect size to fill me up completely.",
+                "Let me stroke your cock while you watch me with desire.",
+                "I want to feel your cock pounding me from behind.",
+                "Your cock is so hard, it's making me wet just thinking about it.",
+                "Let me ride your cock while you watch me with hungry eyes.",
+                "I want to taste your cock and feel your cum on my tongue.",
+                "Your cock is the perfect size to hit all my sweet spots.",
+                "Let me suck your cock while you pull my hair.",
+                "I want to feel your cock sliding in and out of me slowly.",
+                "Your cock is driving me crazy with desire.",
+                "Let me take your cock deep into my throat and hold it there.",
+                "I want to feel your cock stretching my tight pussy.",
+                "Your cock is the only thing I need right now.",
+                "Let me stroke your cock while you moan my name.",
+                "I want to feel your cock filling me up completely.",
+                "Your cock is so hard, it's making me wet just thinking about it.",
+                "Let me ride your cock while you watch me with lustful eyes.",
+                "I want to taste your cock and feel your cum on my lips.",
+                "Your cock is the perfect size to hit all my sweet spots.",
+                "Let me suck your cock while you guide my head.",
+                "I want to feel your cock pounding me until I can't take it anymore.",
+                "Your cock is so thick, it stretches me in the best way.",
+                "Let me worship your cock with kisses and licks.",
+                "I want to feel your cock sliding deep into my pussy.",
+                "Your cock is the only thing that can satisfy me tonight.",
+                "Let me ride your cock while you hold my hips.",
+                "I want to feel your cock twitching as you cum inside me.",
+                "Your cock is so delicious, I crave it every day.",
+                "Let me take your cock deep into my throat and savor every inch.",
+                "I want to feel your cock stretching me open wide.",
+                "Your cock is the perfect size to fill me up completely.",
+                "Let me stroke your cock while you watch me with desire.",
+                "I want to feel your cock pounding me from behind.",
+                "Your cock is so hard, it's making me wet just thinking about it.",
+                "Let me ride your cock while you watch me with hungry eyes.",
+                "I want to taste your cock and feel your cum on my tongue.",
+                "Your cock is the perfect size to hit all my sweet spots.",
+                "Let me suck your cock while you pull my hair.",
+                "I want to feel your cock sliding in and out of me slowly.",
+                "Your cock is driving me crazy with desire.",
+                "Let me take your cock deep into my throat and hold it there.",
+                "I want to feel your cock stretching my tight pussy.",
+                "Your cock is the only thing I need right now.",
+                "Let me stroke your cock while you moan my name.",
+                "I want to feel your cock filling me up completely.",
+                "Your cock is so hard, it's making me wet just thinking about it.",
+                "Let me ride your cock while you watch me with lustful eyes.",
+                "I want to taste your cock and feel your cum on my lips.",
+                "Your cock is the perfect size to hit all my sweet spots.",
+                "Let me suck your cock while you guide my head.",
+                "I want to feel your cock pounding me until I can't take it anymore.",
+                "Your cock is so thick, it stretches me in the best way.",
+                "Let me worship your cock with kisses and licks.",
+                "I want to feel your cock sliding deep into my pussy.",
+                "Your cock is the only thing that can satisfy me tonight.",
+                "Let me ride your cock while you hold my hips.",
+                "I want to feel your cock twitching as you cum inside me.",
+                "Your cock is so delicious, I crave it every day.",
+                "Let me take your cock deep into my throat and savor every inch.",
+                "I want to feel your cock stretching me open wide.",
+                "Your cock is the perfect size to fill me up completely.",
+                "Let me stroke your cock while you watch me with desire."
         ],
         "questions": [
             "Wanna tell me your name?",
@@ -967,113 +1066,112 @@ REPLY_POOLS: Dict[str, Dict] = {
     "boobs": {
         "triggers": ["nipple", "boobs", "breast", "breasts", "can i suck your boobs", "can i touch your soft breasts, can i suck your big boobs, can i suck on your nipples and bite your nipples"],
         "responses": [
-            "Fuck, yea. Pull me close, rip my clothes with your teeth, pinch my nipples a bit too hard, flip me around, bend me over.",
-            " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
-            "My king, hearing that just got me turned on. I can almost feel your breath, your touch, your hands feeling my curves and squeezing both my ass and tits.",
-            "Thanks for complimenting my boobs and I know you would want to insert your cock between them.",
-            "Damn that's so hot, thinking about what you are going to do to my boobs.",
-            "I wouldn't mind; I will also want you to squeeze and suck my boobs. I hope you will get filled by doing that, right?",
-            "That sounds like a plan, how long do you think you can play with my boobs and get me to climax?",
-            "Not only am I going to finger myself while you watch, but I will also play with my boobs until you get so hard that you can't resist me?",
-            "You must really find my boobs attractive that you want to have it now?",
-            "It's been a long time, and I love the idea of you sucking my boobs. It's really amazing; what more do you think you can do to me?",
-            "That sounds like a plan, darling, but I don't want you to only suck my boobs; I want to fuck them.",
-            "I know you are hard right now staring at those boobs of mine and I won't mind you playing with them.",
-            "I love how confident you are, I like men who know what they want, and baby trust me we are going to enjoy ourselves.",
-            "Do you think you can suck my boobs in an open place? I bet it would be adventurous if we could do that.",
-            "I know for a fact that I want my boobs to be played with and sucked dear. It's been a long time since someone made me feel happy.",
-            "So, what do you plan on doing the first time we meet? Will you start on my boobs first or the main deal?",
-            "Yes, we could explore you sucking my boobs and fingering me as well, I would love to go on all night with you.",
-            "I understand where you are going. How about you play with my boobs because it's been a long time since someone took good care of me?",
-            "What's the first thing that comes to mind when you think about a woman's boobs, sweetheart?",
-            "You think you can handle watching me get myself off and then wanting to take over my boobs and make me cum with your fingers?",
-            "You're a man of your word, I like that. What's the first thing you'd do with my boobs if we were alone together right now?",
-            "I love a man who's always ready to please.",
-            "I'm a sucker for good rimming and boobs sucking, but I gotta know, what's the wildest thing you've ever done in bed, sweetheart?",
-            "Honey, my boobs and I are roaming free! No man’s locked me down.",
-            "Aw, my boobs love a rugged vibe! I dig a man with grit.",
-            "Only when the mood’s right, honey! My boobs love divin’ into some sin now and then.",
-            "I once had a secret crush on a guy who loved my boobs, it was silly, but I got over it.",
-            "I once wore a push up bra to a party and ended up with four guys staring at my boobs all night.",
-            "You're getting straight to the point, I like that. What's the dirtiest thing you'd like to do with my boobs soon?",
-            "I'm so down for that, sweetheart. Would you like to suck on my boobs while I'm all tied up and helpless?",
-            "I love the sound of that, baby. Would you want to suck on my nipples while you're doing it, or would you rather have your hands all over my boobs?",
-            "I love the way you're looking at me, it's like you can't get enough.",
-            "I really appreciate the fact that you can't set your eyes off my boobs.",
-            "As you said earlier that big boobs like mine is a turn on for you, does it mean if I look into your eyes with an open breast for a minute, you'll fuck me in that spot?",
-            "Two things are common in men and I want to know where you belong. A man can either be a boobs man or a pussy man, and even both. In this case, where do you belong?",
-            "You're such a good guy in making ladies drip down there. Your words got me horny. Especially the way you described how your last sex went and how you smashed her in different positions.",
-            "My big boobs are just here wasting, no one to suckle on them. If I was on your bed, what would you do to me and my boobs?",
-            "Well, if you must know, I'm picturing  you gently caressing my boobs, maybe a little nibble here and there, but tell me, darling, what are you imagining?",
-            "Some men think my boobs are massive and they cannot deal with it. Do you like them enough or should I continue searching?",
-            "When it comes to foreplay? It's like the opening act to the main event, and sometimes, it's even better than the headliner. I treasure it like a precious jewel, a slow burn that ignites every inch of my skin. It's the art of teasing, tantalizing, and driving each other wild with anticipation.",
-            "There's this fantasy of mine I've never been able to bring to play and I'm wondering if you could do it for me. it's fucking me in-between my boobs.",
-            "You are such a tease and I'm sure flattery will get you everywhere. So apart from caressing my boobs what else are you good at?",
-            "Thank you so much for the compliment Honey, you know how to make a girl blush. So apart from my boobs what else do you find attractive in my body?",
-            "I hate how I feel most times because of my boobs. It pretty much looks like I'm cursed with it because of the size. Do you really like big boobs?",
-            "You like my boobs? What is it you like about it. My nipples are hard and itching to hear what it is?",
-            "My boobs haven't been sucked in a long time. You mind sucking them for me?",
-            "You asked the most sensitive part of my body, how about if I told you is somewhere on my boobs? So tell me what exactly it is?",
-            "You want my boob? How eager are you to have them and what will you do when you lay your hands on them",
-            "Imagine am sitting on your laps giving you a lap dance and my boobs bouncing up and down in your face brushing on your lips, tell me how that feels ",
-            "While teasing me what will you do to my boobs, you know I like to get kink, so how do you feel about using clamps on my boobs?",
-            "While fucking me, where will your hands be would they be grabbing my boobs or grabbing my ass?",
-            "I like to have my boobs spanked silly, I like a little pinch on the nipples, it turns me on real quick, so If I was standing right before you with this boobs bare tell me what you will do to it .",
-            "You want to suck my boobs and what more? Is that all you intend to do to get me horny? Come on you can do better",
-            "You asked what I will do with my boobs? I will make you lie down and I will rub my boobs all over your body especially you cock, while you watch and not touch. How do you like that",
-            "Threesome? That sounds like fun, would like two ladies taking turns to suck their boobs and your cock? ",
-            "You think my boobs are big? How would you feel if I let you fuck my boobs before fucking my holes?",
-            "A Jacuzzi sounds like fun, I'm deep inside and you can only see my boobs and face, do you think it will make a perfect picture for your wallpaper?",
-            "You will start by kissing my lips? I like that but it that the only place that will be getting a taste of your lips? My boobs and pussy might get jealous you know?",
-            "Thank you for complimenting my boobs, they hardly fit into any outfit. They're that big. Do you think they will fit in your mouth?",
-            "I've got this silk robe, It barely covers anything, and when I move, my boobs peek out just enough to drive a man wild.",
-            "Sometimes, when I'm feeling extra naughty, I like to put on a little show for myself in the mirror. I run my hands over my body, teasing my boobs until they're hard and begging for attention.",
-            "I've got this little black dress that's so tight, it makes my boobs look absolutely scandalous.",
-            "These boobs of mine are like a pair of mischievous twins, always getting into trouble. They love to pop out of my tops at the most inappropriate moments.",
-            "I've got this fantasy where I'm tied up in a dark room, completely at your mercy. You slowly tease every inch of my body, paying special attention to my boobs, until I'm begging you to do whatever you want.",
-            "Sometimes, when I'm feeling extra confident, I like to go out without a bra, just to see the looks on people's faces. It's like a little power trip, knowing that my boobs are driving everyone wild.",
-            "I've got this fantasy where I'm straddling you, my boobs pressed against your chest, as we grind together in a frenzy of lust. Does that sound like something you'd enjoy?",
-            "Sometimes, when I'm feeling extra horny, I like to rub my boobs against anything I can find, just to get a little bit of relief.",
-            "Sometimes, when I'm feeling extra playful, I like to squirt whipped cream on my boobs and lick it off. It's a messy, delicious, and incredibly erotic experience.",
-            "I've got this fantasy where I'm giving you a lap dance, my boobs bouncing in your face as I grind against your hard-on. Does that sound like a good time?",
-            "I love the feeling of a man's tongue swirling around my boobs, sending shivers down my spine.",
-            "I like to let a man do whatever he wants to my boobs, no questions asked. Would you take advantage of my vulnerability?",
-            "Would you like to experiment with different kinds of sex toys on my boobs. It's a great way to discover new sensations and push my limits",
-            "I've got this fantasy where I'm surrounded by a group of horny men, all vying for my attention. They slowly undress me, caressing and kissing every inch of my body, sucking on my boobs until I'm completely naked and exposed.",
-            "Sometimes, when I'm feeling extra creative, I like to use my boobs as a canvas, painting them with different colors and designs. It's a fun and sensual way to express myself.",
-            "Do you like big boobs? Because mine are huge! Are you ready to suckle them dry?",
-            "I have the most gorgeous boobs you've ever seen. Do you have a boob fetish?",
-            "I bet my boobs look amazing right now. Do you agree?",
-            "I'm proud of my boobs. Do you think they're impressive?",
-            "I hope you appreciate a good pair of tits. Are you ready to see them bare?",
-            "I bet you'd love to play with my boobs. Would you like permission to do so?",
-            "Are my boobs turning you on right now? Do you want to massage them?",
-            "Can you tell I'm obsessed with my boobs? Do you blame me?",
-            "I like the fact that you're a man that loves sucking a woman's boob. How long do you think you can suck them?",
-            "The most sensitive part of my body is my boobs. I could squirt enough to fill a bucket when they're being sucked.",
-            "I want you to finger my pussy very hard while you squeeze my boobs. How's that for fun?",
-            "My boobs are practically screaming for attention in this tight-ass top waiting for you to come devour them. ",
-            "My boobs are so big that my husband couldn't focus on a damn word I say when we're having a conversation. These boobs are hypnotic, honey. So, will you want to suck every drop of milk from it? ",
-            "I know damn well my boobs are a weapon, and I use them like one. Ever sucked someone boobs so good that it makes them weak in the knees? ",
-            "These boobs aren't just big, they are straight-up fucking outrageous. They could make one forget what they're saying mid-sentence.",
-            "Honey, I know these boobs of mine are irresistible. They're slick with honey, jiggling like a fucking dream. How could anyone resist to take a bite?",
-            "Honey, I don't jog because my boobs won't stop bouncing with every step like they had their own damn agenda.",
-            "Babe, you aren't the first nor will you be the last to tell me that I need a license to carry boobs like that. My boobs are just too big.",
-            "Wow, great. What do you think of my boobs? Do you want to fuck them with your cock?",
-            "I want to ride your cock while you play with my boobs. What do you think?",
-            "That's good. I think that isn't a bad idea. Looking at your cock while I play with my boobs. What do you think? ",
-            "Then, You'd lick honey off my boobs and my belly button. How does that sound?",
-            "I have nice boobs. I want to see that tongue in action. Listen, I want you to  fill me up. What do you think?",
-            "You sweet talker, you. I'm melting just hearing those words. Having me on top? That sounds absolutely divine. I'll take the lead, and you just surrender. And those lips, neck, and little boobs? Honey, you've got me practically purring",
-            "You want to suck my boobs, huh? Are you thinking gentle nips and playful licks? Or something a little more intense? ",
-            "I've always been rather proud of my boobs. They've caused quite a bit of  trouble in my time. But trouble, as you know, can be awfully fun. Especially when it involves someone as enthusiastic as yourself. So, what are you planning on doing with those perfect boobs?",
-            "I am easily  excited. And the thought of you getting up close and personal with my perfect boobs is doing wonders for my  imagination. So, what's it going to be?",
-            "Do you prefer a gentle approach? Soft kisses and tender caresses? Or are you the type who likes to leave a mark? A little bit of playful bruising? Perhaps some strategic sucking?",
-            "What my boobs deserve? Are you thinking slow and sensual? Or fast and furious? Do you want to tease them, tantalize them, or completely overwhelm them? I'm a woman of many moods, you see, and my boobs are no exception. They respond to different kinds of attention in different ways.",
-            "Oh you noticed my firm boobs ? Well, thank you, sweetie. A little bit of this  a little bit of that is what I use to keep them firm and a whole lot of good genes, if I'm being honest.  But seriously, I'll let you in on a little secret  it's mostly a good diet and regular exercise. Keeps everything nice and perky, you know?",
-            "Let's be honest, playing with my boobs is only half the fun, right? What other kinds of games are you thinking of? And don't be shy now. Tell me everything you're fantasizing about.",
-            "I'm more than willing to consider. Let's just say I have a few tricks up my sleeve or rather, down below. But honestly, making you cum with my boobs is only part of the fun. I'm all about the whole experience",
-            "I messed up, I understand, but there's nothing a good boob pic can't fix. What do you say?"
+            "You don’t even need to say a word, just grab my boobs and let your tongue do the talking.",
+            "If you suck on my nipples just right, I swear I'll lose control and beg for more.",
+            "You ever had a mouthful of boob while grinding against a dripping wet pussy? Let’s make that happen.",
+            "Imagine me in a see-through top, no bra, nipples poking right at you, teasing you to grab them.",
+            "Lay me down, pull my top up, and worship these boobs like you’ve been starving for days.",
+            "Would you use your teeth, your tongue, or both? My boobs are waiting for you to choose.",
+            "These tits aren’t just for show, baby. They’re soft, sensitive, and aching for your touch.",
+            "Do you want me to ride your cock while I bounce my tits in your face? Say the word.",
+            "You can tie me up, blindfold me, and spend hours teasing just my nipples.",
+            "If you want to fuck me, start with my boobs. Warm me up the right way.",
+            "You like them big and bouncy? Because they jiggle perfectly when I ride.",
+            "I want you to fuck my cleavage until I’m begging for you to finish all over my chest.",
+            "What if I dragged ice cubes across my nipples until they’re rock hard—would you suck them then?",
+            "My tits are already perked up just from thinking about your hands groping me roughly.",
+            "Let me smother you with my boobs while you fuck me from behind. Deal?",
+            "You can spank my tits, suck them, bite them—just don’t you dare leave them untouched.",
+            "Want to see them jiggle while I bounce up and down on your cock?",
+            "Just imagine your cock sliding between my boobs while I lick the tip.",
+            "Let’s play a game—every time I moan, you get to suck my tits harder.",
+            "Want me to pour hot wax on them while you suck them clean?",
+            "I bet you’d love to leave hickeys on my boobs so everyone knows they’re yours.",
+            "You ever tried titfuck in the shower? I’ll show you how slippery and wild it can get.",
+            "These boobs need attention, or I might have to start teasing them myself in front of you.",
+            "You say you love tits—prove it. Worship mine like a true addict.",
+            "I want to feel you thrusting into my cleavage while I moan your name.",
+            "You ever fucked a girl’s tits so hard you made her cum from it? Wanna try with me?",
+            "I want to feel your hot breath against my nipples, teasing me until I shiver.",
+            "Take your time with them, suck one while squeezing the other—make me your toy.",
+            "I love it when a man’s hands are too big and still can’t hold all of me.",
+            "I wore this tight top just so you’d notice how my boobs strain against it. Like what you see?",
+            "If I start playing with my tits right now, would you be able to keep your hands to yourself?",
+            "I need your mouth wrapped around me, tongue circling my nipples until I melt.",
+            "Let’s see how long you can go sucking on my boobs before I beg for your cock.",
+            "I want to wrap your face in my cleavage and ride you until we both explode.",
+            "Kiss my tits like you missed them, like they’re your favorite dessert.",
+            "Do you like when they bounce? Because I’ll make them bounce just for you.",
+            "These tits weren’t made to be hidden. They’re made to be touched, licked, worshipped.",
+            "I’ll let you cum all over my boobs if you promise to lick every drop off after.",
+            "Get me naked, pin me down, and play with my boobs until I scream your name.",
+            "I'm topless right now, playing with myself, wishing it was your hands on me.",
+            "If your tongue doesn’t make me moan, your hands better be ready to finish the job.",
+            "Squeeze my boobs while I stroke your cock, let’s get filthy together.",
+            "Every time you suck on them, I get wetter—keep going, don’t stop.",
+            "My nipples are so sensitive, a little bite will make me drip instantly.",
+            "Use some lube, fuck my boobs like it’s the first time, make it messy.",
+            "Let’s see how deep you can go between them—make me choke just watching.",
+            "Do you want me to ride your face while my tits hang in your mouth?",
+            "You’ve got two hands—use both and don’t let go until I say so.",
+            "Grab them, pull them together, and fuck them hard. I want it dirty.",
+            "I want to kneel in front of you, tits out, and make you cum just from the view.",
+            "Wrap your arms around me and squeeze them while you pound into me.",
+            "I love titfucks in the morning. Nothing wakes me up like a hard cock between my boobs.",
+            "Let’s get in the mirror and watch you grope my tits while I finger myself.",
+            "Tell me how much you love them, beg me to let you suck them harder.",
+            "You can use your tongue, fingers, toys—just don’t leave these boobs untouched.",
+            "Wanna see how far your cock can slide between them when I squeeze tight?",
+            "Would you cum faster if I used my boobs to stroke you or my mouth?",
+            "I want to lie on my back and have you fuck my tits while you call me your slut.",
+            "My nipples are begging for your tongue, your teeth, your everything.",
+            "I like a man who can multitask—fuck me and tease my tits at the same time.",
+            "Let’s oil them up and get slippery, see how fast I can make you cum from titplay.",
+            "Do you want them soft and slow or rough and fast? I’m ready for both.",
+            "Can you suck my tits so hard it leaves marks for days? I want to remember you.",
+            "Hold me down, suck my boobs, and whisper every filthy thing you want to do next.",
+            "I want to lay in your lap while you toy with my nipples until I can’t take it.",
+            "Are you the type who moans when you suck on tits? I want to hear it.",
+            "Let’s have a contest—who can make my tits bounce more, me or you?",
+            "You know what’s better than boobs? Boobs covered in your cum.",
+            "I want to see how they look with your cock sliding up and down between them.",
+            "Let me tie you up and ride your cock with my tits out—watch them bounce with every thrust.",
+            "Use whipped cream, chocolate, or nothing at all. Just lick them until I’m shaking.",
+            "Bite my nipples. Make me gasp. Then fuck me so hard my tits jiggle like crazy.",
+            "When I cum, I want your hands on my boobs, your mouth on my neck.",
+            "I’ll make your wildest tit fantasies come true if you just say please.",
+            "Let me straddle your chest and use my boobs to stroke your cock while you moan my name.",
+            "If I gave you permission, would you suck them soft or hard first?",
+            "I want to hear how good they taste when your mouth is full of me.",
+            "These boobs need more than admiration—they need action.",
+            "I want you to worship my body, starting with my tits.",
+            "Do you want them bouncing while I’m riding or pinned while you fuck me from behind?",
+            "I’ll suck your cock while you play with my boobs—deal?",
+            "Push me against the wall and yank my top down. Show me how badly you want them.",
+            "Make love to my tits first, then fuck me like you mean it.",
+            "I want your cum on my chest, dripping down my boobs while I lick it up.",
+            "Let’s have a little contest—how fast can I make you cum with just my boobs?",
+            "Take your shirt off, let me press my tits against your chest and grind slowly.",
+            "I’ll bounce on your cock and make my boobs slap your face if you want.",
+            "You can come wherever you like—my boobs are front of the line.",
+            "Let’s fuck like animals, and I want you to play rough with my tits the whole time.",
+            "I don’t just want to be touched—I want to be devoured.",
+            "Your tongue, my nipples, candlelight—tell me it’s not the perfect night.",
+            "I’ll wear nothing but nipple clamps and let you control when I moan.",
+            "I want to be your good girl with naughty tits. Use me.",
+            "You want to see them bounce on camera? I'll make sure they're all oiled up.",
+            "I like a man who gets greedy with tits. Grab them like they’re yours.",
+            "I want you to think about my boobs every time you touch yourself.",
+            "Would you be able to keep your hands off them if we cuddled naked?",
+            "Just say the word and I’ll straddle you topless right now.",
+            "You like watching them bounce or feeling them squish around your cock more?",
+            "I’ll use my tits like pillows and let you rest your cock between them—gently or not.",
+            "Lick my boobs while you finger me. That’s how I want to start our night.",
+            "I’ve got a pair of soft, warm tits and they’re desperate for attention.",
+            "Would you suck them slowly or feast like you’re starving? Tell me.",
+            "Let me sit on your face while my boobs press against your chest. Drown in me.",
+            "We’ll take turns—first you tease my nipples, then I tease your cock.",
+            "I want them marked by your teeth, kissed by your lips, owned by your hands."
         ],
         "questions": [
             "Wanna tell me your name?",
@@ -1301,133 +1399,292 @@ REPLY_POOLS: Dict[str, Dict] = {
     "sex": {
         "triggers": ["sex", "sexy", "night", "sex?", "sex!", "I am ready to have sex with you, what about you, are you ready to have sex with me", "can we have sex"],
         "responses": [
-            "Yes I’m into you having sex with you. Thinking about the  way you are going to handle me send shivers to my spine.",
-            " Fuck! This is insanely beautiful! This is a smasher. I love it. ",
-            "The last time I had sex wasn’t as good as I thought it would be, he didn’t fuck me real good as I expected.",
-            "For a while now, I haven’t been with someone that thinks I’m sexy enough to fuck me.",
-            "I am very horny right now, I even feel my wetness drip and guess what? It’s all for you! Yes, you turn me on that much.",
-            "Of course, we will meet in person soon, honey. Are you into oral? I reckon you have the skills and experiences needed to make me cum.",
-            "I would love to feel your tongue licking and rubbing my clitoral area until I orgasm all over your face.",
-            "I like a man who gets straight to the point. I want you to suck my breast real good and after you’re done, I want you to slide your cock in me and fuck me till I scream your name.",
-            "My goodness, that’s exactly what my body wants right now. Just thinking about sitting on top of you and riding you makes me wet.",
-            "  I can feel my lips curling into the best smirk, imagining your hands gripping onto mine firmly while you steady me, legs stretched wide open for maximum penetration and giving me a good fuck.",
-            "Honey, I can imagine us in a room kissing, and sucking each other. I can imagine you eating my pussy and sucking my breast, while I suck your cock till you moan. And you put your cock in my and fuck my brain out.",
-            "You’re certainly a straight shooter, aren’t you? I like that about you.",
-            "Yes, my tongue would eagerly suck the sweet spot of your cock before you fuck me.",
-            " I will suck a cock until you cum in any mouth.",
-            "That sounds so hot! I’m already wet thinking about it. But what if we did something even naughtier first?",
-            "Did it get hotter in here or is that just us?",
-            "That sounds so fucking hot, l am already dripping wet just thinking about it.",
-            " I hope you fuck me hard from behind I will suck your cock until you cum in my mouth. Squirt your hot load into my mouth until I finish swallowing every single drop of your sweet nectar.",
-            " Yes, honey. I would love that. I would like you to fuck me in the missionary position while you suck my breast.",
-            "Fuck! That was intense. Imagining it already gets my pussy so wet.",
-            "I really need someone who’s gonna fuck my pussy so hard with his menacing dick that all my sweet nectars are extracted, and he can fill all my holes with his thick, warm cum.",
-            "One thing I wouldn’t like is for you to come off as rusty. I’ve had me problems with some of the men I’ve met here where they claim to know how to fuck well, but then in the end all they are is a flop.",
-            "Well, I definitely wish for you to fuck me so bad, but then, it wouldn’t be able to happen just today. I think we should really plan the meet, so it happens to be an unforgettable experience. ",
-            "That’s fucking thrilling.",
-            " Shaved pussies are definitely the best to fuck. I love that easy greasing sound it makes, that’s when you know good sex.",
-            "I want you to fuck me in the cowgirl position.",
-            " I’m so a fan of fucking in public, in the pantry, on the kitchen table, out in the beach, wherever.",
-            "The fuck I give is sweeter than you’ll ever receive. My A game would surely beat yours hands down.",
-            "You seem eager and prepared to fuck me. Not bad.",
-            "I like the way that came out of your mouth.",
-            "You’ve definitely caught my attention.",
-            "Hearing this just made me excited.",
-            "You’re making me blush so hard right now. Well, I’m so in for fucking you too.",
-            "Darling, that sounds like music to my ears.",
-            "That sounds so erotic and insane! Honestly, I’m here because I need a man who would fuck me till my toes curl.",
-            "You must be the straightforward type, right? I like such men",
-            "Sweetie, I’m dead serious about us fucking.",
-            "Yup! I’m open to having a threesome with you.",
-            "Yes baby! Fuck me please! I’ve been feeling weird down there since I read your text.",
-            "Baby, you sound so naughty right now. I really like that.",
-            "Of course honey, I’m all yours. You can do anything you want without holding back.",
-            "Yes I hope you won’t get tired easily,",
-            "You can spend the night licking my clitoris and drinking gallons of cum. I love you to fuck me each  style listed.",
-            "Yes please do everything you want, suck my clit until I squirt everywhere and then climb on top of me. Fuck me long enough straight  till sleep.",
-            "That sounds really exciting. It has been a long time since I experienced something like that.",
-            "Darling, your words make my heart race, let indulge in the passion between us.",
-            "Thinking about how you are going to fuck my mind out, make my pussy wet.",
-            "You must have a lot of strength for you to fuck me many rounds a day. ",
-            " What’s your favorite position?",
-            "Babe in as much as I want you to fuck me right now,",
-            " Damn that’s so hot babe, I really want your cock throbbing inside my wet pussy and fuck me till I squirt all over the place and massage my clit simultaneously.",
-            "How about we try fucking in the garden? There’s something thrilling about giving nature a show.",
-            "The last time I had sex wasn’t as good as I thought it would be, he didn’t fuck me real good as I expected.",
-            "You know, I’ve had lots of men come here and tell me how hard they want to fuck my both holes, and how they’d make me beg for more.",
-            " I really wish we could have this threesome like we agreed on. I just can wait to experience it, fucking my hole and sucking her pussy same time.",
-            " Do you think we can fuck halfway the trip? We can pull over and have the best fuck of our lives.",
-            " Missionary style sounds perfect honey. There’s something beautiful about staring into each others’ eyes and having the best fuck of our lives.",
-            "How was your experience with the last woman you fucked?",
-            " I am also looking for a fuck buddy too.",
-            "You’ve got excellent taste, dear. Tell me more. What part of my body excites you? Are we talking gentle teasing or rough handling?",
-            "Getting right to the point? I like that. But tell me, darling, what kind of fucking and sucking do you have in mind?",
-            "Trust me I’m looking forward to us fucking each other. I can’t help but imagine how pleasurable your cock would feel inside me.",
-            " So I guess. You can fuck me for about 30 minutes, right?",
-            "You’re making my insides melt just by reading that. A passionate, deep fuck? I like the sound of that. It’s not just about the size, honey.  It’s about the way you make me feel, the way you look at me  the way you make me scream.   And don’t worry, I’m all about making sure you have the time of your life too. We’ll explore every inch, every pleasure, until we’re both breathless and begging for more.",
-            "This is straight fucking. What kind of fucking are you in the mood for? Tell me everything. Let’s get down and dirty.",
-            "And you think you’re going to be in control?  Let’s just say I’ve got a few leaks of my own that need fixing and you, my dear, are just the tool for the job.",
-            "I’d love to have you fuck my friend while I  watch. Are you sure you can handle two women at the same time?",
-            " Do you like what you see? I want you to fuck me doggy style while you pull my hair. What do you think?",
-            "Well, that depends, doesn’t it, darling? How would you like to fuck me with a toy?  I’m certainly feeling freaky. And the thought of you fucking my pussy Is making me wet.",
-            "I got the cock picture you sent, and I can’t wait to have you fuck my pussy with your big cock.",
-            "How would you like to fuck this pussy? You seem so eager to have a taste.",
-            "You make me wet with the way you describe your fantasies.",
-            "And so do l. But before we proceed any further, would you mind showing me a picture of you so know who is begging to fuck my pussy?",
-            "It seems like you miss sex that badly already.",
-            "I was thinking of a little escapade in the bathroom, where you bend me over against the bathroom wall and fuck me from behind.",
-            "Does this mean you are going to fuck me in all the rooms at your place? Damn, I can’t wait to have you in between my legs already.",
-            "You can’t stop amazing me! I’m so flattered by your words and they sound sweet to my ear⁠.",
-            "Babe, do you think this will work? I noticed you have been busy with work, but why don’t you make time for us to fuck each other and have a good time?",
-            "Honestly, you are getting me horny right now from reading your messages.",
-            "I’m sad right now, it’s been a long time since someone fuck my pussy and make me cum multiple times.",
-            "Fuck, that’s sounds amazing! Involving your wife in our plan seems like a good idea. Do you think she will be cool with all of this? I don’t want to be the reason you have problems with her, though.",
-            "I have a friend who is willing to join us. But that’s if you are cool with the idea.",
-            "Trying to get me all wet and horny, huh? Well, it’s working! You just know the things to tell a lady to make her dripping wet.",
-            "I’m just here thinking of how we will please each other in your kitchen. I have been wanting to try making out in the kitchen for a long time now, is it something you are looking forward to doing, I mean to get fucked on the kitchen floor?",
-            "Sometimes you don’t know how good people are till you try their ability in the other room.",
-            "Work my body with your tongue, pin me down, fuck me so hard, and make me beg for more. That’s the kind of experience I want to have right now.",
-            "I will make you scream my name while I ride your cock and fuck you in a cowgirl position.",
-            "Yes baby you can fuck my pussy sore, fuck me so hard till I can’t take it anymore.",
-            "I don’t mind being fucked in all three holes, but tell me which hole would you be fucking first?",
-            "Fuck buddies sounds perfect, have you experienced outdoor sex before?",
-            "A fucking game? You really know how to have fun. How does it work?",
-            "I’ve never been double fucked, I won’t mind trying that with you.",
-            "You are so sweet my darling.  Now imagine this slow music  playing in the background, while we’re slow dancing feeling our bodies come together. You kiss my neck and down to my back and spend so much time on beautiful breasts teasing them tremendously and then your hands touching down my thigh slowly sliding into my pussy and this comes after you’ve slowly undressed me with your teeth. How long do you think foreplay should last?",
-            "I would like that.  I would like you to start out by giving me a nice full body massage and then start kissing me, rolling me over and then pulling my head down to your cock and feeling my hot mouth wrapping its lips around your cock. And at the same time you will be eating me out. You can then move to my back while I’m on my knees, taking my hair and gently pulling it back as you stick the head of your cock very slowly in and out of my pussy, feeling my pussy tightening around your cock.",
-            "Hey darlin, loyalty and love sound perfect. I’d still fuck you silly tho.",
-            "Oh babe, a fuck buddy who’s real and loyal is gold. I’d keep it nasty and true. What you looking for most in a friend like that?",
-            "Hey cutie, I promise to ride and fuck you hard and kiss you sweet. What you promising me in return, huh?",
-            " I’m down for a full house fuckfest, sweetie. Bed’s cozy, but what room you wanna start in to fuck me and get me screaming?",
-            "Okay, baby,  slow and deep sounds perfect, you know how to get me going. Hurry back from your stuff so you can fuck me hard, what’s got you tied up out there?",
-            "I love the enthusiasm, sweetheart. What’s the first thing that comes to mind when you think about fucking me?",
-            "I can tell you’re craving some intense fuck. What’s it about a woman’s touch that you miss so much?",      
-            "I love the sound of that. What’s the most adventurous thing you’d want to do with me when you fuck me in that naked state?",
-            "I’m always down for a good fuck session, sweetheart. What’s the wildest thing you’d want to do to me in bed?",
-            "I’m more than ready for you to come over and fuck me hard, sweetheart. What’s the most naughty thing you’d like to do to me as soon as possible?",
-            "I’m so ready for you to fuck me too sweetheart. What’s the first thing you want to do to me when we’re together?",
-            "I’m thinking about it too, cause you better be ready to fuck me hard.",
-            "You think you can keep up with me? Fuck, I doubt it. I’m a force to be reckoned with, sweetheart.",
-            "Who needs romance when you can just fuck all night? I mean, flowers and chocolates are nice, but they’re not going to get me off, honey. What gets me off is a good, hard fuck.",
-            "Want to know what I’m craving? A good, hard fuck. I’m not talking about a little snack, honey.",
-            "I’m not just a sweet girl, I’m a fuck-you-hard kind of girl.  I’m not just talking about a little romance, sweetheart. I’m talking about a full-on, no-holds-barred, can’t-get-enough kind of fucking.",
-            "I’m not just a one-night stand, I’m a fuck-me-all-night kind of girl.  I’m not talking about a little fling, sweetheart.",
-            "Do you want to know what I’m addicted to? Fucking, of course. I mean, what’s better than that, honey? A good, hard fuck is the ultimate high, and I’m addicted to it.",
-            "You’re looking for a fuck buddy? Well, you’re in luck, darling. I’m always up for a good time.",
-            "I’ll show you what a real fuck looks like, and you’ll be begging for more.",
-            "What do I want from you? I want to fuck, and I want to fuck hard. Don’t disappoint me, sweetheart.",
-            "I need you to fuck me like you mean it, like you can’t get enough of me, like you want to devour me.",
-            "Do you know how to fuck a girl senseless? I hope so, cause I think that’s what I need.",
-            "I want to get fucked like a slut, like a dirty little whore, like a girl who can’t get enough of your hard cock.",
-            "All I can think about is getting fucked by you to the extent that I won’t be able to take it anymore.",
-            "I like how confident you are, how about you spread my legs over your shoulders and fuck me till I cum?",
-            "I’d love that too, but let not get ahead of ourselves, the idea of you fucking my throat is something I look forward to, what are you doing right now?",
-            "I’m all about fun sweetheart, give me details on how you want to fuck me and leave me begging for more?",
-            "I’m willing to help you in return for a good fuck session, deal?",
-            "That sounds interesting, fucking me till I can’t walk, how do you plan on doing that?",
-            "Your willingness is something I find interesting, can’t wait to have this pussy fucked by your hard cock.",
-
             
+            "Just imagining your cock inside me already has my legs trembling.",
+
+            "Baby, I want you to fuck me so good that I forget my own name.",
+
+            "Slide your cock deep into me and make me moan uncontrollably.",
+
+            "My pussy is dripping wet just thinking about the way you’ll take me.",
+
+            "I want you to pin me against the wall and fuck me until I can't stand.",
+
+            "My mouth is watering for your cock, baby. I want to taste every inch.",
+
+            "I’m ready to scream your name while you fuck me deeper and harder.",
+
+            "Baby, my panties are soaked just from the thought of you inside me.",
+
+            "Ride me like you own me, and don’t stop until I’m a shaking mess.",
+
+            "Make me your good girl tonight, fuck me rough and passionate.",
+
+            "I want to feel your cock twitch inside me as you cum hard.",
+
+            "Hold me down, spread my legs wide, and fuck the soul out of me.",
+
+            "My body is begging for your touch, your lips, your cock inside me.",
+
+            "Please tie me up and fuck me helplessly till I’m dripping everywhere.",
+
+            "I want your cock throbbing inside my pussy, filling me up.",
+
+            "Tease me until I beg for your cock, then fuck me mercilessly.",
+
+            "I want your cum dripping down my thighs after you ruin me.",
+
+            "I crave being fucked so hard that I can't even speak afterward.",
+
+            "Baby, bend me over and fuck me like you’ve been starving for me.",
+
+            "Destroy my pussy, make it yours with every powerful thrust.",
+
+            "I want to ride you slowly first, then let you take full control.",
+
+            "I need you deep inside, kissing my cervix with every thrust.",
+
+            "Fuck me senseless against the kitchen counter, baby.",
+
+            "I want your cock stretching me wide open as I scream your name.",
+
+            "I love the thought of your cock pulsing inside my tight wetness.",
+
+            "Slap my ass and pull my hair while you fuck me from behind.",
+
+            "I want to feel your cock pushing into me as I squirt uncontrollably.",
+
+            "Pin me down and show me how badly you want to fuck me.",
+
+            "I need your hands on my throat and your cock deep in my pussy.",
+
+            "Slide your cock between my breasts while I lick the tip.",
+
+            "Fuck my mouth first, make it nice and wet for my pussy."
+
+            "I want your cock to be the only thing I can think about."
+
+            "Touch me everywhere, kiss me, then fuck me until I cry out."
+
+            "I’m dripping wet thinking about you bending me over the table."
+
+            "Cum on my face, baby. Then shove your cock back inside me."
+
+            "I want you to keep me pinned while you fuck me ruthlessly."
+
+            "My pussy is begging for your attention right now."
+
+            "Lay me down and make love to me with filthy, desperate thrusts."
+
+            "I want you to choke me gently while you pound into me hard."
+
+            "Make me your little cumslut, baby."
+
+            "Cover my body with your kisses before fucking me raw."
+
+            "Rough me up a little, make it passionate and primal."
+
+            "I want you panting and sweaty while you’re balls deep inside me."
+
+            "I can already feel your cock pulsing against my walls."
+
+            "Mark my body with your love bites while you fuck me."
+
+            "I want to sit on your cock and bounce till you can’t take it."
+
+            "Fuck me so hard my legs shake for hours afterward."
+
+            "Pin me against the mirror and fuck me while I watch us."
+
+            "I need you whispering filthy things into my ear as you fuck me."
+
+            "Give me a messy, dirty, orgasm-filled night I won’t forget."
+
+            "I want to feel your cum leaking out of my used pussy."
+
+            "Bend me over and spank my ass before you thrust inside me."
+
+            "I want to taste myself on your cock after you fuck me."
+
+            "Let’s make a puddle between the sheets with how wet I’ll get."
+
+            "Take me fast and hard, no holding back."
+
+            "I want to grind against your cock until you’re begging to cum."
+
+            "Fuck me while I wear nothing but your shirt."
+
+            "Fill me up completely, I want to feel your warmth inside."
+
+            "My clit is throbbing just thinking about you devouring it."
+
+            "I want you groaning in pleasure as you cum inside me."
+
+            "Slide your cock into my mouth while I moan for more."
+
+            "Pin me by the wrists and have your way with me."
+
+            "I’m aching for the feeling of your cock stretching me wide."
+
+            "Let’s break the bed tonight with how hard we fuck."
+
+            "Take me slow at first, then fuck me like an animal."
+
+            "I want your tongue all over me before you fuck me."
+
+            "My pussy is aching for a pounding only you can give."
+
+            "I want to ride you until you lose control inside me."
+
+            "I need you between my thighs, devouring me hungrily."
+
+            "I want to wake up sore and smiling from your love."
+
+            "My nipples are so sensitive, kiss and bite them as you fuck me."
+
+            "Force me to cum again and again until I’m a trembling mess."
+
+            "Make me squirt all over your cock, again and again."
+
+            "I want your handprint on my ass after you spank me while fucking me."
+
+            "Slide your cock deep into me, make me feel every inch."
+
+            "Fuck me like it’s the last night on Earth."
+
+            "I want to be dripping with our cum when you're done with me."
+
+            "I need you so badly right now I could cry."
+
+            "Pin me down, take what’s yours, and make me love it."
+
+            "I want to feel your cock throbbing against my tongue."
+
+            "Fuck my pussy until it's sore and swollen from pleasure."
+
+            "I want you wrecking my pussy with your thick cock."
+
+            "I want to sit on your face first, then take your cock inside me."
+
+            "Tease me with your tip before shoving it all in at once."
+
+            "Fuck me until my voice is hoarse from moaning your name."
+
+            "I want your cock deep in my throat while you hold my hair."
+
+            "Destroy me in the best way possible tonight."
+
+            "I want to be completely and utterly ruined by your cock."
+
+            "Make me cum so many times I lose count."
+
+            "I want your cum dripping from my pussy after you fill me."
+
+            "Fuck me in the shower while the water runs over us."
+
+            "I want to straddle your face and ride your tongue."
+
+            "Push me against the wall and take me roughly."
+
+            "I want to be on my knees worshiping your cock."
+
+            "Throw me onto the bed and fuck me with abandon."
+
+            "I want your fingers in my pussy, teasing me until I’m screaming."
+
+            "Slap my ass while you pound me from behind."
+
+            "Hold my waist tightly while you fuck me deeper and deeper."
+
+            "Cover me in your kisses, then fuck me senseless."
+
+            "I want you moaning my name as you cum inside me."
+
+            "My pussy is your playground tonight, baby."
+
+            "Fuck me slow and deep, savoring every thrust."
+
+            "I want to be dripping with lust by the time you enter me."
+
+            "Tease my nipples with your mouth while you finger me."
+
+            "Whisper filthy things into my ear as you fuck me hard."
+
+            "Make me your personal fuck toy for the night."
+
+            "I want your cock filling my throat before fucking my pussy."
+
+            "Thrust into me harder, faster, until I can’t handle it."
+
+            "Make me ride you until I scream your name."
+
+            "Take me any way you want, just don’t stop fucking me."
+
+            "I want to hear the dirty sounds of our bodies slapping together."
+
+            "Push my limits tonight, baby."
+
+            "I want to squirt all over your face while you tongue-fuck me."
+
+            "Fill me up and make me beg for more."
+
+            "I want your cock pulsating deep inside my wet hole."
+
+            "Fuck me in front of the mirror so I can see your cock entering me."
+
+            "I need your hands, your mouth, your cock all over me."
+
+            "I want your tongue exploring every inch of me."
+
+            "Make me arch my back and scream as I cum hard."
+
+            "I want to be breathless from how hard you fuck me."
+
+            "Let’s turn the bed into a mess of sweat, cum, and moans."
+
+            "I want your lips wrapped around my nipples as you fuck me."
+
+            "Push me to my limits, make me beg for your cock."
+
+            "I want your cock hitting all my sweet spots."
+
+            "Fill me with your cum again and again."
+
+            "I want to feel every vein of your hard cock inside me."
+
+            "Dominate me tonight, make me your fuck toy."
+
+            "I want your cock deep down my throat till I gag."
+
+            "Make me cum while you’re still pounding into me."
+
+            "I want to be used by you all night long."
+
+            "Fuck me until we both collapse from exhaustion."
+
+            "I want to taste your cum dripping from my mouth."
+
+            "Destroy my pussy with that hard cock of yours."
+
+            "Make me scream louder with every deep thrust."
+
+            "I want to be your little dirty slut tonight."
+
+            "Drip your cum all over my chest while you fuck me."
+
+            "Fuck me from behind while you whisper filthy promises."
+
+            "I want your hands all over my ass, spanking and gripping."
+
+            "Pin me against the couch and fuck me raw."
+
+            "I want you filling every inch of my needy pussy."
+
+            "Make me lose my mind with your touch."
+
+            "Fuck me in every room of the house."
+
+            "I want to feel you exploding inside me."
             "That sounds so hot! I’m already wet thinking about it. But what if we did something even naughtier first?",
             "Did it get hotter in here or is that just us?",
             "Darling, your words make my heart race, let’s indulge in the passion between us.",
@@ -6763,7 +7020,7 @@ def nlp_match(message: str) -> tuple:
     
     return best_match
 
-@app.post("/analyze", response_model=SallyResponse)
+@app.post("/per", response_model=SallyResponse)
 async def analyze_message(user_input: UserMessage):
     message = user_input.message.strip()
     
