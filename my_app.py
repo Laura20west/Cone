@@ -629,7 +629,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     "cock": {
         "triggers": ["cock", "dick", "big cock", "long cock", "do you like my cock", "can you handle my long big cock, can you suck my big cock"],
         "responses": [
-                Your cock would feel so perfect stretching my tight pussy wide open.",
+                "Your cock would feel so perfect stretching my tight pussy wide open.",
                 "I want to feel your cock twitching inside me right before you cum.",
                 "That thick cock deserves to be buried deep in my wet heat.",
                 "Slide your cock in slow, then fuck me like you can’t get enough.",
