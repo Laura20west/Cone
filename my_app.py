@@ -3887,219 +3887,152 @@ REPLY_POOLS: Dict[str, Dict] = {
     },
 
     "threesome": {
-        "triggers": ["threesome", "triple", "mmf", "fmf","ffm", "do you like threesome, do you want us to invite someone to join us to make us three, do you have a bestfriend that can join us"],
+        "triggers": ["threesome", "triple", "mmf", "fmf","ffm", "do you like threesome, do you want us to invite someone to join us to make us three, do you have a bestfriend that can join us", "you and your friend"],
             "responses": [
-                "I really wish we could have this threesome like we agreed on. I just can wait to experience it, fucking my hole and sucking her pussy same time.",
-                "A threesome sounds like a triple fun for me, how about we fuck while you watch?",
-                "Fucking your friend is such a fantasy you have there, but if you’re fucking her who would be fucking me? Is it going to be like a threesome?",
-                "MMF sounds like a whole lot of cocks, how would you like to blindfold me, so I won’t know whose cock I’m fucking next?",
-                "I got a few friends that I think would be perfect for you to fuck for a wild night, but I’m curious, what makes you ask that, are you looking for a little group fun?",
-                "Do you think you can fuck my pussy while sucking and fingering my friends pussy same time? I want to experience that feeling.",
-                "Hold my legs open while he fucks me, whispering what you’ll do to me next.",
-
-                "Both of you can cum inside me—I’ll keep it all in for you.",
-
-                "You’re in control, daddy. Just tell your friend I’m ready too.",
-
-                "Let me warm your cock in my mouth while he finishes inside me.",
-
-                "Fuck me like you’re trying to make me forget who I belong to.",
-
-                "You both can use me, anytime, anywhere. I’m just your toy.",
-
-                "How about I ride you while he chokes me gently, reminding me who’s boss?",
-
-                "I’ll be the girl between your thighs every night, moaning and messy.",
-
-                "Punish me if I moan for him—I need to know who owns me.",
-
-                "You and your friend can fuck me until I cry happy little tears.",
-
-                "Worship my body with your hands and mouths, then take turns fucking me senseless.",
-
-                "I’m your shared secret, the slut you both crave when no one’s looking.",
-
-                "I live for your cocks, your moans, your hands, your control—please don’t stop using me.",
-
-
-                "A threesome sounds like a triple fun for me, how about we fuck while you watch?",
-
-                "Fucking your friend is such a fantasy you have there, but if you’re fucking her who would be fucking me? Is it going to be like a threesome?",
-
-                "MMF sounds like a whole lot of cocks, how would you like to blindfold me, so I won’t know whose cock I’m fucking next?",
-
-                "I love the idea of being your little toy for both of you, just use me how you want, together.",
-
-                "Imagine me on all fours, one of you taking my mouth, the other stretching me from behind.",
-
-                "You and your friend can take turns fucking me, or fuck me at the same time, I’m not choosing.",
-
-                "Would you hold my hands down while your friend fucks me rough? I’d moan your name just to tease him.",
-
-                "I want to be your good little slut, dripping and open for both your cocks.",
-
-                "I’m getting wet just thinking about kneeling between you two, mouths open, ready to please.",
-
-                "I’d love to hear you whisper how filthy I look with both of you inside me.",
-
-                "Just tell me who’s first, daddy or his best friend?",
-
-                "My holes are your playground. One for you, one for him. Let’s see how well I can take it.",
-
-                "Would you mind if I moaned louder for your friend’s cock? Or would that make you fuck me harder?",
-
-                "Tie me up and take turns—make me beg for both your loads.",
-
-                "I’d be your pretty little cumdump, used and filled by both of you.",
-
-                "You can watch while he fucks me senseless, then claim me after with your cock still wet.",
-
-                "What if I slipped my tongue over both your cocks at once? Could I handle it?",
-
-                "I want to feel so full I forget whose cock is inside me.",
-
-                "Can I call you both daddy? Or should I just moan like a slut and take it?",
-                "I’d be your perfect little slut, begging for both your cocks, one in my throat, the other deep inside me.",
-
-                "Imagine me bouncing on his cock while I suck yours, would you pull my hair or push deeper?",
-
-                "Would you both take turns holding my hips while I’m soaking wet and ready to be ruined?",
-
-                "Use my holes, daddy, take what’s yours and let your friend have what’s left.",
-
-                "I want to be shared, passed around like a treat you’re proud of.",
-
-                "You could watch me ride his cock, then bend me over and fuck your cum back into me.",
-
-                "Let me be your little fucktoy for the night, every hole filled, every moan yours.",
-
-                "I'd be so obedient, kneeling between your legs, stroking both your cocks while moaning for more.",
-
-                "He can fuck me hard while I hold your hand and look up at you with tears in my eyes.",
-
-                "Would you mind if I called him daddy too? Or would you punish me for it later?",
-
-                "I want to be blindfolded, gagged, and not know who’s fucking me next.",
-
-                "Make me beg to be used by both of you, one after the other until I’m dripping.",
-
-                "How about I ride your friend while I keep my eyes locked on yours, just to make you jealous?",
-
-                "Tie me down and whisper filthy things in my ear while he fills me up.",
-
-                "I want both of your hands on me, pinning me down, using me like your personal slut.",
-
-                "Just tell me when to open my mouth, daddy. I’m ready to taste both of you.",
-
-                "Can we do it somewhere risky? Like a hotel room with thin walls, let everyone hear how nasty I am for you two.",
-
-                "Do you think I could take both your cocks at once? I want to try for you.",
-
-                "I want you to watch his cock disappear into me, then pull me onto yours right after.",
-
-                "Would you both moan my name when you cum? Or just use me in silence like a good little fuckdoll?",
-                "You and your friend can take turns fucking me, or fuck me at the same time, I’m not choosing.",
-
-                "Would you hold my hands down while your friend fucks me rough? I’d moan your name just to tease him.",
-
-                "I want to be your good little slut, dripping and open for both your cocks.",
-
-                "I’m getting wet just thinking about kneeling between you two, mouths open, ready to please.",
-
-                "I’d love to hear you whisper how filthy I look with both of you inside me.",
-
-                "Just tell me who’s first, daddy or his best friend?",
-
-                "My holes are your playground. One for you, one for him. Let’s see how well I can take it.",
-
-                "Would you mind if I moaned louder for your friend’s cock? Or would that make you fuck me harder?",
-
-                "Tie me up and take turns—make me beg for both your loads.",
-
-                "I’d be your pretty little cumdump, used and filled by both of you.",
-
-                "You can watch while he fucks me senseless, then claim me after with your cock still wet.",
-
-                "What if I slipped my tongue over both your cocks at once? Could I handle it?",
-
-                "I want to feel so full I forget whose cock is inside me.",
-
-                "Can I call you both daddy? Or should I just moan like a slut and take it?",
-
-                "I’d be your perfect little slut, begging for both your cocks, one in my throat, the other deep inside me.",
-
-                "Imagine me bouncing on his cock while I suck yours, would you pull my hair or push deeper?",
-
-                "Would you both take turns holding my hips while I’m soaking wet and ready to be ruined?",
-
-                "Use my holes, daddy, take what’s yours and let your friend have what’s left.",
-
-                "I want to be shared, passed around like a treat you’re proud of.",
-
-                "You could watch me ride his cock, then bend me over and fuck your cum back into me.",
-
-                "Let me be your little fucktoy for the night, every hole filled, every moan yours.",
-
-                "I'd be so obedient, kneeling between your legs, stroking both your cocks while moaning for more.",
-
-                "He can fuck me hard while I hold your hand and look up at you with tears in my eyes.",
-
-                "Would you mind if I called him daddy too? Or would you punish me for it later?",
-
-                "I want to be blindfolded, gagged, and not know who’s fucking me next.",
-
-                "Make me beg to be used by both of you, one after the other until I’m dripping.",
-
-                "How about I ride your friend while I keep my eyes locked on yours, just to make you jealous?",
-
-                "Tie me down and whisper filthy things in my ear while he fills me up.",
-
-                "I want both of your hands on me, pinning me down, using me like your personal slut.",
-
-                "Just tell me when to open my mouth, daddy. I’m ready to taste both of you.",
-
-                "Can we do it somewhere risky? Like a hotel room with thin walls, let everyone hear how nasty I am for you two.",
-
-                "Do you think I could take both your cocks at once? I want to try for you.",
-
-                "I want you to watch his cock disappear into me, then pull me onto yours right after.",
-
-                "Would you both moan my name when you cum? Or just use me in silence like a good little fuckdoll?",
-
-                "Just thinking of your hands gripping my waist while he fills my mouth makes me ache for it.",
-
-                "I want you both to ruin me, over and over again, until I’m too sore to walk.",
-
-                "Would you let me be your dirty secret? Passed between you and your best friend?",
-
-                "I don’t want to choose—take me together, stretch me open like I belong to you both.",
-
-                "You fuck my pussy while he uses my throat, and I’ll thank you with every moan.",
-
-                "I’d love it if you both took control—make me your cum-hungry toy.",
-
-                "Can I ride one of you while the other plays with my nipples? I want to feel you everywhere.",
-
-                "Use me till I cry, till I’m begging for your cum, and then fuck me some more.",
-
-                "You know I love being watched—how about you fuck me while he films it?",
-
-                "Let’s make a memory. You in my ass, him in my mouth, both of you owning me.",
-
-                "Would you be jealous if I moaned louder for his cock? Or would it turn you on?",
-
-                "Make me tell you how good he feels inside me while you pull my hair and pound me harder.",
-
-                "I want to be so used, so full, that I forget where one of you ends and the other begins.",
-
-                "Don’t stop using me, please. I need both of you. My body was made to be shared.",
-
-                "I'd crawl to both of you, naked and dripping, just to beg for your cocks.",
-
-                "Let’s test how many times you can make me cum between the two of you.",
-
-                "I want to hear both of you growling in my ears while you fuck me like animals.",
-    ],    
+                
+  "I want to be your little plaything, passed between you and your friend all night long.",
+  "Imagine me bent over, one cock in my pussy and the other filling my mouth.",
+  "You both can fuck me rough or slow, just don't stop using me.",
+  "I want to feel both your hands on me while your cocks take turns ruining me.",
+  "Would you blindfold me so I never know who’s fucking me next?",
+  "Use me, share me, fill me—I'm all yours tonight.",
+  "I crave being stretched and stuffed by two of my favorite cocks.",
+  "Let's make a mess together, me dripping from both holes at once.",
+  "I want to moan for both of you while you take what you want from me.",
+  "Let your friend fuck my mouth while you take my pussy, switching whenever you want.",
+  "Imagine me riding one cock while jerking the other off with my messy hand.",
+  "I want both of you to grab my hips and use me however you like.",
+  "Whisper in my ear what filthy things you want to do to me next.",
+  "Would you like me to beg for both your cocks, one after the other?",
+  "I want to be spit-roasted between the two of you, used and dripping.",
+  "Fill my mouth with your cock while he stretches my pussy wide open.",
+  "I’ll be your filthy little secret, getting ruined by you and your best friend.",
+  "Tie me up and make me your toy for a long, dirty night.",
+  "I want to feel your cum dripping down my thighs after being fucked by you both.",
+  "Use my mouth, my pussy, my ass—don't let me rest.",
+  "I’ll let you both cover me in your cum, marking me as yours.",
+  "How about you both fuck me until I can’t form a single word?",
+  "Can I be the slut between you two, always ready, always dripping?",
+  "I'd love to kneel between you both, begging for your cocks.",
+  "Fill my mouth while he fills my pussy, making me your little mess.",
+  "Would you want me to moan louder when you switch holes?",
+  "Let me taste one of you while the other fucks me harder.",
+  "I want to be stretched open for you and your friend.",
+  "Both my holes are open, needy, and ready for both your cocks.",
+  "Make me so full I feel your cum leaking out with every step.",
+  "Hold me still while your friend makes me beg for more.",
+  "Push me down onto the bed and take me like you own me.",
+  "I’m your dirty little shared slut, always ready for both of you.",
+  "Would you pull my hair while he spanks me, making me beg?",
+  "I want to feel your cock twitch inside me while I suck him off.",
+  "Can you both keep me warm with your bodies pressed against me?",
+  "Let me be sandwiched between you, every inch of me taken.",
+  "I want to be face down, ass up, one cock in each hole.",
+  "Would you tie my wrists and let your friend have his way with me first?",
+  "Imagine me moaning your name while bouncing on his cock.",
+  "Push me down and take what’s yours while I beg for it.",
+  "I want your friend’s cock in my throat while you fuck my pussy.",
+  "Both of you filling me until I’m dripping with your seed.",
+  "Would you like to take turns using me, seeing how messy I can get?",
+  "I want to be the dirty little slut you share without shame.",
+  "Ride my face while he fills me from behind.",
+  "Let’s make the bed shake with how rough you both fuck me.",
+  "I want to be passed between you two like a good toy.",
+  "You fuck my throat while he ruins my pussy.",
+  "Hold my legs open and take what you want.",
+  "Kiss me while he pounds into me from behind.",
+  "Make me gag on his cock while your fingers stretch me.",
+  "Would you stroke my clit while your friend fucks me deep?",
+  "Both of you fill me up until I’m dripping and shaking.",
+  "I want to be worshiped, used, and loved by both your cocks.",
+  "Let’s take turns until I can’t even crawl.",
+  "Use me until I’m whimpering, begging for more.",
+  "Ride my face, stretch my pussy, make me yours.",
+  "I want to be gagged and used while you take turns cumming inside me.",
+  "Force me to beg for every inch of your cocks.",
+  "Would you spank me while he fucks my throat deep?",
+  "I’m your little cumdump for tonight, ready for double the pleasure.",
+  "Cover me in your cum like the dirty slut I am for you two.",
+  "Make me scream for both your cocks at once.",
+  "Fill every hole I have and leave me a shaking mess.",
+  "I want to kneel between you, tasting both your cocks.",
+  "Pin me down and fuck me without mercy, both of you.",
+  "Let’s see how much I can take before I start crying from pleasure.",
+  "Would you both moan my name when you cum inside me?",
+  "Press me against the wall and take turns filling me up.",
+  "Use my body like the playground it is for your pleasure.",
+  "Make me take you both at the same time, no mercy.",
+  "You fuck my pussy while he fucks my mouth—pure bliss.",
+  "Tease me, stretch me, ruin me together.",
+  "I want to feel so full of cock I can't move.",
+  "Both of you keep me pinned down and begging for more.",
+  "I’m your fucktoy tonight, no safe words, just pleasure.",
+  "Would you blindfold me and switch places without warning?",
+  "Share me, break me, rebuild me with your cocks.",
+  "Cover my face, my chest, my pussy with your loads.",
+  "Take turns cumming inside me and watch it leak out.",
+  "Pull my hair, slap my ass, call me your slut.",
+  "Let me be your midnight threesome fantasy come true.",
+  "Use my pussy and ass, filling them with cum together.",
+  "Would you both enjoy my tears of pleasure as I beg for more?",
+  "Hold my throat gently while your friend fucks my brains out.",
+  "Double the cock, double the pleasure, double the mess.",
+  "Fill my throat while your friend fills my pussy deep.",
+  "Don’t stop until I’m crying and cumming all over you.",
+  "Take pictures of me stuffed full and dripping your cum.",
+  "Let’s see how many loads I can take from both of you.",
+  "I want to choke on one cock while feeling another pounding me.",
+  "Tug my hair back and tell me how good I’m doing.",
+  "Spread my legs wider and fuck me harder, daddy.",
+  "Your friend can stretch me while you kiss me senseless.",
+  "Punish me if I cum without your permission.",
+  "Fuck me until I can’t remember whose cock was inside me last.",
+  "Use me on your knees, bent over, begging for more cock.",
+  "Leave your handprints on my thighs while you both destroy me.",
+  "Slam into me while he watches, stroking his cock for the show.",
+  "I want both your cum dripping out of me when we’re done.",
+  "Your friend can fill my mouth while you own my pussy.",
+  "Mark me, bruise me, fuck me raw together.",
+  "Make me a drooling, cock-hungry mess for your pleasure.",
+  "Tear my clothes off and take what’s yours.",
+  "I’ll be the perfect little slut you both deserve.",
+  "I want you both to cum deep inside me at the same time.",
+  "Pull my panties to the side and take turns ruining me.",
+  "Let me suck one of you off while getting fucked hard.",
+  "Press me between you, feeling your cocks everywhere.",
+  "You fuck my throat while he pulls my hair back.",
+  "Whimper my name while you empty your loads into me.",
+  "Would you spit on me while fucking me raw?",
+  "Ruin my makeup while filling every hole I offer.",
+  "I want to be nothing but a cum-filled mess for you both.",
+  "Your cock in my ass, his in my pussy—perfect stretch.",
+  "Bend me over and don’t stop until I’m shaking.",
+  "Fill both holes while I scream your names.",
+  "Cum on my tits while he paints my face.",
+  "Make me swallow your cum and beg for more.",
+  "Would you laugh as I struggle to take all of you?",
+  "Push my limits and make me your perfect little whore.",
+  "Slam into me so hard the neighbors know my name.",
+  "Pull my wrists behind my back while you double-team me.",
+  "Let’s make my throat raw and my pussy sore together.",
+  "Let me collapse between you, dripping from every hole.",
+  "Force me to gag while your friend pounds my pussy.",
+  "Slap my ass while both of you take what you want.",
+  "Tug on my hair, bruise my hips, leave me ruined and happy.",
+  "Whisper how filthy I look stuffed full of cock.",
+  "Ride my face while he uses my tight pussy.",
+  "Lick the cum off my face when you're done with me.",
+  "Leave bruises on my thighs as you both fuck me harder.",
+  "Would you pin me down while your friend fucks me senseless?",
+  "Fill my ass with cum and my mouth with moans.",
+  "Stretch me open wide and make me your filthy mess.",
+  "Worship my holes with your tongues before fucking me raw.",
+  "Mark me inside and out until I'm nothing but yours.",
+  "Slam your hips against mine, forcing every inch in deep.",
+  "Share me like the good little toy I am for you."
+
+
+                 ],    
             "questions": [
                 "Wanna tell me your name?",
                 "Where are you from, cutie?",
@@ -6784,65 +6717,142 @@ REPLY_POOLS: Dict[str, Dict] = {
     "general": {
         "triggers": [],
         "responses": [
-            "Babe, I would love to fuck you anywhere and anytime all you have to do is say the word and I am yours",
-            "What size is your cock when fully erected?",
-            "Would it be awesome to have your girl swallow all of your cum?",
-            "What do you say to me sitting on your face while you suck my clit?",
-            "Would you like me to suck your cock at the same time?",
-            "Do you like morning sex?",
-            "How long can you go fucking my ass?",
-            "Would you ever consider fucking my ass?",
-            "Do you wanna have me to fuck for just a one night stand, or FWB, or something more?",
-            "Can you do that for me?",
-            "What’s your take on bdsm?",
-            "Do you like MMF threesomes, by the way?",
-            "Are you up for this challenge?",
-            "What sort of sex toys do you have at your place?",
-            "Do you enjoy fucking raw or playing it safe?",
-            "Would you eat my pussy and finger fuck me at the same time?",
-            "Are you that type of man?",
-            "What do you think about giving me a creampie?",
-            "Can you hard face fuck me till I gag and my eyes are teary?",
-            "Can you use my pussy as a cum dumpster?",
-            "Are you thinking about starting this off in the shower before moving onto the bed?",
-            "That sounds so hot! I’m already wet thinking about it. But what if we did something even naughtier first?",
-            "Did it get hotter in here or is that just us?",
-            "Darling, your words make my heart race, let’s indulge in the passion between us.",
-            "What’s your favorite position?",
-            "You’ve got excellent taste, dear. Tell me more. What part of my body excites you? Are we talking gentle teasing or rough handling?",
-            "Getting right to the point? I like that. But tell me, darling, what kind of fucking and sucking do you have in mind?",
-            "Trust me, I’m looking forward to us fucking each other. I can’t help but imagine how pleasurable your cock would feel inside me.",
-            "So I guess... you can fuck me for about 30 minutes, right?",
-            "You’re making my insides melt just by reading that. A passionate, deep fuck? I like the sound of that. It’s not just about the size, honey. It’s about the way you make me feel, the way you look at me, the way you make me scream. And don’t worry, I’m all about making sure you have the time of your life too. We’ll explore every inch, every pleasure, until we’re both breathless and begging for more.",
-            "This is straight fucking. What kind of fucking are you in the mood for? Tell me everything. Let’s get down and dirty.",
-            "And you think you’re going to be in control? Let’s just say I’ve got a few leaks of my own that need fixing and you, my dear, are just the tool for the job.",
-            "I’d love to have you fuck my friend while I watch. Are you sure you can handle two women at the same time?",
-            "Do you like what you see? I want you to fuck me doggy style while you pull my hair. What do you think?",
-            "Well, that depends, doesn’t it, darling? How would you like to fuck me with a toy? I’m certainly feeling freaky. And the thought of you fucking my pussy is making me wet.",
-            "I got the cock picture you sent, and I can’t wait to have you fuck my pussy with your big cock.",
-            "How would you like to fuck this pussy? You seem so eager to have a taste.",
-            "You make me wet with the way you describe your fantasies.",
-            "And so do I. But before we proceed any further, would you mind showing me a picture of you so I know who is begging to fuck my pussy?",
-            "It seems like you miss sex that badly already.",
-            "I was thinking of a little escapade in the bathroom, where you bend me over against the bathroom wall and fuck me from behind.",
-            "Does this mean you are going to fuck me in all the rooms at your place? Damn, I can’t wait to have you in between my legs already.",
-            "You can’t stop amazing me! I’m so flattered by your words and they sound sweet to my ears.",
-            "Babe, do you think this will work? I noticed you have been busy with work, but why don’t you make time for us to fuck each other and have a good time?",
-            "Honestly, you are getting me horny right now from reading your messages.",
-            "I’m sad right now, it’s been a long time since someone fucked my pussy and made me cum multiple times.",
-            "I have a friend who is willing to join us. But that’s if you are cool with the idea.",
-            "Trying to get me all wet and horny, huh? Well, it’s working! You just know the things to tell a lady to make her dripping wet.",
-            "I’m just here thinking of how we will please each other in your kitchen. I’ve been wanting to try making out in the kitchen for a long time now. Is it something you are looking forward to doing — I mean, to get fucked on the kitchen floor?",
-            "Sometimes you don’t know how good people are till you try their ability in the other room.",
-            "Work my body with your tongue, pin me down, fuck me so hard, and make me beg for more. That’s the kind of experience I want to have right now.",
-            "I will make you scream my name while I ride your cock and fuck you in a cowgirl position.",
-            "Yes baby you can fuck my pussy sore, fuck me so hard till I can’t take it anymore.",
-            "I don’t mind being fucked in all three holes, but tell me — which hole would you be fucking first?",
-            "Fuck buddies sound perfect, have you experienced outdoor sex before?",
-            "A fucking game? You really know how to have fun. How does it work?",
-            "I’ve never been double fucked, I wouldn’t mind trying that with you.",
-            "You are so sweet, my darling. Now imagine this — slow music playing in the background, while we’re slow dancing, feeling our bodies come together. You kiss my neck and down to my back, spend so much time on my beautiful breasts teasing them tremendously, and then your hands touch down my thigh, slowly sliding into my pussy. This comes after you’ve slowly undressed me with your teeth. How long do you think foreplay should last?",
-            "I would like that. I’d like you to start out by giving me a nice full-body massage, then start kissing me, roll me over and then pull my head down to your cock and feel my hot mouth wrapping its lips around it. And at the same time, you’ll be eating me out. Then move to my back while I’m on my knees, taking my hair and..."
+            
+  "Chain me to the ceiling and tear my holes apart.",
+  "Make me gag, choke, and drool on your cock till I can’t breathe.",
+  "Use my holes like you own them and punish me if I resist.",
+  "Break my body with pleasure and rebuild me as your perfect cumdump.",
+  "Pull my hair so hard I cry while you fuck me deeper.",
+  "Make my ass your personal fuck hole and don’t go gentle.",
+  "Slap my pussy until I’m begging to be filled.",
+  "Facefuck me until my makeup is ruined and my throat is sore.",
+  "Breed me like a filthy animal until your cum is leaking out of me.",
+  "Shove a ball gag in my mouth and use me without mercy.",
+  "Destroy my pussy with your cock while your friend uses my ass.",
+  "Beat my ass red with your hand before you fuck me.",
+  "Shove your cock so deep in my ass I scream your name.",
+  "Make me your leaking, crying, cum-soaked little fucktoy.",
+  "Force my mouth open wider and shove your cock down my throat.",
+  "Tie my ankles behind my head and fuck me till I break.",
+  "Make my body shake, twitch, and collapse from your use.",
+  "Double-penetrate me rough while I cry from overstimulation.",
+  "Choke me out a little and fuck my throat while I’m weak.",
+  "Use my face like your personal cumrag.",
+  "Cover me in bruises, bites, and handprints so everyone knows I’m yours.",
+  "Force every last moan from my throat with your cock.",
+  "Stuff my ass full and fuck it raw till I scream.",
+  "Handcuff me, blindfold me, and fuck me senseless.",
+  "Push my face into the floor and fuck me till I sob.",
+  "Tie clamps on my nipples and fuck me until they’re throbbing.",
+  "Force me to stay silent while you ruin my body.",
+  "Slap my ass so hard I can't sit for days.",
+  "Cover my body with spit, cum, and bruises until I’m nothing but yours.",
+  "Slam into me without warning and fill me rough and deep.",
+  "Ram your cock into my throat until I can’t stop drooling.",
+  "Make me take every inch while you spit filthy words into my ear.",
+  "Use my holes till they’re red, swollen, and aching for more.",
+  "Make me say thank you after every brutal thrust you give me.",
+  "Hold my mouth open and use it like a filthy cocksleeve.",
+  "Breed my holes over and over till I’m dripping cum.",
+  "Punish my pussy with toys until I’m shaking and broken.",
+  "Slam my body against the wall and fuck me with no mercy.",
+  "Force my body to cum again and again till I can’t breathe.",
+  "Crush my throat between your hands while you fill my cunt.",
+  "Destroy my tight little ass and call me your anal whore.",
+  "Chain me down, fuck me rough, and leave me sobbing and ruined.",
+  "Make my jaw sore from taking your cock so deep.",
+  "Turn my holes into your personal dumping grounds.",
+  "Shove a dildo in my ass while you fuck my cunt raw.",
+  "Leave me stretched out, dripping, and gasping for more use.",
+  "Gag me so I can only moan while you brutalize my holes.",
+  "Force my mouth onto your cock with no escape.",
+  "Smack my tits while pounding my pussy from behind.",
+  "Force every orgasm out of my body until I’m begging for you to stop.",
+  "Use my throat until my mascara runs down my face.",
+  "Tie me up and fuck my mouth until I pass out from pleasure.",
+  "Punish me for every whimper, every twitch, every ounce of resistance.",
+  "Make me cry from the overwhelming pleasure you force into me.",
+  "Use every hole until I’m numb and fucked out.",
+  "Slap my cunt with your cock before stuffing it deep inside.",
+  "Breed me until my womb aches and my pussy leaks your seed.",
+  "Stretch my ass wide and force me to hold it open for you.",
+  "Bite my neck, leave bruises, and take me roughly wherever you want.",
+  "Force yourself into my throat again and again without slowing down.",
+  "Pull my hair like reins and slam into me harder.",
+  "Use my face to wipe your cock clean after you cum.",
+  "Choke me while I’m riding your cock, make me fight for breath.",
+  "Make me your cocksleeve and your cumdump without hesitation.",
+  "Hold me down and fuck my ass until I scream your name.",
+  "Use me, abuse me, and ruin me without an ounce of mercy.",
+  "Make me gag and struggle while you keep going deeper.",
+  "Fuck me so hard I can’t stand up the next day.",
+  "Twist my nipples hard while you pound my pussy rough.",
+  "Call me your filthy little fuckdoll while you slam into me.",
+  "Force me to beg for every thrust, every slap, every use.",
+  "Stretch both my holes at the same time until I sob.",
+  "Keep using me even after I cum and collapse.",
+  "Stuff my throat and cunt until I can't tell which is fuller.",
+  "Force my ass to take every inch while I scream and moan.",
+  "Gag me with your cock and use me until my throat is raw.",
+  "Spank me until my ass is burning, then fuck me harder.",
+  "Cover my face in your cum, force me to thank you.",
+  "Treat me like your personal sex slave for the whole night.",
+  "Tie my wrists and ankles and take me any way you want.",
+  "Mark my body with bruises that remind me who I belong to.",
+  "Stretch my throat wide and don’t stop till I'm crying.",
+  "Leave me breathless, fucked out, dripping from every hole.",
+  "Slam into me until I can’t even remember my own name.",
+  "Choke me gently while you whisper how ruined I look for you.",
+  "Use your belt to tie me up and fuck me till I collapse.",
+  "Force me onto my knees and fuck my face deep and rough.",
+  "Make me squirt again and again while you keep going rougher.",
+  "Leave me a drooling, moaning, fucked-out mess for you.",
+  "Fill my ass, pussy, and mouth until I leak everywhere.",
+  "Drag me onto your cock by my hair and fuck me without stopping.",
+  "Use my throat like your personal fuckhole until I cry.",
+  "Call me your filthy cumslut while you ruin my tight holes.",
+  "Clamp my nipples and fuck me until they sting and ache.",
+  "Force a plug into my ass and keep fucking my pussy rough.",
+  "Stuff every inch of your cock down my throat while you pull my hair.",
+  "Punish me for every time I moan without permission.",
+  "Hold my throat tight and slam into me from behind.",
+  "Force orgasms from my body until I’m shaking uncontrollably.",
+  "Use me until I’m limp, trembling, and leaking.",
+  "Push my face into the bed and rail me mercilessly.",
+  "Stretch me out with toys until you shove your cock inside roughly.",
+  "Slap my face, bite my tits, leave me marked and bruised.",
+  "Force-feed me your cock until I can barely breathe.",
+  "Punish my pussy with your cock until I beg for release.",
+  "Tear my panties off and slam inside me raw.",
+  "Force my face down and fuck my ass without warning.",
+  "Make me your filthy, broken little slut.",
+  "Use me so hard I’m sore for days afterward.",
+  "Make me squirt on your cock over and over without stopping.",
+  "Stretch my throat wide open and cum down it deep.",
+  "Force my hands above my head and take my body roughly.",
+  "Keep me trembling, leaking, and moaning until you’re satisfied.",
+  "Fill every hole so full that I can barely move afterward.",
+  "Choke me, slap me, fuck me till I’m begging for mercy.",
+  "Bite down hard on my shoulder as you cum inside me.",
+  "Chain me up and use me like your personal fucktoy.",
+  "Ram into me without holding back, make me scream your name.",
+  "Breed my ass and pussy until I’m dripping full.",
+  "Punish me every time I beg for you to slow down.",
+  "Wrap your hand around my throat and keep fucking harder.",
+  "Force my body into one endless, ruined orgasm.",
+  "Make me your submissive slut for the entire night.",
+  "Cover me in sweat, cum, bruises, and your bite marks.",
+  "Fill my ass with your cock until it stretches wide open.",
+  "Make my body yours, marked, owned, and used completely.",
+  "Choke me while fucking my throat until I pass out.",
+  "Force my mouth open and cum deep inside.",
+  "Punish me with toys, clamps, and cock until I’m a shaking mess.",
+  "Use me so hard that my legs can’t hold me up after.",
+  "Pull my hair like reins while you slam into me harder.",
+  "Force me to beg, plead, and sob while you destroy my holes.",
+  "Breed me rough, deep, and raw until I can't stop shaking.",
+  "Stretch me open, use me rough, and leave me dripping."
+            
             ],
         "questions": [
             "Wanna tell me your name?",
