@@ -761,7 +761,7 @@ REPLY_POOLS: Dict[str, Dict] = {
                     "I want to be your dirty little cum addict.",
                     "Stroke your cock along my tongue until you blow in my mouth.",
                     "I want to suck your cock until my lips are swollen and raw.",
-                    "Let me play with your balls while sucking you senseless.".,
+                    "Let me play with your balls while sucking you senseless.",
                     "I desire to suck you slow, stimulating each nerve of your cock.",
                     "Take my hair and make me take each inch of you.",
                     "I desire to moan around your cock while you are fucking my face.",
@@ -773,7 +773,7 @@ REPLY_POOLS: Dict[str, Dict] = {
                     "Be rough, be nasty, fuck my throat until you're full.",
                     "I want to swallow your cock so deep I suffocate without you.",
                     "Let me be your morning, noon, and night cocksucker.",
-                    "I want your cock bulging against my cheeks sucking you dry.".
+                    "I want your cock bulging against my cheeks sucking you dry.",
                     "Use my pretty mouth like your own cum box.",
                     "I'll lap up all your cum like needy little slut I am.",
                     "I want to kiss your cock with wet, needy lips till you shudder.",
