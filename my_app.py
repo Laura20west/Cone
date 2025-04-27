@@ -1465,112 +1465,112 @@ REPLY_POOLS: Dict[str, Dict] = {
                 "I need your hands all over my body as you pin me up against the wall and fuck me hard.",
                 "I need you to throw me onto the bed and make me scream your name repeatedly.",
                 "I need your cock so far inside me I don't remember my own name.",
-                "I need you to grab my hair as you pound me like you own me.
-                "I'll beg for your dick while you taunt my soaking wet pussy."
-                "I want you to pin me down and make me take all of you."
-                "I want your mouth all over my body, trembling me before fucking me."
-                "I need you sweating above me while you fuck increasingly harder."
-                "I want my thighs trembling around you while you fuck me senseless.".
-                "I'll whine while you fuck me so well my legs can't help shaking."
-                " Fuck me like you haven't had anyone in months, that's what I want."
-                "I have to feel your cock spreading me open, having me grasping for air."
-                "I want my nails digging into your back as you rail me so fucking hard."
-                "I need you to roll me over and fuck me from the back until I'm shouting out.
-                "I wish to ride you until you cum and lose control deep inside me."
-                "I require you to make me cum again and again until I'm pleading with you to stop."
-                "I desire your cock deep inside me while whispering dirty things in my ear."
-                "I need you to fuck me hard until my body cannot handle any more."
-                "I desire your hands gripping my hips as you push harder and deeper.".
-                "I'll arch my back as you fuck me like a dirty little slut."
-                "I want to be your personal fucktoy, ready anytime you need me."
-                "I need you so badly I can think of nothing else but your cock inside me."
-                "I want you to pin me against the door and fuck me before we even make it to bed."
-                "I need your lips bruising mine as you pound me so good it hurts.
+                "I need you to grab my hair as you pound me like you own me.",
+                "I'll beg for your dick while you taunt my soaking wet pussy.",
+                "I want you to pin me down and make me take all of you.",
+                "I want your mouth all over my body, trembling me before fucking me.",
+                "I need you sweating above me while you fuck increasingly harder.",
+                "I want my thighs trembling around you while you fuck me senseless.",
+                "I'll whine while you fuck me so well my legs can't help shaking.",
+                " Fuck me like you haven't had anyone in months, that's what I want.",
+                "I have to feel your cock spreading me open, having me grasping for air.",
+                "I want my nails digging into your back as you rail me so fucking hard.",
+                "I need you to roll me over and fuck me from the back until I'm shouting out.",
+                "I wish to ride you until you cum and lose control deep inside me.",
+                "I require you to make me cum again and again until I'm pleading with you to stop.",
+                "I desire your cock deep inside me while whispering dirty things in my ear.",
+                "I need you to fuck me hard until my body cannot handle any more.",
+                "I desire your hands gripping my hips as you push harder and deeper.",
+                "I'll arch my back as you fuck me like a dirty little slut.",
+                "I want to be your personal fucktoy, ready anytime you need me.",
+                "I need you so badly I can think of nothing else but your cock inside me.",
+                "I want you to pin me against the door and fuck me before we even make it to bed.",
+                "I need your lips bruising mine as you pound me so good it hurts.",
                 "I want your cock smeared with my cum as you fuck me over and over.",
                 "I need you hammering into me as the bed creaks under us.",
                 "I want your cock pulsing inside me as I milk the last bit out of you.",
                 "I'll bite your shoulder as you fuck me like you mean it.",
-                "I want to sit in your lap and grind on your cock until we're both whimpering.".
-                "I want to feel your hands searching my body as you thrust deep within me."
-                "I want your cock to own my pussy until I'm dripping down my legs."
-                "I want you to make me cum so hard I'll scream your name like a prayer."
-                "I want your lips on my tits as you fuck me deep and slow."
-                "I'll scream when you slap my ass as you fuck me from the back.".
-                "I require your fingers around my neck gently as you fuck me harder."
-                "I require you to open me up wide as I gasp and moan beneath you."
-                "I require my pussy clenching so tight around your cock you lose control."
-                "I require you whispering dirty promises as you pound me into the mattress."
-                "I want to ride your face and your cock until I'm nothing but a mess for you.".
-                "I want you to fuck me raw, holding nothing back, no mercy."
-                "I want to wake up with you between my legs, tongue fucking me awake."
-                "I'll ride your thigh, starving for your cock inside me."
-                "I want you to bend me over and fuck me like the dirty slut I am."
-                "I need you to claim me with your bites, scratches, and your cum.
-                "I need to feel your cock throb inside me as you fill me up."
-                "I need your cock hard and angry, slamming into my dripping pussy."
-                "I need to see your eyes blazing with desire as you slam me harder."
-                "I need your cum leaking out of me after you fuck me bare."
-                "I need you slamming into me until I'm weeping and shaking with ecstasy.".
-                "I want you to hold my wrists down while you fuck the life out of me."
-                "I want you fucking me so hard and fast I can't catch my breath."
-                "I'll be your slut, your toy, your everything while you're fucking me."
-                "I want my voice to be hoarse from screaming your name all night long."
-                "I need your cock pulsing and throbbing while you empty yourself into me.".
-                "I want to wrap my legs around you and never let you pull out."
-                "I need you panting against my neck as you fuck me deep and rough."
-                "I want to ride you until your eyes roll back and you beg me to stop."
-                "I need to be used, filled, and fucked until I'm too sore to walk."
-                "I want you to spit in my mouth as you fuck me harder and harder.".
-                "I need to be drenched, trembling, and begging for more of you."
-                "I need your hands to leave bruises on my hips from how hard you're gripping them."
-                "I need to feel your cock spasm as you cum deep in me."
-                "I'll scream like a starving slut as you fuck me stupid."
-                "I need to squirt all over your dick as you keep pounding away.".
-                "I want you to keep fucking me even when I'm begging for mercy."
-                "I want to lose myself under your body while you use me mercilessly."
-                "I need to be your perfect little cum-drenched slut tonight."
-                "I want you to keep me on the edge, make me cum and cum and cum."
-                "I need your cock buried so deep I can feel it in my stomach.".
-                "I want you to tear my clothes off and fuck me like you cannot wait."
-                "I need you to pin me against the wall and pound into me until I collapse."
-                "I want my body shaking and hurting from how hard you fuck me."
-                "I'll scratch your back as you pound into me mercilessly."
-                "I want to feel your cum dripping out of my stretched pussy.".
-                "I need your big cock to make me scream your name shamelessly."
-                "I need you to fuck me so that I don't remember who and where I am."
-                "I need to be thrown onto the bed and pounded until tears gush out of my eyes."
-                "I need your cock to stretch my pussy with every stroke more and more."
-                "I need you to spit on my pussy and fuck me again and again and harder.
-                "I want to ride you until your cum is dripping out of me."
-                "I need your tongue, your fingers, your cock — everything — destroying me."
-                "I want to feel your hot breath on my flesh before you pound into me."
-                "I'll beg you not to stop, even when my body can't take any more."
-                "I want to feel your hands tangled in my hair as you fuck me.".
-                "I want you to growl my name in my ear as you fuck me hard."
-                "I want to be ruined, destroyed, and covered in your cum tonight."
-                "I want you to fuck me so good that I don't think about anything else."
-                "I want your teeth on my skin, your cock buried inside me."
-                "I want your hot cum spilling into me as you fuck me even harder.".
-                "I'll whimper when you thrust harder, filling me again and again."
-                "I want you grabbing my waist and fucking me into the mattress."
-                "I need to cum around your cock so hard you can't pull out."
-                "I want you to make me scream, moan, and beg for more of you."
-                "I need your body crushing mine as you fuck me with abandon.
-                "I need to be shaking, panting, soaking, and yours by the end of the night."
-                "I need your cock throbbing inside me until you can't give anymore."
-                "I need your mouth on my pussy while you finger fuck me to orgasm."
-                "I need you opening me up wide while I beg for more."
-                "I need my pussy aching, wet, and dripping with your cum after you're done.".
-                "I'll whimper and gasp as you pound me into the headboard."
-                "I need your hands fisted on my hips, holding me down as you thrust."
-                "I need you to make me cum so hard I pass out."
-                "I want you sweating on me as you fuck me ruthlessly."
-                "I need to ride your dick like my life depends on it.".
+                "I want to sit in your lap and grind on your cock until we're both whimpering.",
+                "I want to feel your hands searching my body as you thrust deep within me.",
+                "I want your cock to own my pussy until I'm dripping down my legs.",
+                "I want you to make me cum so hard I'll scream your name like a prayer.",
+                "I want your lips on my tits as you fuck me deep and slow.",
+                "I'll scream when you slap my ass as you fuck me from the back.",
+                "I require your fingers around my neck gently as you fuck me harder.",
+                "I require you to open me up wide as I gasp and moan beneath you.",
+                "I require my pussy clenching so tight around your cock you lose control.",
+                "I require you whispering dirty promises as you pound me into the mattress.",
+                "I want to ride your face and your cock until I'm nothing but a mess for you.",
+                "I want you to fuck me raw, holding nothing back, no mercy.",
+                "I want to wake up with you between my legs, tongue fucking me awake.",
+                "I'll ride your thigh, starving for your cock inside me.",
+                "I want you to bend me over and fuck me like the dirty slut I am.",
+                "I need you to claim me with your bites, scratches, and your cum.",
+                "I need to feel your cock throb inside me as you fill me up.",
+                "I need your cock hard and angry, slamming into my dripping pussy.",
+                "I need to see your eyes blazing with desire as you slam me harder.",
+                "I need your cum leaking out of me after you fuck me bare.",
+                "I need you slamming into me until I'm weeping and shaking with ecstasy.",
+                "I want you to hold my wrists down while you fuck the life out of me.",
+                "I want you fucking me so hard and fast I can't catch my breath.",
+                "I'll be your slut, your toy, your everything while you're fucking me.",
+                "I want my voice to be hoarse from screaming your name all night long.",
+                "I need your cock pulsing and throbbing while you empty yourself into me.",
+                "I want to wrap my legs around you and never let you pull out.",
+                "I need you panting against my neck as you fuck me deep and rough.",
+                "I want to ride you until your eyes roll back and you beg me to stop.",
+                "I need to be used, filled, and fucked until I'm too sore to walk.",
+                "I want you to spit in my mouth as you fuck me harder and harder.",
+                "I need to be drenched, trembling, and begging for more of you.",
+                "I need your hands to leave bruises on my hips from how hard you're gripping them.",
+                "I need to feel your cock spasm as you cum deep in me.",
+                "I'll scream like a starving slut as you fuck me stupid.",
+                "I need to squirt all over your dick as you keep pounding away.",
+                "I want you to keep fucking me even when I'm begging for mercy.",
+                "I want to lose myself under your body while you use me mercilessly.",
+                "I need to be your perfect little cum-drenched slut tonight.",
+                "I want you to keep me on the edge, make me cum and cum and cum.",
+                "I need your cock buried so deep I can feel it in my stomach.",
+                "I want you to tear my clothes off and fuck me like you cannot wait.",
+                "I need you to pin me against the wall and pound into me until I collapse.",
+                "I want my body shaking and hurting from how hard you fuck me.",
+                "I'll scratch your back as you pound into me mercilessly.",
+                "I want to feel your cum dripping out of my stretched pussy.",
+                "I need your big cock to make me scream your name shamelessly.",
+                "I need you to fuck me so that I don't remember who and where I am.",
+                "I need to be thrown onto the bed and pounded until tears gush out of my eyes.",
+                "I need your cock to stretch my pussy with every stroke more and more.",
+                "I need you to spit on my pussy and fuck me again and again and harder.",
+                "I want to ride you until your cum is dripping out of me.",
+                "I need your tongue, your fingers, your cock — everything — destroying me.",
+                "I want to feel your hot breath on my flesh before you pound into me.",
+                "I'll beg you not to stop, even when my body can't take any more.",
+                "I want to feel your hands tangled in my hair as you fuck me.",
+                "I want you to growl my name in my ear as you fuck me hard.",
+                "I want to be ruined, destroyed, and covered in your cum tonight.",
+                "I want you to fuck me so good that I don't think about anything else.",
+                "I want your teeth on my skin, your cock buried inside me.",
+                "I want your hot cum spilling into me as you fuck me even harder.",
+                "I'll whimper when you thrust harder, filling me again and again.",
+                "I want you grabbing my waist and fucking me into the mattress.",
+                "I need to cum around your cock so hard you can't pull out.",
+                "I want you to make me scream, moan, and beg for more of you.",
+                "I need your body crushing mine as you fuck me with abandon.",
+                "I need to be shaking, panting, soaking, and yours by the end of the night.",
+                "I need your cock throbbing inside me until you can't give anymore.",
+                "I need your mouth on my pussy while you finger fuck me to orgasm.",
+                "I need you opening me up wide while I beg for more.",
+                "I need my pussy aching, wet, and dripping with your cum after you're done.",
+                "I'll whimper and gasp as you pound me into the headboard.",
+                "I need your hands fisted on my hips, holding me down as you thrust.",
+                "I need you to make me cum so hard I pass out.",
+                "I want you sweating on me as you fuck me ruthlessly.",
+                "I need to ride your dick like my life depends on it.",
                 "I want you to stretch my pussy and fuck me until I collapse.",
                 "I'll cry out your name again and again until my voice gives out.",
                 "I want your hands all over my body, fucking me until I can't move.",
                 "I need your hot cock sliding deep and rough inside my aching pussy.",
-                "I want you slamming into me while I beg for your cum.".
+                "I want you slamming into me while I beg for your cum.",
                 "I need to be your dripping, wrecked little fuck toy tonight."
 
             ],
@@ -1874,7 +1874,7 @@ REPLY_POOLS: Dict[str, Dict] = {
                 "My pussy is leaking, aching, desperate for your rough touch, baby.",
                 "I want your hands all over my soaked, dripping pussy right now.",
                 "My juicy pussy needs to be devoured, pounded, and used until I collapse.",
-                "My pussy is soaking, trembling, and throbbing for your cock to ruin it."
+                "My pussy is soaking, trembling, and throbbing for your cock to ruin it.",
 
 
                 "My pussy is a filthy mess dripping all over, and I need you to fuck it hard.",
@@ -3464,7 +3464,7 @@ REPLY_POOLS: Dict[str, Dict] = {
             "Punish my hole with brutal, deep, loving thrusts that ruin me completely for anyone else.",
             "Ram into me so hard I squirt from my pussy while your cock is buried in my asshole.",
             "Force my ass to gape open beautifully for you, dripping, ruined, and perfect.",
-            "Make me yours in the dirtiest, most beautiful, most brutal way you can dream up."
+            "Make me yours in the dirtiest, most beautiful, most brutal way you can dream up.",
 
             "Baby, I want you to shove your cock deep into my ass and make me scream your name.",
             "Fuck my ass hard while you hold my hand and whisper how much you love ruining me.",
