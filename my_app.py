@@ -743,143 +743,143 @@ REPLY_POOLS: Dict[str, Dict] = {
                     "I want to swallow your cock deep down in my throat repeatedly.",
                     "Choke me with your cock and make my eyes water with desire.",
                     "I want you to use my mouth as the dirty cumslut I am.",
-                    "I want to be your own cock warmer, at your beck and call.".
+                    "I want to be your own cock warmer, at your beck and call.",
                     "Stuff my mouth with your cock and pound it like a pussy.",
                     "Give me every inch of your cock down my throat.",
                     "Use my face as a cock sleeve, baby, give me hard.",
                     "I want your cock oozing inside my mouth before you even cum.",
-                    "Make me your obedient cumdoll, waiting to taste you every second."
-                    "I want to suck your cock so well you can't remember your own name.".
-                    "Shove your cock past my lips and let me choke on you."
-                    "I'll gag for you, choke for you, anything to taste your cock."
-                    "Get me to work for your cum, tease at my mouth till I'm whimpering."
-                    "I want you groaning as I suck every bit of cum from you."
-                    "Screw my face like it belongs to you, baby."
-                    "I want to be on my knees, your cock sliding down my chin.".
-                    "Slide your cock along my lips until I'm begging to suck it."
-                    "Cover my face with your cum after sucking your cock dry."
-                    "I want to be your dirty little cum addict."
-                    "Stroke your cock along my tongue until you blow in my mouth."
-                    "I want to suck your cock until my lips are swollen and raw."
-                    "Let me play with your balls while sucking you senseless.".
-                    "I desire to suck you slow, stimulating each nerve of your cock."
-                    "Take my hair and make me take each inch of you."
-                    "I desire to moan around your cock while you are fucking my face."
-                    "Treat me like the filthy cumdrinker you have always fantasized about."
-                    "Lace your precum all over my face prior to fucking my mouth."
-                    "Fuck my mouth until it is wide and full of your cum.
+                    "Make me your obedient cumdoll, waiting to taste you every second.",
+                    "I want to suck your cock so well you can't remember your own name.",
+                    "Shove your cock past my lips and let me choke on you.",
+                    "I'll gag for you, choke for you, anything to taste your cock.",
+                    "Get me to work for your cum, tease at my mouth till I'm whimpering.",
+                    "I want you groaning as I suck every bit of cum from you.",
+                    "Screw my face like it belongs to you, baby.",
+                    "I want to be on my knees, your cock sliding down my chin.",
+                    "Slide your cock along my lips until I'm begging to suck it.",
+                    "Cover my face with your cum after sucking your cock dry.",
+                    "I want to be your dirty little cum addict.",
+                    "Stroke your cock along my tongue until you blow in my mouth.",
+                    "I want to suck your cock until my lips are swollen and raw.",
+                    "Let me play with your balls while sucking you senseless.".,
+                    "I desire to suck you slow, stimulating each nerve of your cock.",
+                    "Take my hair and make me take each inch of you.",
+                    "I desire to moan around your cock while you are fucking my face.",
+                    "Treat me like the filthy cumdrinker you have always fantasized about.",
+                    "Lace your precum all over my face prior to fucking my mouth.",
+                    "Fuck my mouth until it is wide and full of your cum.",
                     "Make me suck you after you fuck me hard, tasting my pussy on your lips.",
                     "I want you to cum so hard down my throat I gasp.",
                     "Be rough, be nasty, fuck my throat until you're full.",
                     "I want to swallow your cock so deep I suffocate without you.",
                     "Let me be your morning, noon, and night cocksucker.",
                     "I want your cock bulging against my cheeks sucking you dry.".
-                    "Use my pretty mouth like your own cum box."
-                    "I'll lap up all your cum like needy little slut I am."
-                    "I want to kiss your cock with wet, needy lips till you shudder."
-                    "Pull your hair back and have me look up at you while I suck."
-                    "Slap your cock on my cheeks and tongue before shoving it in.".
-                    "Cover my lips with your precum and have me lick it clean."
-                    "I want to suck your cock until my jaw hurts and my pussy throbs."
-                    "I'll never stop sucking you until you beg me to let you cum."
-                    "I want your cum dripping out of my mouth, down my chest."
-                    "Fuck my throat raw, make me sore and begging for more."
-                    "I want to fall asleep with your cock still in my mouth.".
-                    "Suck you until your knees are weak and you cannot speak."
-                    "cum so much so that it pours out of my mouth."
-                    Stuff your cock so deep that I have a sore throat afterwards."
-                    Let me lick your cockhead as you flinch and gasp above me."
-                    Want to slap my tongue with your cock before it goes in.
+                    "Use my pretty mouth like your own cum box.",
+                    "I'll lap up all your cum like needy little slut I am.",
+                    "I want to kiss your cock with wet, needy lips till you shudder.",
+                    "Pull your hair back and have me look up at you while I suck.",
+                    "Slap your cock on my cheeks and tongue before shoving it in.",
+                    "Cover my lips with your precum and have me lick it clean.",
+                    "I want to suck your cock until my jaw hurts and my pussy throbs.",
+                    "I'll never stop sucking you until you beg me to let you cum.",
+                    "I want your cum dripping out of my mouth, down my chest.",
+                    "Fuck my throat raw, make me sore and begging for more.",
+                    "I want to fall asleep with your cock still in my mouth.",
+                    "Suck you until your knees are weak and you cannot speak.",
+                    "cum so much so that it pours out of my mouth.",
+                    "Stuff your cock so deep that I have a sore throat afterwards.",
+                    "Let me lick your cockhead as you flinch and gasp above me.",
+                    "Want to slap my tongue with your cock before it goes in.",
                     "I want you to stuff my mouth with your hot, thick cum.",
                     "I want to suck each drop from your dick.",
-                    "Get me gagging on your dick repeatedly."
-                    "Cum so far down in my throat, I'll still taste you hours later."
-                    "Sweep your cock across my lips and cling on forever."
-                    "I want to keep sucking after you cum, squeezing out every drop.".
+                    "Get me gagging on your dick repeatedly.",
+                    "Cum so far down in my throat, I'll still taste you hours later.",
+                    "Sweep your cock across my lips and cling on forever.",
+                    "I want to keep sucking after you cum, squeezing out every drop.",
                     "Make me be that dirty little cocksucker you brag about.",
                     "I want to slowly lick your shaft teasing every nerve ending.",
                     "Fuck my mouth and tell me how delicious my tongue is.",
                     "I'll beg for your cum with my mouth agape.",
                     "I want to flick my tongue around your cockhead until you cum with all your strength.",
-                    "Ram your cock so hard into my throat that you can feel the beat of my heart on it.".
-                    "I'd love to wake up every morning with your cock in my mouth."
-                    "I'll suck your cock morning, noon, and night, baby."
-                    "Let me moan as your cock enters my throat."
-                    "I'll be your cumdumpster, all yours for all of your filthy fantasies."
-                    "Make me cum just from sucking on your cock alone."
-                    "I'll make your cock my favorite sweet treat, baby.".
+                    "Ram your cock so hard into my throat that you can feel the beat of my heart on it.".,
+                    "I'd love to wake up every morning with your cock in my mouth.",
+                    "I'll suck your cock morning, noon, and night, baby.",
+                    "Let me moan as your cock enters my throat.",
+                    "I'll be your cumdumpster, all yours for all of your filthy fantasies.",
+                    "Make me cum just from sucking on your cock alone.",
+                    "I'll make your cock my favorite sweet treat, baby,",
                     "I want you to grasp the back of my head and screw me like a toy.",
                     "I want to have your cock throbbing between my lips prior to your cum.",
                     "Shove your load into my mouth and watch me smile as I swallow.",
                     "I'll continue sucking your dick when you're exhausted and sensitive too.",
-                    "Cover my tongue with your seed and have me beg for more.".
-                    "Destroy my lipstick as you deepthroat me."
-                    "Make me your obedient little cocksucker, yearning for more."
-                    "I'll gag with pleasure if only so that your cock's deep inside me."
-                    "Eat me out morning, noon, and night."
+                    "Cover my tongue with your seed and have me beg for more.",
+                    "Destroy my lipstick as you deepthroat me.",
+                    "Make me your obedient little cocksucker, yearning for more.",
+                    "I'll gag with pleasure if only so that your cock's deep inside me.",
+                    "Eat me out morning, noon, and night.",
                     "I'll kiss your balls first before I take in your whole shaft."
-                    "I want to taste your need on my tongue, hot and wet."
+                    "I want to taste your need on my tongue, hot and wet.",
                     "I'll suck the life out of you with every motion of my tongue.".
-                    "Let me rub your cock with my throat until you can't help but come."
-                    "I want you to fuck my mouth until it's raw and sore."
-                    "I'll hold your balls in my hand while my mouth licks your shaft."
-                    "I want to choke on your cum, baby, fill my throat with it."
-                    "I want your cock quivering on my tongue before you shoot.".
+                    "Let me rub your cock with my throat until you can't help but come.",
+                    "I want you to fuck my mouth until it's raw and sore.",
+                    "I'll hold your balls in my hand while my mouth licks your shaft.",
+                    "I want to choke on your cum, baby, fill my throat with it.",
+                    "I want your cock quivering on my tongue before you shoot.",
                     "I'll look up at you with eyes streaked with tears as your cock fucks my throat.",
                     "I'll play with your cockhead using my lips, prolonging your pleasure.",
                     "I want your cock to pulse in my mouth, needing to come so desperately.",
                     "Use my mouth as your playground, your cock the sole toy needed.",
-                    "I want to sleep with the flavor of your cock still on my lips.".
-                    "Wrap your cock around my tongue and be your cum starved slut."
-                    "I desire your cock ruling my mouth, no pity."
-                    "I'll be your loyal throat slut, always at your service."
-                    "I desire your cum oozing from my lips after you ravage my throat."
-                    "Make me weep lustful tears while your cock rules my throat."
-                    "I'll keep your cock snug in my lips while you screw my face.".
-                    "I want your cock sliding over my tonsils like a good little slut."
-                    "I'll be your cock toy, no questions asked, anytime, anywhere."
-                    "Pump your big load down my throat and watch me swallow hungrily."
-                    "I want my tongue wrapped around your cock like a hungry girl."
-                    "I want my spit dripping off your cock while you're fucking my mouth."
-                    "Make me swallow it all, even when my eyes are streaming.
-                    "I'll whisper filthy words 'round your cock as I suck you slow."
-                    "I want my face covered with your cum as I plead for more."
-                    "Use me, abuse me, fuck my mouth until you kill me, daddy."
-                    "Semen all over my face, tongue out, begging for more."
-                    "I want to wake up every morning with your cock firmly embedded in my throat."
-                    "Let me suck you dry on my own filthy lips and tongue.".
+                    "I want to sleep with the flavor of your cock still on my lips.",
+                    "Wrap your cock around my tongue and be your cum starved slut.",
+                    "I desire your cock ruling my mouth, no pity.",
+                    "I'll be your loyal throat slut, always at your service.",
+                    "I desire your cum oozing from my lips after you ravage my throat.",
+                    "Make me weep lustful tears while your cock rules my throat.",
+                    "I'll keep your cock snug in my lips while you screw my face.",
+                    "I want your cock sliding over my tonsils like a good little slut.",
+                    "I'll be your cock toy, no questions asked, anytime, anywhere.",
+                    "Pump your big load down my throat and watch me swallow hungrily.",
+                    "I want my tongue wrapped around your cock like a hungry girl.",
+                    "I want my spit dripping off your cock while you're fucking my mouth.",
+                    "Make me swallow it all, even when my eyes are streaming.",
+                    "I'll whisper filthy words 'round your cock as I suck you slow.",
+                    "I want my face covered with your cum as I plead for more.",
+                    "Use me, abuse me, fuck my mouth until you kill me, daddy.",
+                    "Semen all over my face, tongue out, begging for more.",
+                    "I want to wake up every morning with your cock firmly embedded in my throat.",
+                    "Let me suck you dry on my own filthy lips and tongue.",
                     "I want to have your balls slap against my chin with each thrust.",
                     "I'll fuck your cock with my mouth until you can't take it anymore.",
                     "I want to suck your cock until your toes curl and your voice cracks.",
                     "I want to be your ideal cumslut, always available for your cock.",
-                    "I'll look up at you with a mouth full of cum, smiling like your good little slut.".
+                    "I'll look up at you with a mouth full of cum, smiling like your good little slut.",
                     "I want to lick all of your cock with my tongue after you cum.",
                     "I want you to bend me over and make me suck you more.",
                     "I'll let you cum on my tits, my face, my mouth, wherever you want.",
                     "I want to moan around your cock when you fuck my mouth harder.",
-                    "I want to be treated like a cock-hungry slut every night.".
-                    "I'll never grow tired of your cock spreading my throat wide."
-                    "I must have my jaw aching from so much cock shoved inside me."
-                    "I'll suck you so sweetly, you'll not even think you lived prior to your time with me."
-                    "Sicken and nauseate me and own your cock to my mouth."
-                    "Make me be that nasty little cunt that exists for no purpose other than your cock."
-                    "I want to stuff all of you inside of me, no matter how big you get.".
+                    "I want to be treated like a cock-hungry slut every night.",
+                    "I'll never grow tired of your cock spreading my throat wide.",
+                    "I must have my jaw aching from so much cock shoved inside me.",
+                    "I'll suck you so sweetly, you'll not even think you lived prior to your time with me.",
+                    "Sicken and nauseate me and own your cock to my mouth.",
+                    "Make me be that nasty little cunt that exists for no purpose other than your cock.",
+                    "I want to stuff all of you inside of me, no matter how big you get.",
                     "I'll whine around your cock when you ram it all the way in.",
                     "I want to be fucked by you in the mouth as much as I am fucking by you in the pussy.",
                     "I want to be fucked in the face until your cum runs all over the place.",
                     "I want to do sloppy, dirty love with your cock until you explode.",
                     "I want your cock throbbing on my tongue, wanting to cum.",
-                    "I'll have your cock stay between my lips all day.".
+                    "I'll have your cock stay between my lips all day.",
                     "Take your cock and feed it to me whenever you become hard, I'll suck it willingly.",
                     "I'd like my throat filled wide with your big cock.",
-                    "I'll deepthroat you until tears fall down my face."
+                    "I'll deepthroat you until tears fall down my face.",
                     "Treat me with no mercy, baby, fuck my mouth until you possess it.",
                     "Use my face as a target for your cum whenever you get horny.",
-                    "I'd like my lipstick plastered all over your cock after sucking you dry.".
-                    "I'll savor your cum every time you bless my tongue with it."
-                    "Stick your cock between my breasts, spit on my chest, and get me to lick it off."
-                    "I have to moan on your cock, feeling you get even bigger."
-                    "I'll make your cock an addiction, a habit, a drug."
+                    "I'd like my lipstick plastered all over your cock after sucking you dry.",
+                    "I'll savor your cum every time you bless my tongue with it.",
+                    "Stick your cock between my breasts, spit on my chest, and get me to lick it off.",
+                    "I have to moan on your cock, feeling you get even bigger.",
+                    "I'll make your cock an addiction, a habit, a drug.",
                     "Let me demonstrate how much I love your cock, baby.".
 
         ],
