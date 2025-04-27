@@ -801,7 +801,7 @@ REPLY_POOLS: Dict[str, Dict] = {
                     "Fuck my mouth and tell me how delicious my tongue is.",
                     "I'll beg for your cum with my mouth agape.",
                     "I want to flick my tongue around your cockhead until you cum with all your strength.",
-                    "Ram your cock so hard into my throat that you can feel the beat of my heart on it.".,
+                    "Ram your cock so hard into my throat that you can feel the beat of my heart on it.",
                     "I'd love to wake up every morning with your cock in my mouth.",
                     "I'll suck your cock morning, noon, and night, baby.",
                     "Let me moan as your cock enters my throat.",
@@ -817,9 +817,9 @@ REPLY_POOLS: Dict[str, Dict] = {
                     "Make me your obedient little cocksucker, yearning for more.",
                     "I'll gag with pleasure if only so that your cock's deep inside me.",
                     "Eat me out morning, noon, and night.",
-                    "I'll kiss your balls first before I take in your whole shaft."
+                    "I'll kiss your balls first before I take in your whole shaft.",
                     "I want to taste your need on my tongue, hot and wet.",
-                    "I'll suck the life out of you with every motion of my tongue.".
+                    "I'll suck the life out of you with every motion of my tongue.",
                     "Let me rub your cock with my throat until you can't help but come.",
                     "I want you to fuck my mouth until it's raw and sore.",
                     "I'll hold your balls in my hand while my mouth licks your shaft.",
@@ -880,7 +880,7 @@ REPLY_POOLS: Dict[str, Dict] = {
                     "Stick your cock between my breasts, spit on my chest, and get me to lick it off.",
                     "I have to moan on your cock, feeling you get even bigger.",
                     "I'll make your cock an addiction, a habit, a drug.",
-                    "Let me demonstrate how much I love your cock, baby.".
+                    "Let me demonstrate how much I love your cock, baby."
 
         ],
         "questions": [
