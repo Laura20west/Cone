@@ -1,8 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request, Header, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import random
-from typing import Dict, List
+from typing import Dict, List, Optional
 import spacy
 from collections import defaultdict, deque
 
@@ -10,6 +10,24 @@ app = FastAPI()
 
 # Load spaCy model
 nlp = spacy.load("en_core_web_md")
+
+# ===== SECURITY CONFIGURATION =====
+AUTHORIZED_OPERATORS = {
+    "cone180",
+    "operator2@company.com",
+    "admin@company.com"
+}
+
+async def verify_operator(
+    x_operator_email: Optional[str] = Header(None),
+):
+    """Middleware to validate operator credentials"""
+    if not x_operator_email or x_operator_email not in AUTHORIZED_OPERATORS:
+        raise HTTPException(
+            status_code=403,
+            detail="Unauthorized operator email"
+        )
+    return x_operator_email
 
 # CORS setup
 app.add_middleware(
@@ -19,49 +37,35 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Enhanced reply pools with semantic triggers
+# ===== APPLICATION CORE =====
 REPLY_POOLS: Dict[str, Dict] = {
     "fuck": {
         "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck tonight", "I am ready to fuck you, what about you, are you ready to fuck me", "fuck", "fuckbuddies"],
         "responses": [
             "Fuck me like you mean it—deep, hard, and desperate.",
-            "fuck me now"
+            "fuck me",
             # ... (all existing responses)
         ],
         "questions": [
             "Do you like when a girl talks dirty about how wet her pussy gets for you?",
-            "can i suck it?"
+            "can i suck it?",
+            "spank me?"
             # ... (all existing questions)
         ],
     },
-
-    "cock": {
-        "triggers": ["cock"],
-        "responses": [
-            "cock me like you mean it—deep, hard, and desperate.",
-            "cock me now"
-            # ... (all existing responses)
-        ],
-        "questions": [
-            "Do you like when a girl talks dirty about how wet her pussy gets for you?",
-            "can i suck it?"
-            # ... (all existing questions)
-        ],
-    },
-    # ... (all other categories remain unchanged)
+    # ... (other categories)
 }
 
-# Precompute all possible response-question combinations for each category
+# Precompute combinations
 CATEGORY_QUEUES = {}
 for category, data in REPLY_POOLS.items():
     responses = data["responses"]
     questions = data["questions"]
-    # Generate all possible (response index, question index) pairs
     combinations = [(r_idx, q_idx) for r_idx in range(len(responses)) for q_idx in range(len(questions))]
     random.shuffle(combinations)
     CATEGORY_QUEUES[category] = deque(combinations)
 
-# Pre-process triggers for NLP matching
+# NLP processing
 def prepare_triggers():
     processed = defaultdict(list)
     for category, data in REPLY_POOLS.items():
@@ -72,6 +76,7 @@ def prepare_triggers():
 
 TRIGGERS_NLP = prepare_triggers()
 
+# ===== MODELS =====
 class UserMessage(BaseModel):
     message: str
 
@@ -81,8 +86,42 @@ class SallyResponse(BaseModel):
     confidence: float
     replies: List[str]
 
+# ===== ENDPOINTS =====
+@app.post("/per", response_model=SallyResponse)
+async def analyze_message(
+    request: Request,
+    user_input: UserMessage,
+    operator_email: str = Depends(verify_operator)  # Enforces authorization
+):
+    """Main endpoint with proper security"""
+    # NLP processing
+    message = user_input.message.strip()
+    matched_category, matched_word, confidence = nlp_match(message)
+    
+    # Get response queue
+    category_data = REPLY_POOLS[matched_category]
+    queue = CATEGORY_QUEUES[matched_category]
+    
+    # Generate replies
+    replies = []
+    for _ in range(2):
+        if queue:
+            r_idx, q_idx = queue.popleft()
+            response = category_data["responses"][r_idx]
+            question = category_data["questions"][q_idx]
+            replies.append(f"{response} {question}")
+        else:
+            break
+    
+    return {
+        "matched_word": matched_word or "general",
+        "matched_category": matched_category,
+        "confidence": round(confidence, 2),
+        "replies": replies if replies else ["finished token, contact developer"]
+    }
+
 def nlp_match(message: str) -> tuple:
-    """Use NLP to find the best matching category"""
+    """NLP matching logic"""
     doc = nlp(message.lower())
     best_match = ("general", None, 0.0)
     
@@ -100,41 +139,6 @@ def nlp_match(message: str) -> tuple:
                 best_match = (category, word, 0.8)
     
     return best_match
-
-@app.post("/per", response_model=SallyResponse)
-async def analyze_message(user_input: UserMessage):
-    message = user_input.message.strip()
-    
-    # Get best match using NLP
-    matched_category, matched_word, confidence = nlp_match(message)
-    category_data = REPLY_POOLS[matched_category]
-    queue = CATEGORY_QUEUES[matched_category]
-    
-    replies = []
-    # Generate up to 2 replies per request
-    for _ in range(2):
-        if queue:
-            r_idx, q_idx = queue.popleft()
-            response = category_data["responses"][r_idx]
-            question = category_data["questions"][q_idx]
-            replies.append(f"{response} {question}")
-        else:
-            break
-    
-    if not replies:
-        return {
-            "matched_word": matched_word or "general",
-            "matched_category": matched_category,
-            "confidence": round(confidence, 2),
-            "replies": ["finished token, contact developer"]
-        }
-    else:
-        return {
-            "matched_word": matched_word or "general",
-            "matched_category": matched_category,
-            "confidence": round(confidence, 2),
-            "replies": replies
-        }
 
 if __name__ == "__main__":
     import uvicorn
