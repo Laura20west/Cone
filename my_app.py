@@ -111,7 +111,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     "When can we fuck?",
     "Where should we fuck?",
     "Why don't we fuck?"
-]
+],
         "responses": [
         "I want you to fuck me hard against the wall until I scream your name.",
         "Fuck me slowly, making me feel every inch of your cock.",
@@ -761,7 +761,7 @@ REPLY_POOLS: Dict[str, Dict] = {
     "d*ck",
     "penis",
     
-]
+],
         "responses": [
         "I can't stop thinking about your cock stretching me wide open.",
         "Your cock looks so good when it's throbbing and ready just for me.",
