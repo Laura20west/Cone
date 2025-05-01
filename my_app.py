@@ -25,10 +25,12 @@ REPLY_POOLS: Dict[str, Dict] = {
         "triggers": ["You are a beautiful woman and I want to fuck you", "You are extremely hot, can you fuck me", "How are you doing ", "can i fuck you", "i want to fuck you", "i want us to fuck tonight", "I am ready to fuck you, what about you, are you ready to fuck me", "fuck", "fuckbuddies"],
         "responses": [
             "Fuck me like you mean it—deep, hard, and desperate.",
+            "fuck me now"
             # ... (all existing responses)
         ],
         "questions": [
             "Do you like when a girl talks dirty about how wet her pussy gets for you?",
+            "can i suck it?"
             # ... (all existing questions)
         ],
     },
