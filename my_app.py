@@ -34,6 +34,20 @@ REPLY_POOLS: Dict[str, Dict] = {
             # ... (all existing questions)
         ],
     },
+
+    "cock": {
+        "triggers": ["cock"],
+        "responses": [
+            "cock me like you mean it—deep, hard, and desperate.",
+            "cock me now"
+            # ... (all existing responses)
+        ],
+        "questions": [
+            "Do you like when a girl talks dirty about how wet her pussy gets for you?",
+            "can i suck it?"
+            # ... (all existing questions)
+        ],
+    },
     # ... (all other categories remain unchanged)
 }
 
