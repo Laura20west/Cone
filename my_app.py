@@ -14,7 +14,7 @@ nlp = spacy.load("en_core_web_md")
 # ===== SECURITY CONFIGURATION =====
 AUTHORIZED_OPERATORS = {
     "cone478",
-    "cone245"
+    "cone245",
     "operator2@company.com",
     "admin@company.com"
 }
