@@ -1,6 +1,6 @@
 {
     "fuck": {
-
+        "triggers": ["fuck", "f*ck", "bang", "fuk", "fucking", "hook up", "quickie"],
         "responses": [
         "I want you to fuck me hard against the wall until I scream your name.",
         "Fuck me slowly, making me feel every inch of your cock.",
@@ -630,27 +630,7 @@
     },
     
     "cock": {
-        "triggers": [
-    # Explicit intent variations
-    "I want to give you my cock",
-    "do you like my cock?",
-    "Can you suck my dick?",
-    "do you like my dick?",
-    
-    # Polite/indirect variations
-    "do you like my big cock?",
-    "Want my cock?",
-    "is it big enough, my cock?",
-    "give me a blowjob?",
-    
-    # Phonetic variations
-    "c*ck",
-    "cuk",
-    "dick",
-    "d*ck",
-    "penis",
-    
-],
+        "triggers": ["cock", "c*ck", "cuk", "dick", "d*ck", "penis", "suck my cock, suck my penis, suck my dick, touch my cock"],
         "responses": [
         "I can't stop thinking about your cock stretching me wide open.",
         "Your cock looks so good when it's throbbing and ready just for me.",
