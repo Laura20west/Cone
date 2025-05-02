@@ -197,11 +197,15 @@ async def analyze_message(
             random.shuffle(combinations)
             queue = deque(combinations)
             CATEGORY_QUEUES[best_match[0]] = queue
-            
+
         if queue:
-            r_idx, q_idx = queue.popleft()
-            response["replies"].append(category_data["responses"][r_idx])
-            response["replies"].append(category_data["questions"][q_idx])
+             taken = 0
+             while taken < 2 and queue:
+                r_idx, q_idx = queue.popleft()
+                response["replies"].append(category_data["responses"][r_idx])
+                response["replies"].append(category_data["questions"][q_idx])
+                taken += 1
+           
     
     # Fallback if no responses found
     if not response["replies"]:
