@@ -52,7 +52,7 @@ for category, data in REPLY_POOLS.items():
     CATEGORY_QUEUES[category] = deque(combinations)
 
 # Security config
-AUTHORIZED_OPERATORS = {"cone478", "cone245", "operator2@company.com", "admin@company.com"}
+AUTHORIZED_OPERATORS = {"cone478", "cone245", "cone353", "cone229", "cone516", "cone069", "cone096", "admin@company.com"}
 
 app.add_middleware(
     CORSMiddleware,
