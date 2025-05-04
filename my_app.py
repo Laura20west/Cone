@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 import uuid
 import random
-from collections import defaultdict, deque
+from collections import defaultdict, deque, Counter
 import nltk
 from nltk.corpus import wordnet as wn
 from typing import Dict, List, Optional
@@ -92,16 +92,20 @@ CATEGORY_QUEUES = {}
 for category, data in REPLY_POOLS.items():
     responses = data["responses"]
     questions = data["questions"]
-    combinations = list(product(range(len(responses)), range(len(questions))))
-    random.shuffle(combinations)
-    CATEGORY_QUEUES[category] = deque(combinations)
+    if responses and questions:
+        combinations = list(product(range(len(responses)), range(len(questions))))
+        random.shuffle(combinations)
+        CATEGORY_QUEUES[category] = deque(combinations)
+    else:
+        CATEGORY_QUEUES[category] = deque()
 
-# Security config
-AUTHORIZED_OPERATORS = {"cone478", "cone353", "cone229", "cone516", 
-                       "cone481", "cone335", "cone424", "cone069", "cone096", 
-                       "cone075","cone136", "cone406", "cone047", "cone461", 
-                       "cone423", "cone290", "cone407", "cone468",
-                       "cone221", "cone412", "cone413", "admin@company.com"}
+# Security config (fixed comma separation)
+AUTHORIZED_OPERATORS = {
+    "cone478", "cone353", "cone229", "cone516", "cone481", "cone335",
+    "cone424", "cone069", "cone096", "cone075", "cone136", "cone406",
+    "cone047", "cone461", "cone423", "cone290", "cone407", "cone468",
+    "cone221", "cone412", "cone413", "admin@company.com"
+}
 
 app.add_middleware(
     CORSMiddleware,
@@ -163,13 +167,13 @@ def augment_dataset():
             [token.text.lower() for token in doc if token.is_alpha]
         )
     
-    # Create new categories
+    # Create new categories with default responses
     for category, words in category_vocabs.items():
         if category not in REPLY_POOLS:
             REPLY_POOLS[category] = {
                 "triggers": list(words),
-                "responses": [],
-                "questions": []
+                "responses": ["Honey, let's take this somewhere more private..."],
+                "questions": ["What's your deepest, darkest fantasy?"]
             }
     
     # Enhance triggers
@@ -188,9 +192,12 @@ def augment_dataset():
     for category, data in REPLY_POOLS.items():
         responses = data["responses"]
         questions = data["questions"]
-        combinations = list(product(range(len(responses)), range(len(questions))))
-        random.shuffle(combinations)
-        CATEGORY_QUEUES[category] = deque(combinations)
+        if responses and questions:
+            combinations = list(product(range(len(responses)), range(len(questions))))
+            random.shuffle(combinations)
+            CATEGORY_QUEUES[category] = deque(combinations)
+        else:
+            CATEGORY_QUEUES[category] = deque()
 
 async def verify_operator(request: Request):
     operator_email = request.headers.get("X-Operator-Email")
@@ -203,24 +210,26 @@ async def analyze_message(
     request: Request,
     user_input: UserMessage,
     operator: str = Depends(verify_operator)
-):  # <- Colon was missing here
+):
     message = user_input.message.strip().lower()
     best_match = ("general", None, 0.0)
     
     for category, data in REPLY_POOLS.items():
         for trigger in data["triggers"]:
-            # Handle wildcard patterns
-            if '*' in trigger:
-                pattern = re.compile(trigger.replace('*', '.*'), re.IGNORECASE)
-                if pattern.fullmatch(message):
-                    similarity = 1.0
-            else:
-                doc = nlp(message)
-                trigger_doc = nlp(trigger)
-                similarity = doc.similarity(trigger_doc)
-            
-            if similarity > best_match[2]:
-                best_match = (category, trigger, similarity)
+            try:
+                if '*' in trigger:
+                    pattern = re.compile(trigger.replace('*', '.*'), re.IGNORECASE)
+                    if pattern.fullmatch(message):
+                        similarity = 1.0
+                else:
+                    doc = nlp(message)
+                    trigger_doc = nlp(trigger)
+                    similarity = doc.similarity(trigger_doc)
+                
+                if similarity > best_match[2]:
+                    best_match = (category, trigger, similarity)
+            except Exception as e:
+                continue
     
     response_data = {
         "matched_word": best_match[1] or "general",
@@ -232,13 +241,15 @@ async def analyze_message(
     
     # Get response pair
     category_data = REPLY_POOLS[best_match[0]]
-    if category_data["responses"] and category_data["questions"]:
-        queue = CATEGORY_QUEUES[best_match[0]]
-        
-        if queue:
+    queue = CATEGORY_QUEUES.get(best_match[0], deque())
+    
+    if queue:
+        try:
             r_idx, q_idx = queue.popleft()
             response_data["response"] = category_data["responses"][r_idx]
             response_data["question"] = category_data["questions"][q_idx]
+        except IndexError:
+            pass
     
     # Fallback
     if not response_data["response"]:
@@ -255,7 +266,7 @@ async def analyze_message(
     
     return response_data
 
-@app.get("/dataset/analytics")  # Properly aligned at app level
+@app.get("/dataset/analytics")
 async def get_analytics():
     analytics = {
         "total_entries": 0,
@@ -280,11 +291,11 @@ async def get_analytics():
     
     return analytics
 
-@app.post("/augment")  # Properly aligned at app level
+@app.post("/augment")
 async def trigger_augmentation():
     augment_dataset()
     return {"status": "Dataset augmented", "new_pools": REPLY_POOLS}
-    
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
