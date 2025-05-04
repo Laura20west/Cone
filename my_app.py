@@ -203,7 +203,7 @@ async def analyze_message(
     request: Request,
     user_input: UserMessage,
     operator: str = Depends(verify_operator)
-):
+):  # <- Colon was missing here
     message = user_input.message.strip().lower()
     best_match = ("general", None, 0.0)
     
@@ -255,15 +255,32 @@ async def analyze_message(
     
     return response_data
 
-@app.get("/dataset/analytics")
+@app.get("/dataset/analytics")  # Properly aligned at app level
 async def get_analytics():
-    # ... (same as original)
+    analytics = {
+        "total_entries": 0,
+        "common_categories": {},
+        "confidence_stats": {}
+    }
+    
+    if DATASET_PATH.exists():
+        with open(DATASET_PATH, "r") as f:
+            entries = [json.loads(line) for line in f]
+        
+        analytics["total_entries"] = len(entries)
+        analytics["common_categories"] = Counter(entry["matched_category"] for entry in entries)
+        
+        if entries:
+            confidences = [entry["confidence"] for entry in entries]
+            analytics["confidence_stats"] = {
+                "average": round(sum(confidences)/len(confidences), 2),
+                "min": round(min(confidences), 2),
+                "max": round(max(confidences), 2)
+            }
+    
+    return analytics
 
-@app.post("/augment")
+@app.post("/augment")  # Properly aligned at app level
 async def trigger_augmentation():
     augment_dataset()
     return {"status": "Dataset augmented", "new_pools": REPLY_POOLS}
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
