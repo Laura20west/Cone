@@ -1,4 +1,3 @@
-# main.py
 from fastapi import FastAPI, HTTPException, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -231,7 +230,7 @@ async def analyze_message(
     response_data = local_response
     
     # Check confidence threshold
-    if local_response["confidence"] < 0.65:
+    if local_response["confidence"] < 0.6:
         # Try external API
         external_response = await external_api_call(operator, message)
         if external_response and external_response.get("confidence", 0) > local_response["confidence"]:
@@ -275,4 +274,39 @@ async def get_analytics():
 @app.post("/augment")
 async def trigger_augmentation():
     # Existing augment_dataset implementation
-    return {"status": "Augmentation completed"}
+    if REPLY_POOLS_PATH.exists():
+        with open(REPLY_POOLS_PATH, "r") as f:
+            REPLY_POOLS = json.load(f)
+    
+    # Auto-discover new categories
+    if DATASET_PATH.exists():
+        with open(DATASET_PATH, "r") as f:
+            entries = [json.loads(line) for line in f]
+        
+        category_vocabs = defaultdict(set)
+        for entry in entries:
+            doc = nlp(entry["user_input"])
+            category_vocabs[entry["matched_category"]].update(
+                [token.text.lower() for token in doc if token.is_alpha]
+            )
+        
+        # Create new categories
+        for category, words in category_vocabs.items():
+            if category not in REPLY_POOLS:
+                REPLY_POOLS[category] = {
+                    "triggers": list(words),
+                    "responses": [],
+                    "questions": []
+                }
+    
+    # Enhance triggers
+    for category, data in REPLY_POOLS.items():
+        new_triggers = set(data["triggers"])
+        for trigger in data["triggers"]:
+            new_triggers.update(trigger_gen.generate_variations(trigger))
+        REPLY_POOLS[category]["triggers"] = list(new_triggers)
+    
+    with open(REPLY_POOLS_PATH, "w") as f:
+        json.dump(REPLY_POOLS, f, indent=2)
+    
+    return {"status": "Dataset augmented", "new_pools": REPLY_POOLS}
