@@ -266,6 +266,9 @@ async def get_analytics():
     if DATASET_PATH.exists():
         with open(DATASET_PATH, "r") as f:
             entries = [json.loads(line) for line in f]
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
         
         analytics["total_entries"] = len(entries)
         analytics["common_categories"] = Counter(entry["matched_category"] for entry in entries)
