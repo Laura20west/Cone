@@ -27,7 +27,7 @@ app = FastAPI()
 DATASET_PATH = Path("conversation_dataset.jsonl")
 UNCERTAIN_PATH = Path("uncertain_responses.jsonl")
 REPLY_POOLS_PATH = Path("reply_pools_augmented.json")
-EXTERNAL_API_URL = os.getenv("EXTERNAL_API_URL", "https://backup-service.onrender.com/1A9I6F1O5R1C8O3N1E5145IA")
+EXTERNAL_API_URL = os.getenv("EXTERNAL_API_URL", "https://cone2.onrender.com/1A9I6F1O5R1C8O3N1E5145IA")
 REQUEST_TIMEOUT = 3.5  # Seconds
 
 class TriggerGenerator:
