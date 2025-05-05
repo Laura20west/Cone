@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Request, Depends
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import spacy
@@ -22,7 +22,6 @@ app = FastAPI()
 DATASET_PATH = Path("conversation_dataset.jsonl")
 UNCERTAIN_PATH = Path("uncertain_responses.jsonl")
 REPLY_POOLS_PATH = Path("reply_pools_augmented.json")
-
 
 # Load or initialize reply pools
 if REPLY_POOLS_PATH.exists():
@@ -52,13 +51,6 @@ for category, data in REPLY_POOLS.items():
     random.shuffle(combinations)
     CATEGORY_QUEUES[category] = deque(combinations)
 
-# Security config
-AUTHORIZED_OPERATORS = {"cone478", "cone353", "cone229", "cone516", 
-                       "cone481", "cone335", "cone424", "cone069", "cone096", 
-                       "cone075","cone136", "cone406", "cone047", "cone461", 
-                       "cone423", "cone290", "cone407", "cone468",
-                       "cone221", "cone412", "cone413", "admin@company.com"}
-#Joy cone069 Favour cone516 Kelvin cone353 Popsmoky cone229 litah cone335 sammy cone424  Martin cone 481 Ben cone478 mytest cone245 divine 075
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -76,7 +68,7 @@ class SallyResponse(BaseModel):
     confidence: float
     replies: List[str]
 
-def log_to_dataset(user_input: str, response_data: dict, operator: str):
+def log_to_dataset(user_input: str, response_data: dict):
     entry = {
         "id": str(uuid.uuid4()),
         "timestamp": datetime.utcnow().isoformat(),
@@ -84,7 +76,6 @@ def log_to_dataset(user_input: str, response_data: dict, operator: str):
         "matched_category": response_data["matched_category"],
         "response": response_data["replies"][0] if response_data["replies"] else None,
         "question": response_data["replies"][1] if len(response_data["replies"]) > 1 else None,
-        "operator": operator,
         "confidence": response_data["confidence"],
         "embedding": nlp(user_input).vector.tolist()
     }
@@ -151,18 +142,8 @@ def augment_dataset():
         random.shuffle(combinations)
         CATEGORY_QUEUES[category] = deque(combinations)
 
-async def verify_operator(request: Request):
-    operator_email = request.headers.get("X-Operator-Email")
-    if not operator_email or operator_email not in AUTHORIZED_OPERATORS:
-        raise HTTPException(status_code=403, detail="Unauthorized operator")
-    return operator_email
-
 @app.post("/1A9I6F1O5R1C8O3N87E5145ID", response_model=SallyResponse)
-async def analyze_message(
-    request: Request,
-    user_input: UserMessage,
-    operator: str = Depends(verify_operator)
-):
+async def analyze_message(user_input: UserMessage):
     message = user_input.message.strip()
     doc = nlp(message.lower())
     
@@ -220,7 +201,7 @@ async def analyze_message(
         ]
     
     # Log interaction
-    log_to_dataset(message, response, operator)
+    log_to_dataset(message, response)
     
     # Active learning
     if response["confidence"] < 0.6:
