@@ -12,6 +12,7 @@ import nltk
 from nltk.corpus import wordnet as wn
 from typing import Dict, List, Optional
 from collections import Counter
+import gzip
 
 # Initialize NLP
 nlp = spacy.load("en_core_web_md")
@@ -20,8 +21,8 @@ nltk.download('wordnet')
 app = FastAPI()
 
 # Configuration
-DATASET_PATH = Path("conversation_dataset.jsonl")
-UNCERTAIN_PATH = Path("uncertain_responses.jsonl")
+DATASET_PATH = Path("conversation_dataset.jsonl.gz")
+UNCERTAIN_PATH = Path("uncertain_responses.jsonl.gz")
 REPLY_POOLS_PATH = Path("reply_pools_augmented.json")
 
 # Track used responses and questions
@@ -85,7 +86,7 @@ def log_to_dataset(user_input: str, response_data: dict):
         "embedding": nlp(user_input).vector.tolist()
     }
     
-    with open(DATASET_PATH, "a") as f:
+    with gzip.open(DATASET_PATH, "at") as f:
         f.write(json.dumps(entry) + "\n")
 
 def store_uncertain(user_input: str):
@@ -96,15 +97,17 @@ def store_uncertain(user_input: str):
         "reviewed": False
     }
     
-    with open(UNCERTAIN_PATH, "a") as f:
+    with gzip.open(UNCERTAIN_PATH, "at") as f:
         f.write(json.dumps(entry) + "\n")
 
 def augment_dataset():
     if not DATASET_PATH.exists():
         return
     
-    with open(DATASET_PATH, "r") as f:
-        entries = [json.loads(line) for line in f]
+    entries = []
+    with gzip.open(DATASET_PATH, "rt") as f:
+        for line in f:
+            entries.append(json.loads(line))
     
     category_counts = defaultdict(int)
     for entry in entries:
@@ -267,8 +270,10 @@ async def get_analytics():
     }
     
     if DATASET_PATH.exists():
-        with open(DATASET_PATH, "r") as f:
-            entries = [json.loads(line) for line in f]
+        entries = []
+        with gzip.open(DATASET_PATH, "rt") as f:
+            for line in f:
+                entries.append(json.loads(line))
         
         analytics["total_entries"] = len(entries)
         analytics["common_categories"] = Counter(entry["matched_category"] for entry in entries)
