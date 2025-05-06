@@ -11,9 +11,16 @@ from collections import defaultdict, deque, Counter
 import nltk
 from nltk.corpus import wordnet as wn
 from typing import Dict, List, Optional, Tuple
+import asyncio
 
 # Initialize NLP - using smaller model for faster loading
-nlp = spacy.load("en_core_web_sm")  # Changed to smaller model for performance
+try:
+    nlp = spacy.load("en_core_web_sm")  # Changed to smaller model for performance
+except OSError:
+    import subprocess
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
+
 nltk.download('wordnet')
 
 app = FastAPI()
@@ -68,9 +75,9 @@ class ResponseSelector:
         self._initialize_pairs()
     
     def _initialize_pairs(self):
-        for category in REPLY_POOLS:
-            responses = REPLY_POOLS[category]["responses"]
-            questions = REPLY_POOLS[category]["questions"]
+        for category, data in REPLY_POOLS.items():
+            responses = data["responses"]
+            questions = data["questions"]
             self.available_pairs[category] = [
                 (r_idx, q_idx) 
                 for r_idx in range(len(responses))
@@ -78,9 +85,11 @@ class ResponseSelector:
             ]
             random.shuffle(self.available_pairs[category])
     
-    def get_unique_pair(self, category: str) -> Tuple[int, int]:
+    def get_unique_pair(self, category: str) -> Tuple[Optional[int], Optional[int]]:
         if category not in self.available_pairs or not self.available_pairs[category]:
             self._reset_category(category)
+            if not self.available_pairs[category]:
+                return (None, None)
         
         # Find first unused pair
         for i, (r_idx, q_idx) in enumerate(self.available_pairs[category]):
@@ -90,13 +99,23 @@ class ResponseSelector:
         
         # If all pairs used, reset and try again
         self._reset_category(category)
-        r_idx, q_idx = self.available_pairs[category][0]
-        self.used_pairs[category].add((r_idx, q_idx))
-        return (r_idx, q_idx)
+        if self.available_pairs[category]:
+            r_idx, q_idx = self.available_pairs[category][0]
+            self.used_pairs[category].add((r_idx, q_idx))
+            return (r_idx, q_idx)
+        return (None, None)
     
     def _reset_category(self, category: str):
         self.used_pairs[category].clear()
-        random.shuffle(self.available_pairs[category])
+        if category in REPLY_POOLS:
+            responses = REPLY_POOLS[category]["responses"]
+            questions = REPLY_POOLS[category]["questions"]
+            self.available_pairs[category] = [
+                (r_idx, q_idx) 
+                for r_idx in range(len(responses))
+                for q_idx in range(len(questions))
+            ]
+            random.shuffle(self.available_pairs[category])
 
 response_selector = ResponseSelector()
 
@@ -117,7 +136,7 @@ class SallyResponse(BaseModel):
     confidence: float
     replies: List[str]
 
-def log_to_dataset(user_input: str, response_data: dict, operator: str):
+async def log_to_dataset(user_input: str, response_data: dict, operator: str):
     entry = {
         "id": str(uuid.uuid4()),
         "timestamp": datetime.utcnow().isoformat(),
@@ -133,7 +152,7 @@ def log_to_dataset(user_input: str, response_data: dict, operator: str):
     with open(DATASET_PATH, "a") as f:
         f.write(json.dumps(entry) + "\n")
 
-def store_uncertain(user_input: str):
+async def store_uncertain(user_input: str):
     entry = {
         "id": str(uuid.uuid4()),
         "timestamp": datetime.utcnow().isoformat(),
@@ -217,6 +236,7 @@ def get_best_match(doc) -> Tuple[str, str, float]:
 
 @app.post("/1B9I6F1O5R1C8O3N87E5145ID", response_model=SallyResponse)
 async def analyze_message(
+    request: Request,
     user_input: UserMessage,
     operator: str = Depends(verify_operator)
 ):
@@ -234,8 +254,9 @@ async def analyze_message(
     
     if REPLY_POOLS[category]["responses"] and REPLY_POOLS[category]["questions"]:
         r_idx, q_idx = response_selector.get_unique_pair(category)
-        response["replies"].append(REPLY_POOLS[category]["responses"][r_idx])
-        response["replies"].append(REPLY_POOLS[category]["questions"][q_idx])
+        if r_idx is not None and q_idx is not None:
+            response["replies"].append(REPLY_POOLS[category]["responses"][r_idx])
+            response["replies"].append(REPLY_POOLS[category]["questions"][q_idx])
     
     if not response["replies"]:
         response["replies"] = [
@@ -244,7 +265,6 @@ async def analyze_message(
         ]
     
     # Non-blocking logging
-    import asyncio
     asyncio.create_task(log_to_dataset(message, response, operator))
     
     if confidence < 0.6:
@@ -255,7 +275,7 @@ async def analyze_message(
     return response
 
 @app.get("/dataset/analytics")
-async def get_analytics(operator: str = Depends(verify_operator)):
+async def get_analytics(request: Request, operator: str = Depends(verify_operator)):
     analytics = {
         "total_entries": 0,
         "common_categories": {},
@@ -263,27 +283,30 @@ async def get_analytics(operator: str = Depends(verify_operator)):
     }
     
     if DATASET_PATH.exists():
-        with open(DATASET_PATH, "r") as f:
-            entries = [json.loads(line) for line in f]
-        
-        analytics["total_entries"] = len(entries)
-        analytics["common_categories"] = Counter(entry["matched_category"] for entry in entries)
-        
-        if entries:
-            confidences = [entry["confidence"] for entry in entries]
-            analytics["confidence_stats"] = {
-                "average": round(sum(confidences)/len(confidences), 2),
-                "min": round(min(confidences), 2),
-                "max": round(max(confidences), 2)
-            }
+        try:
+            with open(DATASET_PATH, "r") as f:
+                entries = [json.loads(line) for line in f]
+            
+            analytics["total_entries"] = len(entries)
+            analytics["common_categories"] = Counter(entry["matched_category"] for entry in entries)
+            
+            if entries:
+                confidences = [entry["confidence"] for entry in entries]
+                analytics["confidence_stats"] = {
+                    "average": round(sum(confidences)/len(confidences), 2),
+                    "min": round(min(confidences), 2),
+                    "max": round(max(confidences), 2)
+                }
+        except Exception as e:
+            print(f"Error reading analytics: {e}")
     
     return analytics
 
 @app.post("/augment")
-async def trigger_augmentation(operator: str = Depends(verify_operator)):
+async def trigger_augmentation(request: Request, operator: str = Depends(verify_operator)):
     augment_dataset()
     return {"status": "Dataset augmented", "new_pools": REPLY_POOLS}
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, workers=4)  # Added workers for better throughput
+    uvicorn.run(app, host="0.0.0.0", port=8000, workers=5)
