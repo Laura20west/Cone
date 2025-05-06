@@ -18,7 +18,7 @@ try:
     nlp = spacy.load("en_core_web_md")
 except OSError:
     import subprocess
-    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_md"])
     nlp = spacy.load("en_core_web_sm")
 
 nltk.download('wordnet')
