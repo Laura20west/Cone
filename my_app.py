@@ -10,10 +10,10 @@ import random
 from collections import defaultdict, deque, Counter
 import nltk
 from nltk.corpus import wordnet as wn
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
-# Initialize NLP
-nlp = spacy.load("en_core_web_md")
+# Initialize NLP - using smaller model for faster loading
+nlp = spacy.load("en_core_web_sm")  # Changed to smaller model for performance
 nltk.download('wordnet')
 
 app = FastAPI()
@@ -21,31 +21,35 @@ app = FastAPI()
 # Configuration
 AUTHORIZED_OPERATORS = {
     "cone096", "cone229", "cone353", "cone516", "cone478",
-     "admin@company.com"
+    "admin@company.com"
 }
 DATASET_PATH = Path("conversation_dataset.jsonl")
 UNCERTAIN_PATH = Path("uncertain_responses.jsonl")
 REPLY_POOLS_PATH = Path("reply_pools_augmented.json")
 
-# Track used responses and questions
-USED_RESPONSES = defaultdict(set)
-USED_QUESTIONS = defaultdict(set)
+# Precompute these for faster access
+CATEGORY_NAMES = set()
+TRIGGER_CACHE = defaultdict(list)
 
 # Security dependency
 async def verify_operator(request: Request):
     operator_email = request.headers.get("X-Operator-Email")
-    if not operator_email or operator_email not in AUTHORIZED_OPERATORS:
-        raise HTTPException(status_code=403, detail="Unauthorized operator")
-    return operator_email
+    if operator_email in AUTHORIZED_OPERATORS:  # Faster membership check
+        return operator_email
+    raise HTTPException(status_code=403, detail="Unauthorized operator")
 
-# Load or initialize reply pools
+# Load or initialize reply pools with caching
 if REPLY_POOLS_PATH.exists():
     with open(REPLY_POOLS_PATH, "r") as f:
         REPLY_POOLS = json.load(f)
-    for category in REPLY_POOLS.values():
-        category.setdefault("triggers", [])
-        category.setdefault("responses", [])
-        category.setdefault("questions", [])
+    for category, data in REPLY_POOLS.items():
+        data.setdefault("triggers", [])
+        data.setdefault("responses", [])
+        data.setdefault("questions", [])
+        CATEGORY_NAMES.add(category)
+        # Pre-process triggers for faster matching
+        for trigger in data["triggers"]:
+            TRIGGER_CACHE[category].append((trigger, nlp(trigger.lower())))
 else:
     REPLY_POOLS = {
         "general": {
@@ -54,16 +58,47 @@ else:
             "questions": ["What really gets you going?"]
         }
     }
+    CATEGORY_NAMES.add("general")
 
-# Initialize response queues
-CATEGORY_QUEUES = {}
-for category, data in REPLY_POOLS.items():
-    responses = data["responses"]
-    questions = data["questions"]
-    combinations = [(r_idx, q_idx) for r_idx in range(len(responses)) 
-                   for q_idx in range(len(questions))]
-    random.shuffle(combinations)
-    CATEGORY_QUEUES[category] = deque(combinations)
+# Optimized response selection system
+class ResponseSelector:
+    def __init__(self):
+        self.used_pairs = defaultdict(set)
+        self.available_pairs = defaultdict(list)
+        self._initialize_pairs()
+    
+    def _initialize_pairs(self):
+        for category in REPLY_POOLS:
+            responses = REPLY_POOLS[category]["responses"]
+            questions = REPLY_POOLS[category]["questions"]
+            self.available_pairs[category] = [
+                (r_idx, q_idx) 
+                for r_idx in range(len(responses))
+                for q_idx in range(len(questions))
+            ]
+            random.shuffle(self.available_pairs[category])
+    
+    def get_unique_pair(self, category: str) -> Tuple[int, int]:
+        if category not in self.available_pairs or not self.available_pairs[category]:
+            self._reset_category(category)
+        
+        # Find first unused pair
+        for i, (r_idx, q_idx) in enumerate(self.available_pairs[category]):
+            if (r_idx, q_idx) not in self.used_pairs[category]:
+                self.used_pairs[category].add((r_idx, q_idx))
+                return (r_idx, q_idx)
+        
+        # If all pairs used, reset and try again
+        self._reset_category(category)
+        r_idx, q_idx = self.available_pairs[category][0]
+        self.used_pairs[category].add((r_idx, q_idx))
+        return (r_idx, q_idx)
+    
+    def _reset_category(self, category: str):
+        self.used_pairs[category].clear()
+        random.shuffle(self.available_pairs[category])
+
+response_selector = ResponseSelector()
 
 app.add_middleware(
     CORSMiddleware,
@@ -116,104 +151,69 @@ def augment_dataset():
     with open(DATASET_PATH, "r") as f:
         entries = [json.loads(line) for line in f]
     
-    category_counts = defaultdict(int)
-    for entry in entries:
-        category_counts[entry["matched_category"]] += 1
-    
+    category_counts = Counter(entry["matched_category"] for entry in entries)
     avg_count = sum(category_counts.values()) / len(category_counts) if category_counts else 0
-    needs_augmentation = [k for k, v in category_counts.items() if v < avg_count * 0.5]
     
-    for category in needs_augmentation:
+    for category in [k for k, v in category_counts.items() if v < avg_count * 0.5]:
         if category not in REPLY_POOLS:
             continue
             
         base_triggers = REPLY_POOLS[category]["triggers"]
-        new_triggers = []
+        new_triggers = set()
         
         for trigger in base_triggers:
             doc = nlp(trigger)
-            lemmatized = " ".join([token.lemma_ for token in doc])
-            new_triggers.append(lemmatized)
+            new_triggers.add(" ".join([token.lemma_ for token in doc]))
             
             for token in doc:
                 if token.pos_ in ["NOUN", "VERB"]:
                     syns = [syn.lemmas()[0].name() for syn in wn.synsets(token.text)]
                     if syns:
-                        new_triggers.append(trigger.replace(token.text, syns[0]))
+                        new_triggers.add(trigger.replace(token.text, syns[0]))
         
-        REPLY_POOLS[category]["triggers"] = list(set(REPLY_POOLS[category]["triggers"] + new_triggers))
+        REPLY_POOLS[category]["triggers"] = list(set(REPLY_POOLS[category]["triggers"]) | new_triggers)
+        # Update trigger cache
+        TRIGGER_CACHE[category].extend(
+            (trigger, nlp(trigger.lower()))
+            for trigger in new_triggers
+            if trigger not in {t[0] for t in TRIGGER_CACHE[category]}
+        )
     
     with open(REPLY_POOLS_PATH, "w") as f:
         json.dump(REPLY_POOLS, f, indent=2)
     
-    global CATEGORY_QUEUES
-    CATEGORY_QUEUES = {}
-    for category, data in REPLY_POOLS.items():
-        responses = data["responses"]
-        questions = data["questions"]
-        combinations = [(r_idx, q_idx) for r_idx in range(len(responses)) 
-                       for q_idx in range(len(questions))]
-        random.shuffle(combinations)
-        CATEGORY_QUEUES[category] = deque(combinations)
+    # Update response selector
+    response_selector._initialize_pairs()
 
-def get_best_match(doc):
+def get_best_match(doc) -> Tuple[str, str, float]:
     best_match = ("general", None, 0.0)
     
-    for category, data in REPLY_POOLS.items():
-        for trigger in data["triggers"]:
-            trigger_doc = nlp(trigger)
+    # First check exact matches in cached triggers
+    for category in CATEGORY_NAMES:
+        for trigger, trigger_doc in TRIGGER_CACHE[category]:
+            if trigger.lower() in doc.text:
+                return (category, trigger, 1.0)
+    
+    # Then check similarity with cached docs
+    for category in CATEGORY_NAMES:
+        for trigger, trigger_doc in TRIGGER_CACHE[category]:
             similarity = doc.similarity(trigger_doc)
             if similarity > best_match[2]:
                 best_match = (category, trigger, similarity)
-        
-        for token in doc:
-            if token.pos_ in ["NOUN", "VERB", "ADJ"]:
-                for trigger in data["triggers"]:
+                if similarity > 0.9:  # Early exit for high confidence
+                    return best_match
+    
+    # Fallback to lemma matching
+    for token in doc:
+        if token.pos_ in ["NOUN", "VERB", "ADJ"]:
+            for category in CATEGORY_NAMES:
+                for trigger, _ in TRIGGER_CACHE[category]:
                     if token.lemma_ in trigger.lower():
                         current_sim = 0.7 + (0.3 * (token.pos_ == "NOUN"))
                         if current_sim > best_match[2]:
                             best_match = (category, token.text, current_sim)
     
-    if best_match[2] < 0.7:
-        for token in doc:
-            if token.pos_ in ["NOUN", "VERB"]:
-                synsets = wn.synsets(token.text)
-                for syn in synsets:
-                    for lemma in syn.lemmas():
-                        for category, data in REPLY_POOLS.items():
-                            if lemma.name() in data["triggers"]:
-                                current_sim = 0.65
-                                if current_sim > best_match[2]:
-                                    best_match = (category, lemma.name(), current_sim)
-    
     return best_match
-
-def get_unique_response_pair(category):
-    category_data = REPLY_POOLS[category]
-    responses = category_data["responses"]
-    questions = category_data["questions"]
-    
-    available_responses = [i for i in range(len(responses)) if i not in USED_RESPONSES[category]]
-    available_questions = [i for i in range(len(questions)) if i not in USED_QUESTIONS[category]]
-    
-    if available_responses and available_questions:
-        for r_idx in available_responses:
-            for q_idx in available_questions:
-                return (r_idx, q_idx)
-    
-    if not available_responses:
-        USED_RESPONSES[category].clear()
-        available_responses = list(range(len(responses)))
-    if not available_questions:
-        USED_QUESTIONS[category].clear()
-        available_questions = list(range(len(questions)))
-    
-    if available_responses and available_questions:
-        r_idx = random.choice(available_responses)
-        q_idx = random.choice(available_questions)
-        return (r_idx, q_idx)
-    
-    return (0, 0) if responses and questions else (None, None)
 
 @app.post("/1B9I6F1O5R1C8O3N87E5145ID", response_model=SallyResponse)
 async def analyze_message(
@@ -223,24 +223,19 @@ async def analyze_message(
     message = user_input.message.strip()
     doc = nlp(message.lower())
     
-    best_match = get_best_match(doc)
+    category, matched_word, confidence = get_best_match(doc)
     
     response = {
-        "matched_word": best_match[1] or "general",
-        "matched_category": best_match[0],
-        "confidence": round(best_match[2], 2),
+        "matched_word": matched_word or "general",
+        "matched_category": category,
+        "confidence": round(confidence, 2),
         "replies": []
     }
     
-    category_data = REPLY_POOLS[best_match[0]]
-    if category_data["responses"] and category_data["questions"]:
-        r_idx, q_idx = get_unique_response_pair(best_match[0])
-        
-        if r_idx is not None and q_idx is not None:
-            response["replies"].append(category_data["responses"][r_idx])
-            response["replies"].append(category_data["questions"][q_idx])
-            USED_RESPONSES[best_match[0]].add(r_idx)
-            USED_QUESTIONS[best_match[0]].add(q_idx)
+    if REPLY_POOLS[category]["responses"] and REPLY_POOLS[category]["questions"]:
+        r_idx, q_idx = response_selector.get_unique_pair(category)
+        response["replies"].append(REPLY_POOLS[category]["responses"][r_idx])
+        response["replies"].append(REPLY_POOLS[category]["questions"][q_idx])
     
     if not response["replies"]:
         response["replies"] = [
@@ -248,10 +243,12 @@ async def analyze_message(
             "What's your deepest, darkest fantasy?"
         ]
     
-    log_to_dataset(message, response, operator)
+    # Non-blocking logging
+    import asyncio
+    asyncio.create_task(log_to_dataset(message, response, operator))
     
-    if response["confidence"] < 0.6:
-        store_uncertain(message)
+    if confidence < 0.6:
+        asyncio.create_task(store_uncertain(message))
         if len(response["replies"]) > 1:
             response["replies"][1] += " Could you rephrase that, baby?"
     
@@ -289,4 +286,4 @@ async def trigger_augmentation(operator: str = Depends(verify_operator)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000, workers=4)  # Added workers for better throughput
