@@ -3745,7 +3745,7 @@
     },
 
     "body": {
-        "triggers": ["body", "body!", "have you seen a body this hot, would you want to have fun with this body babe"],
+        "triggers": ["body", "body!", "have you seen a body this hot, would you want to have fun with this body babe", "I am {name}", "My name is {name}", "you can call me {name}", "name"],
         "responses": [
             "I've been working on my fitness lately, can you tell?",
             "Do you prefer athletic girls or curvy ones?",
