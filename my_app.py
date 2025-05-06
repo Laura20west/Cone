@@ -25,8 +25,8 @@ UNCERTAIN_PATH = Path("uncertain_responses.jsonl")
 REPLY_POOLS_PATH = Path("reply_pools_augmented.json")
 
 # Track used responses and questions
-USED_RESPONSES = defaultdict(set)
-USED_QUESTIONS = defaultdict(set)
+USED_RESPONSE_QUESTION_PAIRS = defaultdict(set)
+RESET_THRESHOLD = 0.9  # Reset when 90% of combinations are used
 
 # Load or initialize reply pools
 if REPLY_POOLS_PATH.exists():
@@ -46,15 +46,13 @@ else:
         }
     }
 
-# Initialize response queues
-CATEGORY_QUEUES = {}
+# Initialize response queues and track total combinations
+CATEGORY_COMBINATIONS = {}
 for category, data in REPLY_POOLS.items():
     responses = data["responses"]
     questions = data["questions"]
-    combinations = [(r_idx, q_idx) for r_idx in range(len(responses)) 
-                   for q_idx in range(len(questions))]
-    random.shuffle(combinations)
-    CATEGORY_QUEUES[category] = deque(combinations)
+    total_combinations = len(responses) * len(questions)
+    CATEGORY_COMBINATIONS[category] = total_combinations
 
 app.add_middleware(
     CORSMiddleware,
@@ -136,40 +134,32 @@ def augment_dataset():
     with open(REPLY_POOLS_PATH, "w") as f:
         json.dump(REPLY_POOLS, f, indent=2)
     
-    # Reinitialize queues after augmentation
-    global CATEGORY_QUEUES
-    CATEGORY_QUEUES = {}
+    # Update combinations count after augmentation
+    global CATEGORY_COMBINATIONS
     for category, data in REPLY_POOLS.items():
         responses = data["responses"]
         questions = data["questions"]
-        combinations = [(r_idx, q_idx) for r_idx in range(len(responses)) 
-                       for q_idx in range(len(questions))]
-        random.shuffle(combinations)
-        CATEGORY_QUEUES[category] = deque(combinations)
+        CATEGORY_COMBINATIONS[category] = len(responses) * len(questions)
 
 def get_best_match(doc):
     best_match = ("general", None, 0.0)
     
-    # Enhanced matching with multiple strategies
     for category, data in REPLY_POOLS.items():
-        # Strategy 1: Full phrase similarity
         for trigger in data["triggers"]:
             trigger_doc = nlp(trigger)
             similarity = doc.similarity(trigger_doc)
             if similarity > best_match[2]:
                 best_match = (category, trigger, similarity)
         
-        # Strategy 2: Token-level matching with POS consideration
         for token in doc:
-            if token.pos_ in ["NOUN", "VERB", "ADJ"]:  # Focus on meaningful words
+            if token.pos_ in ["NOUN", "VERB", "ADJ"]:
                 for trigger in data["triggers"]:
                     if token.lemma_ in trigger.lower():
-                        current_sim = 0.7 + (0.3 * (token.pos_ == "NOUN"))  # Nouns get higher weight
+                        current_sim = 0.7 + (0.3 * (token.pos_ == "NOUN"))
                         if current_sim > best_match[2]:
                             best_match = (category, token.text, current_sim)
     
-    # Strategy 3: WordNet synonym expansion
-    if best_match[2] < 0.7:  # If confidence is low
+    if best_match[2] < 0.7:
         for token in doc:
             if token.pos_ in ["NOUN", "VERB"]:
                 synsets = wn.synsets(token.text)
@@ -177,41 +167,48 @@ def get_best_match(doc):
                     for lemma in syn.lemmas():
                         for category, data in REPLY_POOLS.items():
                             if lemma.name() in data["triggers"]:
-                                current_sim = 0.65  # Slightly lower confidence for synonyms
+                                current_sim = 0.65
                                 if current_sim > best_match[2]:
                                     best_match = (category, lemma.name(), current_sim)
     
     return best_match
 
 def get_unique_response_pair(category):
+    if category not in REPLY_POOLS:
+        return (None, None)
+        
     category_data = REPLY_POOLS[category]
     responses = category_data["responses"]
     questions = category_data["questions"]
     
-    # Find unused response-question pairs
-    available_responses = [i for i in range(len(responses)) if i not in USED_RESPONSES[category]]
-    available_questions = [i for i in range(len(questions)) if i not in USED_QUESTIONS[category]]
+    # Check if we need to reset used pairs
+    total_combinations = CATEGORY_COMBINATIONS.get(category, 1)
+    used_count = len(USED_RESPONSE_QUESTION_PAIRS[category])
     
-    if available_responses and available_questions:
-        # Try to find a fresh pair
-        for r_idx in available_responses:
-            for q_idx in available_questions:
-                return (r_idx, q_idx)
+    if used_count > 0 and (used_count / total_combinations) >= RESET_THRESHOLD:
+        USED_RESPONSE_QUESTION_PAIRS[category].clear()
     
-    # If no fresh pairs, reset used sets and try again
-    if not available_responses:
-        USED_RESPONSES[category].clear()
-        available_responses = list(range(len(responses)))
-    if not available_questions:
-        USED_QUESTIONS[category].clear()
-        available_questions = list(range(len(questions)))
+    # Generate all possible combinations
+    all_combinations = [(r_idx, q_idx) 
+                        for r_idx in range(len(responses)) 
+                        for q_idx in range(len(questions))]
     
-    if available_responses and available_questions:
-        r_idx = random.choice(available_responses)
-        q_idx = random.choice(available_questions)
-        return (r_idx, q_idx)
+    # Find unused combinations
+    available_combinations = [pair for pair in all_combinations 
+                            if pair not in USED_RESPONSE_QUESTION_PAIRS[category]]
     
-    # Fallback if still no pairs found
+    if available_combinations:
+        selected_pair = random.choice(available_combinations)
+        USED_RESPONSE_QUESTION_PAIRS[category].add(selected_pair)
+        return selected_pair
+    else:
+        # If all combinations are used (shouldn't happen due to reset threshold)
+        USED_RESPONSE_QUESTION_PAIRS[category].clear()
+        if all_combinations:
+            selected_pair = random.choice(all_combinations)
+            USED_RESPONSE_QUESTION_PAIRS[category].add(selected_pair)
+            return selected_pair
+    
     return (0, 0) if responses and questions else (None, None)
 
 @app.post("/1A9I6F1O5R1C8O3N87E5145ID", response_model=SallyResponse)
@@ -221,7 +218,6 @@ async def analyze_message(user_input: UserMessage):
     
     best_match = get_best_match(doc)
     
-    # Prepare response
     response = {
         "matched_word": best_match[1] or "general",
         "matched_category": best_match[0],
@@ -229,28 +225,21 @@ async def analyze_message(user_input: UserMessage):
         "replies": []
     }
     
-    # Get non-repeating response pair
-    category_data = REPLY_POOLS[best_match[0]]
-    if category_data["responses"] and category_data["questions"]:
-        r_idx, q_idx = get_unique_response_pair(best_match[0])
-        
-        if r_idx is not None and q_idx is not None:
-            response["replies"].append(category_data["responses"][r_idx])
-            response["replies"].append(category_data["questions"][q_idx])
-            USED_RESPONSES[best_match[0]].add(r_idx)
-            USED_QUESTIONS[best_match[0]].add(q_idx)
+    r_idx, q_idx = get_unique_response_pair(best_match[0])
     
-    # Fallback if no responses found
+    if r_idx is not None and q_idx is not None:
+        category_data = REPLY_POOLS[best_match[0]]
+        response["replies"].append(category_data["responses"][r_idx])
+        response["replies"].append(category_data["questions"][q_idx])
+    
     if not response["replies"]:
         response["replies"] = [
             "Honey, let's take this somewhere more private...",
             "What's your deepest, darkest fantasy?"
         ]
     
-    # Log interaction
     log_to_dataset(message, response)
     
-    # Active learning
     if response["confidence"] < 0.6:
         store_uncertain(message)
         if len(response["replies"]) > 1:
@@ -263,7 +252,8 @@ async def get_analytics():
     analytics = {
         "total_entries": 0,
         "common_categories": {},
-        "confidence_stats": {}
+        "confidence_stats": {},
+        "usage_stats": {}
     }
     
     if DATASET_PATH.exists():
@@ -280,6 +270,15 @@ async def get_analytics():
                 "min": round(min(confidences), 2),
                 "max": round(max(confidences), 2)
             }
+    
+    # Add usage statistics
+    analytics["usage_stats"] = {
+        category: {
+            "used": len(USED_RESPONSE_QUESTION_PAIRS[category]),
+            "total": CATEGORY_COMBINATIONS.get(category, 0)
+        }
+        for category in REPLY_POOLS.keys()
+    }
     
     return analytics
 
