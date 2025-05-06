@@ -15,10 +15,10 @@ import asyncio
 
 # Initialize NLP
 try:
-    nlp = spacy.load("en_core_web_md")
+    nlp = spacy.load("en_core_web_sm")
 except OSError:
     import subprocess
-    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_md"])
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
     nlp = spacy.load("en_core_web_sm")
 
 nltk.download('wordnet')
@@ -68,50 +68,42 @@ else:
 
 class ResponseSelector:
     def __init__(self):
-        self.used_pairs = defaultdict(set)
-        self.available_pairs = defaultdict(list)
-        self._initialize_pairs()
+        self.used_combinations = defaultdict(set)
+        self.available_combinations = defaultdict(deque)
+        self._initialize_combinations()
     
-    def _initialize_pairs(self):
+    def _initialize_combinations(self):
         for category, data in REPLY_POOLS.items():
             responses = data["responses"]
             questions = data["questions"]
-            self.available_pairs[category] = [
-                (r_idx, q_idx) 
-                for r_idx in range(len(responses))
-                for q_idx in range(len(questions))
-            ]
-            random.shuffle(self.available_pairs[category])
+            combinations = [(r_idx, q_idx) 
+                          for r_idx in range(len(responses))
+                          for q_idx in range(len(questions))]
+            random.shuffle(combinations)
+            self.available_combinations[category] = deque(combinations)
     
     def get_unique_pair(self, category: str) -> Tuple[Optional[int], Optional[int]]:
-        if category not in self.available_pairs or not self.available_pairs[category]:
-            self._reset_category(category)
-            if not self.available_pairs[category]:
-                return (None, None)
-        
-        for i, (r_idx, q_idx) in enumerate(self.available_pairs[category]):
-            if (r_idx, q_idx) not in self.used_pairs[category]:
-                self.used_pairs[category].add((r_idx, q_idx))
+        if category not in self.available_combinations:
+            return (None, None)
+            
+        # Get next available combination
+        while self.available_combinations[category]:
+            r_idx, q_idx = self.available_combinations[category].popleft()
+            if (r_idx, q_idx) not in self.used_combinations[category]:
+                self.used_combinations[category].add((r_idx, q_idx))
                 return (r_idx, q_idx)
         
+        # If we've used all combinations, reset and try again
         self._reset_category(category)
-        if self.available_pairs[category]:
-            r_idx, q_idx = self.available_pairs[category][0]
-            self.used_pairs[category].add((r_idx, q_idx))
+        if self.available_combinations[category]:
+            r_idx, q_idx = self.available_combinations[category].popleft()
+            self.used_combinations[category].add((r_idx, q_idx))
             return (r_idx, q_idx)
         return (None, None)
     
     def _reset_category(self, category: str):
-        self.used_pairs[category].clear()
-        if category in REPLY_POOLS:
-            responses = REPLY_POOLS[category]["responses"]
-            questions = REPLY_POOLS[category]["questions"]
-            self.available_pairs[category] = [
-                (r_idx, q_idx) 
-                for r_idx in range(len(responses))
-                for q_idx in range(len(questions))
-            ]
-            random.shuffle(self.available_pairs[category])
+        self.used_combinations[category].clear()
+        self._initialize_combinations()
 
 response_selector = ResponseSelector()
 
@@ -196,7 +188,7 @@ def augment_dataset():
     with open(REPLY_POOLS_PATH, "w") as f:
         json.dump(REPLY_POOLS, f, indent=2)
     
-    response_selector._initialize_pairs()
+    response_selector._initialize_combinations()
 
 def get_best_match(doc) -> Tuple[str, str, float]:
     best_match = ("general", None, 0.0)
