@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import spacy
@@ -7,163 +7,287 @@ from datetime import datetime
 from pathlib import Path
 import uuid
 import random
-from collections import defaultdict, deque
+from collections import defaultdict, deque, Counter
 import nltk
 from nltk.corpus import wordnet as wn
 from typing import Dict, List, Optional
 
+# Initialize NLP
+nlp = spacy.load("en_core_web_md")
+nltk.download('wordnet')
+
+app = FastAPI()
+
+# Configuration
 AUTHORIZED_OPERATORS = {
     "cone478", "cone353", "cone229", "cone516", "cone481", "cone335",
     "cone424", "cone069", "cone096", "cone075", "cone136", "cone406",
     "cone047", "cone461", "cone423", "cone290", "cone407", "cone468",
     "cone221", "cone412", "cone413", "admin@company.com"
 }
-
-app = FastAPI()
-nlp = spacy.load("en_core_web_md")
-nltk.download('wordnet')
-
-# Configuration
 DATASET_PATH = Path("conversation_dataset.jsonl")
 UNCERTAIN_PATH = Path("uncertain_responses.jsonl")
 REPLY_POOLS_PATH = Path("reply_pools_augmented.json")
 
-# Initialize data structures
+# Track used responses and questions
 USED_RESPONSES = defaultdict(set)
 USED_QUESTIONS = defaultdict(set)
 
-# Load reply pools
+# Security dependency
+async def verify_operator(request: Request):
+    operator_email = request.headers.get("X-Operator-Email")
+    if not operator_email or operator_email not in AUTHORIZED_OPERATORS:
+        raise HTTPException(status_code=403, detail="Unauthorized operator")
+    return operator_email
+
+# Load or initialize reply pools
 if REPLY_POOLS_PATH.exists():
     with open(REPLY_POOLS_PATH, "r") as f:
         REPLY_POOLS = json.load(f)
+    for category in REPLY_POOLS.values():
+        category.setdefault("triggers", [])
+        category.setdefault("responses", [])
+        category.setdefault("questions", [])
 else:
     REPLY_POOLS = {
         "general": {
             "triggers": [],
-            "responses": ["How can I assist you today?"],
-            "questions": ["Could you clarify your request?"]
+            "responses": ["Honey, let's talk about something more exciting..."],
+            "questions": ["What really gets you going?"]
         }
     }
 
 # Initialize response queues
-for category in REPLY_POOLS:
-    responses = REPLY_POOLS[category]["responses"]
-    questions = REPLY_POOLS[category]["questions"]
-    combinations = [(r, q) for r in range(len(responses)) for q in range(len(questions))]
+CATEGORY_QUEUES = {}
+for category, data in REPLY_POOLS.items():
+    responses = data["responses"]
+    questions = data["questions"]
+    combinations = [(r_idx, q_idx) for r_idx in range(len(responses)) 
+                   for q_idx in range(len(questions))]
     random.shuffle(combinations)
-    REPLY_POOLS[category]["queue"] = deque(combinations)
+    CATEGORY_QUEUES[category] = deque(combinations)
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
+    expose_headers=["*"]
 )
 
-class VerifyRequest(BaseModel):
-    operatorId: str
-
-class ProcessRequest(BaseModel):
-    operatorId: str
+class UserMessage(BaseModel):
     message: str
-    context: dict
 
-@app.post("/verify")
-async def verify_operator(request: VerifyRequest):
-    return {"verified": request.operatorId in AUTHORIZED_OPERATORS}
+class SallyResponse(BaseModel):
+    matched_word: str
+    matched_category: str
+    confidence: float
+    replies: List[str]
 
-@app.post("/1A9I6F1O5R1C8O3N87E5145ID")
-async def process_message(request: ProcessRequest):
-    # Authentication
-    if request.operatorId not in AUTHORIZED_OPERATORS:
-        raise HTTPException(status_code=403, detail="Unauthorized operator")
+def log_to_dataset(user_input: str, response_data: dict, operator: str):
+    entry = {
+        "id": str(uuid.uuid4()),
+        "timestamp": datetime.utcnow().isoformat(),
+        "user_input": user_input,
+        "matched_category": response_data["matched_category"],
+        "response": response_data["replies"][0] if response_data["replies"] else None,
+        "question": response_data["replies"][1] if len(response_data["replies"]) > 1 else None,
+        "operator": operator,
+        "confidence": response_data["confidence"],
+        "embedding": nlp(user_input).vector.tolist()
+    }
     
-    # NLP Processing
-    doc = nlp(request.message.lower())
-    best_match = ("general", "general", 0.0)
+    with open(DATASET_PATH, "a") as f:
+        f.write(json.dumps(entry) + "\n")
+
+def store_uncertain(user_input: str):
+    entry = {
+        "id": str(uuid.uuid4()),
+        "timestamp": datetime.utcnow().isoformat(),
+        "user_input": user_input,
+        "reviewed": False
+    }
     
-    # Enhanced matching logic
+    with open(UNCERTAIN_PATH, "a") as f:
+        f.write(json.dumps(entry) + "\n")
+
+def augment_dataset():
+    if not DATASET_PATH.exists():
+        return
+    
+    with open(DATASET_PATH, "r") as f:
+        entries = [json.loads(line) for line in f]
+    
+    category_counts = defaultdict(int)
+    for entry in entries:
+        category_counts[entry["matched_category"]] += 1
+    
+    avg_count = sum(category_counts.values()) / len(category_counts) if category_counts else 0
+    needs_augmentation = [k for k, v in category_counts.items() if v < avg_count * 0.5]
+    
+    for category in needs_augmentation:
+        if category not in REPLY_POOLS:
+            continue
+            
+        base_triggers = REPLY_POOLS[category]["triggers"]
+        new_triggers = []
+        
+        for trigger in base_triggers:
+            doc = nlp(trigger)
+            lemmatized = " ".join([token.lemma_ for token in doc])
+            new_triggers.append(lemmatized)
+            
+            for token in doc:
+                if token.pos_ in ["NOUN", "VERB"]:
+                    syns = [syn.lemmas()[0].name() for syn in wn.synsets(token.text)]
+                    if syns:
+                        new_triggers.append(trigger.replace(token.text, syns[0]))
+        
+        REPLY_POOLS[category]["triggers"] = list(set(REPLY_POOLS[category]["triggers"] + new_triggers))
+    
+    with open(REPLY_POOLS_PATH, "w") as f:
+        json.dump(REPLY_POOLS, f, indent=2)
+    
+    global CATEGORY_QUEUES
+    CATEGORY_QUEUES = {}
+    for category, data in REPLY_POOLS.items():
+        responses = data["responses"]
+        questions = data["questions"]
+        combinations = [(r_idx, q_idx) for r_idx in range(len(responses)) 
+                       for q_idx in range(len(questions))]
+        random.shuffle(combinations)
+        CATEGORY_QUEUES[category] = deque(combinations)
+
+def get_best_match(doc):
+    best_match = ("general", None, 0.0)
+    
     for category, data in REPLY_POOLS.items():
         for trigger in data["triggers"]:
             trigger_doc = nlp(trigger)
             similarity = doc.similarity(trigger_doc)
             if similarity > best_match[2]:
                 best_match = (category, trigger, similarity)
-                
+        
         for token in doc:
-            if token.pos_ in ["NOUN", "VERB"]:
+            if token.pos_ in ["NOUN", "VERB", "ADJ"]:
                 for trigger in data["triggers"]:
                     if token.lemma_ in trigger.lower():
                         current_sim = 0.7 + (0.3 * (token.pos_ == "NOUN"))
                         if current_sim > best_match[2]:
                             best_match = (category, token.text, current_sim)
     
-    # Generate responses
-    category = best_match[0]
-    replies = []
-    for _ in range(2):  # Generate two response-question pairs
-        r_idx, q_idx = get_unique_pair(category)
-        if r_idx is not None and q_idx is not None:
-            replies.append(REPLY_POOLS[category]["responses"][r_idx])
-            replies.append(REPLY_POOLS[category]["questions"][q_idx])
+    if best_match[2] < 0.7:
+        for token in doc:
+            if token.pos_ in ["NOUN", "VERB"]:
+                synsets = wn.synsets(token.text)
+                for syn in synsets:
+                    for lemma in syn.lemmas():
+                        for category, data in REPLY_POOLS.items():
+                            if lemma.name() in data["triggers"]:
+                                current_sim = 0.65
+                                if current_sim > best_match[2]:
+                                    best_match = (category, lemma.name(), current_sim)
     
-    # Fallback responses
-    if not replies:
-        replies = [
-            "Let me find the best solution for you!",
-            "Would you like me to look into this further?",
+    return best_match
+
+def get_unique_response_pair(category):
+    category_data = REPLY_POOLS[category]
+    responses = category_data["responses"]
+    questions = category_data["questions"]
+    
+    available_responses = [i for i in range(len(responses)) if i not in USED_RESPONSES[category]]
+    available_questions = [i for i in range(len(questions)) if i not in USED_QUESTIONS[category]]
+    
+    if available_responses and available_questions:
+        for r_idx in available_responses:
+            for q_idx in available_questions:
+                return (r_idx, q_idx)
+    
+    if not available_responses:
+        USED_RESPONSES[category].clear()
+        available_responses = list(range(len(responses)))
+    if not available_questions:
+        USED_QUESTIONS[category].clear()
+        available_questions = list(range(len(questions)))
+    
+    if available_responses and available_questions:
+        r_idx = random.choice(available_responses)
+        q_idx = random.choice(available_questions)
+        return (r_idx, q_idx)
+    
+    return (0, 0) if responses and questions else (None, None)
+
+@app.post("/1B9I6F1O5R1C8O3N87E5145ID", response_model=SallyResponse)
+async def analyze_message(
+    user_input: UserMessage,
+    operator: str = Depends(verify_operator)
+):
+    message = user_input.message.strip()
+    doc = nlp(message.lower())
+    
+    best_match = get_best_match(doc)
+    
+    response = {
+        "matched_word": best_match[1] or "general",
+        "matched_category": best_match[0],
+        "confidence": round(best_match[2], 2),
+        "replies": []
+    }
+    
+    category_data = REPLY_POOLS[best_match[0]]
+    if category_data["responses"] and category_data["questions"]:
+        r_idx, q_idx = get_unique_response_pair(best_match[0])
+        
+        if r_idx is not None and q_idx is not None:
+            response["replies"].append(category_data["responses"][r_idx])
+            response["replies"].append(category_data["questions"][q_idx])
+            USED_RESPONSES[best_match[0]].add(r_idx)
+            USED_QUESTIONS[best_match[0]].add(q_idx)
+    
+    if not response["replies"]:
+        response["replies"] = [
             "Honey, let's take this somewhere more private...",
             "What's your deepest, darkest fantasy?"
         ]
     
-    # Log interaction
-    log_interaction(request, best_match, replies)
+    log_to_dataset(message, response, operator)
     
-    return {
-        "matched_word": best_match[1],
-        "matched_category": best_match[0],
-        "confidence": round(best_match[2], 2),
-        "replies": replies
-    }
+    if response["confidence"] < 0.6:
+        store_uncertain(message)
+        if len(response["replies"]) > 1:
+            response["replies"][1] += " Could you rephrase that, baby?"
+    
+    return response
 
-def get_unique_pair(category: str):
-    data = REPLY_POOLS.get(category, REPLY_POOLS["general"])
-    queue = data["queue"]
-    
-    if not queue:
-        responses = data["responses"]
-        questions = data["questions"]
-        combinations = [(r, q) for r in range(len(responses)) for q in range(len(questions))]
-        random.shuffle(combinations)
-        queue = deque(combinations)
-        REPLY_POOLS[category]["queue"] = queue
-    
-    return queue.popleft() if queue else (0, 0)
-
-def log_interaction(request: ProcessRequest, match: tuple, replies: list):
-    entry = {
-        "timestamp": datetime.utcnow().isoformat(),
-        "operator": request.operatorId,
-        "message": request.message,
-        "category": match[0],
-        "confidence": match[2],
-        "replies": replies,
-        "context": request.context
+@app.get("/dataset/analytics")
+async def get_analytics(operator: str = Depends(verify_operator)):
+    analytics = {
+        "total_entries": 0,
+        "common_categories": {},
+        "confidence_stats": {}
     }
     
-    with open(DATASET_PATH, "a") as f:
-        f.write(json.dumps(entry) + "\n")
-
-@app.on_event("startup")
-async def startup_tasks():
-    augment_dataset()
-
-def augment_dataset():
-    # Dataset augmentation logic
-    if not DATASET_PATH.exists():
-        return
+    if DATASET_PATH.exists():
+        with open(DATASET_PATH, "r") as f:
+            entries = [json.loads(line) for line in f]
         
-    # ... [existing augmentation logic] ...
+        analytics["total_entries"] = len(entries)
+        analytics["common_categories"] = Counter(entry["matched_category"] for entry in entries)
+        
+        if entries:
+            confidences = [entry["confidence"] for entry in entries]
+            analytics["confidence_stats"] = {
+                "average": round(sum(confidences)/len(confidences), 2),
+                "min": round(min(confidences), 2),
+                "max": round(max(confidences), 2)
+            }
+    
+    return analytics
+
+@app.post("/augment")
+async def trigger_augmentation(operator: str = Depends(verify_operator)):
+    augment_dataset()
+    return {"status": "Dataset augmented", "new_pools": REPLY_POOLS}
 
 if __name__ == "__main__":
     import uvicorn
