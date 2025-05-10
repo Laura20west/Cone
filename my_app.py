@@ -217,7 +217,7 @@ def get_best_match(doc) -> Tuple[str, str, float]:
     
     return best_match
 
-@app.post("/1B29I6F1O5R1C8O3N87E5145ID", response_model=SallyResponse)
+@app.post("/1B9I6F1O5R1C8O3N87E5145ID", response_model=SallyResponse)
 async def analyze_message(
     request: Request,
     user_input: UserMessage,
