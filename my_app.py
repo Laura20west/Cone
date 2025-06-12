@@ -1,294 +1,277 @@
-from fastapi import FastAPI, HTTPException, Request, Depends
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-import spacy
 import json
-from datetime import datetime
-from pathlib import Path
-import uuid
 import random
-from collections import defaultdict, deque, Counter
-import nltk
-from nltk.corpus import wordnet as wn
-from typing import Dict, List, Optional, Tuple
-import asyncio
+import re
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from transformers import pipeline, AutoModelForSeq2SeqLM, AutoTokenizer
+import os
 
-# Initialize NLP
-try:
-    nlp = spacy.load("en_core_web_sm")
-except OSError:
-    import subprocess
-    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
-    nlp = spacy.load("en_core_web_sm")
-
-nltk.download('wordnet')
-
-app = FastAPI()
-
-# Configuration
-AUTHORIZED_OPERATORS = {
-    "cone096", "cone229", "cone353", "cone516", "cone478",
-    "admin@company.com"
+# Predefined keyword categories
+CATEGORY_KEYWORDS = {
+    "sex": ["fuck", "cock", "boobs", "pussy", "horny", "sex", "suck", "spank", 
+            "bondage", "threesome", "dick", "orgasm", "fucking", "nude", "naked",
+            "blowjob", "handjob", "anal", "fetish", "kink", "sexy", "erotic", "masturbation"],
+    "cars": ["car", "vehicle", "drive", "driving", "engine", "tire", "race", "speed",
+             "motor", "wheel", "road", "highway", "license", "driver", "automobile"],
+    "age": ["age", "old", "young", "birthday", "years", "aged", "elderly", "youth", 
+            "minor", "teen", "teenager", "adult", "senior", "centenarian"],
+    "hobbies": ["toy", "fun", "hobbies", "game", "play", "playing", "collect", 
+               "activity", "leisure", "pastime", "sport", "craft", "art", "music", "reading"],
+    "relationships": ["date", "dating", "partner", "boyfriend", "girlfriend", 
+                     "marriage", "marry", "crush", "love", "kiss", "romance",
+                     "affection", "commitment", "proposal", "engagement"]
 }
-DATASET_PATH = Path("conversation_dataset.jsonl")
-UNCERTAIN_PATH = Path("uncertain_responses.jsonl")
-REPLY_POOLS_PATH = Path("reply_pools_augmented.json")
 
-# Precompute for faster access
-CATEGORY_NAMES = set()
-TRIGGER_CACHE = defaultdict(list)
-
-# Security dependency
-async def verify_operator(request: Request):
-    operator_email = request.headers.get("X-Operator-Email")
-    if operator_email in AUTHORIZED_OPERATORS:
-        return operator_email
-    raise HTTPException(status_code=403, detail="Unauthorized operator")
-
-# Load or initialize reply pools
-if REPLY_POOLS_PATH.exists():
-    with open(REPLY_POOLS_PATH, "r") as f:
-        REPLY_POOLS = json.load(f)
-    for category, data in REPLY_POOLS.items():
-        data.setdefault("triggers", [])
-        data.setdefault("responses", [])
-        data.setdefault("questions", [])
-        CATEGORY_NAMES.add(category)
-        for trigger in data["triggers"]:
-            TRIGGER_CACHE[category].append((trigger, nlp(trigger.lower())))
-else:
-    REPLY_POOLS = {
-        "general": {
-            "triggers": [],
-            "responses": ["Honey, let's talk about something more exciting..."],
-            "questions": ["What really gets you going?"]
-        }
-    }
-    CATEGORY_NAMES.add("general")
-
-class ResponseSelector:
-    def __init__(self):
-        self.used_combinations = defaultdict(set)
-        self.available_combinations = defaultdict(deque)
-        self._initialize_combinations()
+# Load dataset preserving categories and content
+def load_dataset(file_path):
+    if not os.path.exists(file_path):
+        print(f"Dataset file not found: {file_path}")
+        return {}
     
-    def _initialize_combinations(self):
-        for category, data in REPLY_POOLS.items():
-            responses = data["responses"]
-            questions = data["questions"]
-            combinations = [(r_idx, q_idx) 
-                          for r_idx in range(len(responses))
-                          for q_idx in range(len(questions))]
-            random.shuffle(combinations)
-            self.available_combinations[category] = deque(combinations)
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return data
+    except Exception as e:
+        print(f"Error loading dataset: {str(e)}")
+        return {}
+
+# Initialize models
+def initialize_models():
+    try:
+        paraphrase_model = pipeline(
+            "text2text-generation",
+            model="tuner007/pegasus_paraphrase",
+            device="cpu"
+        )
+        print("Paraphrase model loaded successfully")
+    except Exception as e:
+        print(f"Paraphrase model error: {str(e)}")
+        paraphrase_model = None
     
-    def get_unique_pair(self, category: str) -> Tuple[Optional[int], Optional[int]]:
-        if category not in self.available_combinations:
-            return (None, None)
+    try:
+        qgen_tokenizer = AutoTokenizer.from_pretrained("mrm8488/t5-base-finetuned-question-generation-ap")
+        qgen_model = AutoModelForSeq2SeqLM.from_pretrained("mrm8488/t5-base-finetuned-question-generation-ap")
+        print("Question generation model loaded successfully")
+    except Exception as e:
+        print(f"Question model error: {str(e)}")
+        qgen_model = None
+        qgen_tokenizer = None
+    
+    return paraphrase_model, qgen_model, qgen_tokenizer
+
+# Identify relevant categories based on keywords
+def get_relevant_categories(user_input):
+    relevant_categories = set()
+    words = re.findall(r'\w+', user_input.lower())
+    
+    for word in words:
+        for category, keywords in CATEGORY_KEYWORDS.items():
+            if word in keywords:
+                relevant_categories.add(category)
+    
+    return relevant_categories
+
+# Find best match within relevant categories with random selection
+def find_best_match(user_input, dataset, relevant_categories):
+    if not dataset:
+        return None
+    
+    # Get all candidates from relevant categories
+    candidates = []
+    for category in relevant_categories:
+        if category in dataset:
+            category_content = dataset[category]
+            responses = category_content.get('responses', [])
+            questions = category_content.get('questions', [])
             
-        # Get next available combination
-        while self.available_combinations[category]:
-            r_idx, q_idx = self.available_combinations[category].popleft()
-            if (r_idx, q_idx) not in self.used_combinations[category]:
-                self.used_combinations[category].add((r_idx, q_idx))
-                return (r_idx, q_idx)
-        
-        # If we've used all combinations, reset and try again
-        self._reset_category(category)
-        if self.available_combinations[category]:
-            r_idx, q_idx = self.available_combinations[category].popleft()
-            self.used_combinations[category].add((r_idx, q_idx))
-            return (r_idx, q_idx)
-        return (None, None)
+            # Add all responses and questions from the category
+            candidates.extend(responses)
+            candidates.extend(questions)
     
-    def _reset_category(self, category: str):
-        self.used_combinations[category].clear()
-        self._initialize_combinations()
-
-response_selector = ResponseSelector()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-    expose_headers=["*"]
-)
-
-class UserMessage(BaseModel):
-    message: str
-
-class SallyResponse(BaseModel):
-    matched_word: str
-    matched_category: str
-    confidence: float
-    replies: List[str]
-
-async def log_to_dataset(user_input: str, response_data: dict, operator: str):
-    entry = {
-        "id": str(uuid.uuid4()),
-        "timestamp": datetime.utcnow().isoformat(),
-        "user_input": user_input,
-        "matched_category": response_data["matched_category"],
-        "response": response_data["replies"][0] if response_data["replies"] else None,
-        "question": response_data["replies"][1] if len(response_data["replies"]) > 1 else None,
-        "operator": operator,
-        "confidence": response_data["confidence"],
-        "embedding": nlp(user_input).vector.tolist()
-    }
+    # If no candidates from relevant categories, use all categories
+    if not candidates:
+        for category, content in dataset.items():
+            responses = content.get('responses', [])
+            questions = content.get('questions', [])
+            candidates.extend(responses)
+            candidates.extend(questions)
     
-    with open(DATASET_PATH, "a") as f:
-        f.write(json.dumps(entry) + "\n")
-
-async def store_uncertain(user_input: str):
-    entry = {
-        "id": str(uuid.uuid4()),
-        "timestamp": datetime.utcnow().isoformat(),
-        "user_input": user_input,
-        "reviewed": False
-    }
+    # Filter out empty candidates
+    candidates = [c.strip() for c in candidates if c.strip()]
     
-    with open(UNCERTAIN_PATH, "a") as f:
-        f.write(json.dumps(entry) + "\n")
+    if not candidates:
+        return None
+    
+    # If we have many candidates, select a random subset for efficiency
+    max_candidates = 500
+    if len(candidates) > max_candidates:
+        candidates = random.sample(candidates, max_candidates)
+    
+    # Vectorize candidates
+    vectorizer = TfidfVectorizer(stop_words='english')
+    try:
+        tfidf_matrix = vectorizer.fit_transform(candidates)
+    except Exception as e:
+        print(f"Vectorization error: {str(e)}")
+        return None
+    
+    # Vectorize user input
+    try:
+        query_vec = vectorizer.transform([user_input])
+    except:
+        return random.choice(candidates)  # Fallback to random selection
+    
+    # Find best matches
+    try:
+        similarities = cosine_similarity(query_vec, tfidf_matrix).flatten()
+        # Get top 5 matches
+        top_indices = similarities.argsort()[-5:][::-1]
+        # Randomly select from top matches
+        selected_index = random.choice(top_indices)
+        return candidates[selected_index]
+    except:
+        return random.choice(candidates)  # Fallback to random selection
 
-def augment_dataset():
-    if not DATASET_PATH.exists():
+# Paraphrase text
+def paraphrase_text(text, model):
+    if not model or not text.strip():
+        return text
+    
+    try:
+        result = model(
+            f"paraphrase: {text}",
+            max_length=60,
+            num_beams=5,
+            num_return_sequences=1,
+            temperature=0.7
+        )
+        return result[0]['generated_text']
+    except Exception as e:
+        print(f"Paraphrase error: {str(e)}")
+        return text
+
+# Generate follow-up question
+def generate_question(context, model, tokenizer):
+    if not model or not context.strip():
+        return "What are your thoughts on that?"
+    
+    try:
+        inputs = tokenizer(
+            f"generate follow-up question: {context}",
+            return_tensors="pt",
+            max_length=512,
+            truncation=True
+        )
+        outputs = model.generate(
+            inputs.input_ids,
+            max_length=50,
+            num_beams=5,
+            early_stopping=True
+        )
+        return tokenizer.decode(outputs[0], skip_special_tokens=True)
+    except Exception as e:
+        print(f"Question generation error: {str(e)}")
+        return "What do you think about that?"
+
+# Create fluid response with question
+def create_response(matched_text, paraphrase_model, qgen_model, qgen_tokenizer):
+    # Paraphrase the matched text
+    paraphrased = paraphrase_text(matched_text, paraphrase_model)
+    
+    # Generate follow-up question
+    follow_up = generate_question(matched_text, qgen_model, qgen_tokenizer)
+    
+    # Create seamless connection
+    connectors = [
+        "By the way,", "Actually,", "You know,", "Anyway,",
+        "Speaking of which,", "On that note,", "Curiously,",
+        "Incidentally,", "Interestingly,", "Changing topics slightly,",
+        "That reminds me,", "To shift gears a bit,"
+    ]
+    
+    # Randomly decide connection style
+    if random.random() > 0.4:  # 60% chance to use connector
+        return f"{paraphrased} {random.choice(connectors)} {follow_up}"
+    return f"{paraphrased} {follow_up}"
+
+# Main chatbot function
+def run_chatbot():
+    # Load dataset
+    dataset = load_dataset("cone03.txt")
+    if not dataset:
+        print("Failed to load dataset. Exiting.")
         return
     
-    with open(DATASET_PATH, "r") as f:
-        entries = [json.loads(line) for line in f]
+    print(f"Loaded dataset with {len(dataset)} categories")
     
-    category_counts = Counter(entry["matched_category"] for entry in entries)
-    avg_count = sum(category_counts.values()) / len(category_counts) if category_counts else 0
+    # Initialize models
+    paraphrase_model, qgen_model, qgen_tokenizer = initialize_models()
     
-    for category in [k for k, v in category_counts.items() if v < avg_count * 0.5]:
-        if category not in REPLY_POOLS:
+    print("\nChatbot: Hey there! What's on your mind?\n")
+    
+    # Conversation history to avoid repetition
+    conversation_history = []
+    
+    while True:
+        try:
+            user_input = input("You: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\nChatbot: Gotta run! Talk to you later.")
+            break
+            
+        if not user_input:
             continue
             
-        base_triggers = REPLY_POOLS[category]["triggers"]
-        new_triggers = set()
-        
-        for trigger in base_triggers:
-            doc = nlp(trigger)
-            new_triggers.add(" ".join([token.lemma_ for token in doc]))
+        if user_input.lower() in ["bye", "exit", "quit", "goodbye"]:
+            print("\nChatbot: Catch you later!")
+            break
             
-            for token in doc:
-                if token.pos_ in ["NOUN", "VERB"]:
-                    syns = [syn.lemmas()[0].name() for syn in wn.synsets(token.text)]
-                    if syns:
-                        new_triggers.add(trigger.replace(token.text, syns[0]))
-        
-        REPLY_POOLS[category]["triggers"] = list(set(REPLY_POOLS[category]["triggers"]) | new_triggers)
-        TRIGGER_CACHE[category].extend(
-            (trigger, nlp(trigger.lower()))
-            for trigger in new_triggers
-            if trigger not in {t[0] for t in TRIGGER_CACHE[category]}
-        )
-    
-    with open(REPLY_POOLS_PATH, "w") as f:
-        json.dump(REPLY_POOLS, f, indent=2)
-    
-    response_selector._initialize_combinations()
-
-def get_best_match(doc) -> Tuple[str, str, float]:
-    best_match = ("general", None, 0.0)
-    
-    for category in CATEGORY_NAMES:
-        for trigger, trigger_doc in TRIGGER_CACHE[category]:
-            if trigger.lower() in doc.text:
-                return (category, trigger, 1.0)
-    
-    for category in CATEGORY_NAMES:
-        for trigger, trigger_doc in TRIGGER_CACHE[category]:
-            similarity = doc.similarity(trigger_doc)
-            if similarity > best_match[2]:
-                best_match = (category, trigger, similarity)
-                if similarity > 0.9:
-                    return best_match
-    
-    for token in doc:
-        if token.pos_ in ["NOUN", "VERB", "ADJ"]:
-            for category in CATEGORY_NAMES:
-                for trigger, _ in TRIGGER_CACHE[category]:
-                    if token.lemma_ in trigger.lower():
-                        current_sim = 0.7 + (0.3 * (token.pos_ == "NOUN"))
-                        if current_sim > best_match[2]:
-                            best_match = (category, token.text, current_sim)
-    
-    return best_match
-
-@app.post("/1B9I6F1O5R1C8O3N87E5145ID", response_model=SallyResponse)
-async def analyze_message(
-    request: Request,
-    user_input: UserMessage,
-    operator: str = Depends(verify_operator)
-):
-    message = user_input.message.strip()
-    doc = nlp(message.lower())
-    
-    category, matched_word, confidence = get_best_match(doc)
-    
-    response = {
-        "matched_word": matched_word or "general",
-        "matched_category": category,
-        "confidence": round(confidence, 2),
-        "replies": []
-    }
-    
-    if REPLY_POOLS[category]["responses"] and REPLY_POOLS[category]["questions"]:
-        r_idx, q_idx = response_selector.get_unique_pair(category)
-        if r_idx is not None and q_idx is not None:
-            response["replies"].append(REPLY_POOLS[category]["responses"][r_idx])
-            response["replies"].append(REPLY_POOLS[category]["questions"][q_idx])
-    
-    if not response["replies"]:
-        response["replies"] = [
-            "Honey, let's take this somewhere more private...",
-            "What's your deepest, darkest fantasy?"
-        ]
-    
-    asyncio.create_task(log_to_dataset(message, response, operator))
-    
-    if confidence < 0.6:
-        asyncio.create_task(store_uncertain(message))
-        if len(response["replies"]) > 1:
-            response["replies"][1] += " Could you rephrase that, baby?"
-    
-    return response
-
-@app.get("/dataset/analytics")
-async def get_analytics(request: Request, operator: str = Depends(verify_operator)):
-    analytics = {
-        "total_entries": 0,
-        "common_categories": {},
-        "confidence_stats": {}
-    }
-    
-    if DATASET_PATH.exists():
         try:
-            with open(DATASET_PATH, "r") as f:
-                entries = [json.loads(line) for line in f]
+            # Identify relevant categories
+            relevant_categories = get_relevant_categories(user_input)
+            print(f"Detected categories: {', '.join(relevant_categories) if relevant_categories else 'General'}")
             
-            analytics["total_entries"] = len(entries)
-            analytics["common_categories"] = Counter(entry["matched_category"] for entry in entries)
+            # Find best match from relevant categories
+            matched_text = find_best_match(user_input, dataset, relevant_categories)
             
-            if entries:
-                confidences = [entry["confidence"] for entry in entries]
-                analytics["confidence_stats"] = {
-                    "average": round(sum(confidences)/len(confidences), 2),
-                    "min": round(min(confidences), 2),
-                    "max": round(max(confidences), 2)
-                }
+            # Fallback if no match found
+            if not matched_text:
+                fallbacks = [
+                    "That's interesting. What makes you say that?",
+                    "I'd love to know more about your perspective.",
+                    "That's a unique viewpoint. Tell me more.",
+                    "What do you think about that yourself?",
+                    "Could you elaborate on that?",
+                    "What's your take on this?",
+                    "That's something I haven't considered before. What brought this to mind?"
+                ]
+                matched_text = random.choice(fallbacks)
+            
+            # Add to history and ensure we don't repeat recent responses
+            if matched_text in conversation_history:
+                # If we've used this recently, try to find a different match
+                print("Avoiding repeated response, finding alternative...")
+                matched_text = find_best_match(user_input, dataset, relevant_categories) or random.choice(fallbacks)
+            
+            # Keep history of last 5 responses
+            conversation_history.append(matched_text)
+            if len(conversation_history) > 5:
+                conversation_history.pop(0)
+            
+            # Create fluid response
+            response = create_response(
+                matched_text,
+                paraphrase_model,
+                qgen_model,
+                qgen_tokenizer
+            )
+            
+            print(f"\nChatbot: {response}\n")
         except Exception as e:
-            print(f"Error reading analytics: {e}")
-    
-    return analytics
-
-@app.post("/augment")
-async def trigger_augmentation(request: Request, operator: str = Depends(verify_operator)):
-    augment_dataset()
-    return {"status": "Dataset augmented", "new_pools": REPLY_POOLS}
+            print(f"Error: {str(e)}")
+            print("\nChatbot: Hmm, let me think about that differently...\n")
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, workers=4)
+    run_chatbot()
