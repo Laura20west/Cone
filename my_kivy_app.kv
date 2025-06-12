@@ -1,0 +1,14 @@
+<BoxLayout>:
+    orientation: 'vertical'
+    TextInput:
+        id: user_input
+        size_hint_y: 0.1
+        multiline: False
+    Label:
+        id: output_label
+        size_hint_y: 0.9
+        text: 'Chatbot: Hello! What’s on your mind?'
+    Button:
+        text: 'Send'
+        size_hint_y: 0.1
+        on_press: app.on_send()
