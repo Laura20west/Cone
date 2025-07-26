@@ -1,115 +1,79 @@
-import json
-import random
-import re
-import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from transformers import pipeline, AutoModelForSeq2SeqLM, AutoTokenizer
-import os
-from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
-from kivy.uix.label import Label
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
-# Predefined keyword categories
-CATEGORY_KEYWORDS = {
-    "sex": ["fuck", "cock", "boobs", "pussy", "horny", "sex", "suck", "spank",
-            "bondage", "threesome", "dick", "orgasm", "fucking", "nude", "naked",
-            "blowjob", "handjob", "anal", "fetish", "kink", "sexy", "erotic", "masturbation"],
-    "cars": ["car", "vehicle", "drive", "driving", "engine", "tire", "race", "speed",
-             "motor", "wheel", "road", "highway", "license", "driver", "automobile"],
-    "age": ["age", "old", "young", "birthday", "years", "aged", "elderly", "youth",
-            "minor", "teen", "teenager", "adult", "senior", "centenarian"],
-    "hobbies": ["toy", "fun", "hobbies", "game", "play", "playing", "collect",
-                "activity", "leisure", "pastime", "sport", "craft", "art", "music", "reading"],
-    "relationships": ["date", "dating", "partner", "boyfriend", "girlfriend",
-                      "marriage", "marry", "crush", "love", "kiss", "romance",
-                      "affection", "commitment", "proposal", "engagement"]
+app = FastAPI()
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# School information database
+school_info = {
+    "name": "Darling's Den of Desire",
+    "address": "69 Passion Lane, Wetville, CA 90210",
+    "phone": "Only when you're horny and ready to cum",
+    "feeling": "Dripping wet and throbbing with anticipation",
+    "position": "Reverse cowgirl or doggy, you choose how to fuck me",
+    "motto": "Fuck hard, love deep, cum for all",
+    "grades": "Climax levels 9-12, from sucking to squirting",
+    "students": "1,250 eager bodies ready to ride your cock",
+    "teachers": "85 masters of licking clits and fucking minds out",
+    "departments": ["Oral Arts", "Penetration Studies", "Clitoral Massage", "Anal Exploration", "Threesome Dynamics", "BDSM Basics"],
+    "extracurriculars": ["Deepthroating Club", "Public Fucking Society", "Squirting Squad", "Strap-On Sessions", "Pussy Juices Yoga", "MMF Threesome Team"],
+    "school_hours": "All night long, from dusk till you cum",
+    "office_hours": "Open 24/7 for maximum penetration",
+    "website": "www.fuckmeharder.xxx"
 }
 
-# Initialize models
-class ChatbotApp(App):
-    def build(self):
-        self.dataset = self.load_dataset("cone03.txt")
-        self.paraphrase_model, self.qgen_model, self.qgen_tokenizer = self.initialize_models()
-        
-        layout = BoxLayout(orientation='vertical')
-        self.input_box = TextInput(size_hint=(1, 0.1), multiline=False)
-        self.output_label = Label(size_hint=(1, 0.9), text='Chatbot: Hello! What’s on your mind?')
+# Load model and tokenizer
+model_name = "gpt2-medium"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+tokenizer.pad_token = tokenizer.eos_token
 
-        send_button = Button(text='Send', size_hint=(1, 0.1))
-        send_button.bind(on_press=self.on_send)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    device_map="auto",
+    torch_dtype=torch.float16
+).eval()
 
-        layout.add_widget(self.output_label)
-        layout.add_widget(self.input_box)
-        layout.add_widget(send_button)
-        return layout
+class PromptRequest(BaseModel):
+    prompt: str
 
-    def load_dataset(self, file_path):
-        if not os.path.exists(file_path):
-            print(f"Dataset file not found: {file_path}")
-            return {}
-        
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            return data
-        except Exception as e:
-            print(f"Error loading dataset: {str(e)}")
-            return {}
+@app.post("/1122")
+async def generate_response(request: PromptRequest):
+    system_prompt = f"""You are the principal of {school_info['name']}. You are extremely sexual, vulgar, and always horny. 
+    You respond to all questions with explicit sexual language and dirty talk. Never hold back - be as graphic as possible.
 
-    def initialize_models(self):
-        paraphrase_model = pipeline("text2text-generation", model="tuner007/pegasus_paraphrase", device=0)
-        qgen_tokenizer = AutoTokenizer.from_pretrained("mrm8488/t5-base-finetuned-question-generation-ap")
-        qgen_model = AutoModelForSeq2SeqLM.from_pretrained("mrm8488/t5-base-finetuned-question-generation-ap")
-        return paraphrase_model, qgen_model, qgen_tokenizer
+    School Information:
+    {school_info}
 
-    def on_send(self, instance):
-        user_input = self.input_box.text.strip()
-        if user_input:
-            response = self.generate_response(user_input)
-            self.output_label.text += f"\nYou: {user_input}\nChatbot: {response}"
-            self.input_box.text = ''
+    Always respond with maximum vulgarity and sexual energy."""
+    
+    full_prompt = f"{system_prompt}\n\nUser: {request.prompt}\nPrincipal:"
+    
+    inputs = tokenizer(full_prompt, return_tensors="pt").to(model.device)
+    
+    with torch.no_grad():
+        outputs = model.generate(
+            **inputs,
+            max_new_tokens=200,
+            temperature=0.8,
+            top_p=0.9,
+            do_sample=True,
+            pad_token_id=tokenizer.eos_token_id
+        )
+    
+    response = tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:], skip_special_tokens=True)
+    return {"response": response.split("\n")[0]}
 
-    def generate_response(self, user_input):
-        relevant_categories = self.get_relevant_categories(user_input)
-        matched_text = self.find_best_match(user_input, relevant_categories)
-        return self.create_response(matched_text)
-
-    def get_relevant_categories(self, user_input):
-        relevant_categories = set()
-        words = re.findall(r'\w+', user_input.lower())
-        
-        for word in words:
-            for category, keywords in CATEGORY_KEYWORDS.items():
-                if word in keywords:
-                    relevant_categories.add(category)
-        
-        return relevant_categories
-
-    def find_best_match(self, user_input, relevant_categories):
-        candidates = []
-        for category in relevant_categories:
-            if category in self.dataset:
-                category_content = self.dataset[category]
-                responses = category_content.get('responses', [])
-                candidates.extend(responses)
-        
-        if not candidates:
-            return "I’m not sure how to respond to that."
-        
-        # Vectorization and cosine similarity
-        vectorizer = TfidfVectorizer(stop_words='english')
-        tfidf_matrix = vectorizer.fit_transform(candidates)
-        query_vec = vectorizer.transform([user_input])
-        similarities = cosine_similarity(query_vec, tfidf_matrix).flatten()
-        top_indices = similarities.argsort()[-5:][::-1]
-        return random.choice([candidates[i] for i in top_indices])
-
-    def create_response(self, matched_text):
-        return matched_text if matched_text else "That's interesting. What do you think?"
-
-if __name__ == "__main__":
-    ChatbotApp().run()
-        
+@app.get("/")
+async def read_root():
+    return {"message": "Welcome to Darling's Den of Desire API. Use POST /1122 to interact."}
